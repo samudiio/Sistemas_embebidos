@@ -7,6 +7,7 @@
 #include "Tasks.h"    
 #include <stdbool.h>
 #include <stdio.h>
+#include <Mem_Alloc.h>
 
 /*----------------------------------------------------------------------------
  *        Local definitions
@@ -48,6 +49,8 @@ static void _ConfigureLeds( void )
 extern int main( void )
 {
 
+	/*Initialize Mem_Alloc */
+	Mem_Init();
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
 

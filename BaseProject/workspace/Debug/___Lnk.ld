@@ -27,7 +27,30 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-INPUT (& &)
+INPUT (C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_memories.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\exceptions.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\mpu.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pmc.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\uart.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\wdt.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\supc.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\tc.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdma_hardware_interface.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdmac.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\system_sam.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o)
 
 /*------------------------------------------------------------------------------
  *      Linker script for running in internal FLASH on the ATSAMV71Q21
