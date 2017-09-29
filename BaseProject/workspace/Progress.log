@@ -1,10 +1,10 @@
-CONVERTING	D:\Embedded_systems\BaseProject_Original\workspace\Debug\BaseProject.elf
-LOADING	D:\Embedded_systems\BaseProject_Original\workspace\Debug\BaseProject.elf
+CONVERTING	C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\BaseProject.elf
+LOADING	C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\BaseProject.elf
 ANALYZING
 ANALYZING
 EMULATION	POD: Cortex (JTAG,SWD)   CPU: Cortex-M7
 DEBUG	PROTOCOL: SWD; RESET: SoC
-PROGRAMMING 	40908 bytes
+LOADING 	41412 bytes
 UMI INFO	Loading UMI monitor...
 PROGRAMMING	Atmel ATSAMV7 (2048 kB) (3 sectors)
 UMI INFO	Unloading UMI monitor...

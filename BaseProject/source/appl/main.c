@@ -4,7 +4,8 @@
 
 #include "board.h"
 #include "app_scheduler.h"
-#include "Tasks.h"    
+#include "Tasks.h"
+#include "Mem_Alloc.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -22,6 +23,9 @@ TaskType Tasks[]={
   {      1,        TASK_100MS,     vfnTsk_100ms  }
 };
 
+
+Mem_Uint8PtrType ptr_a,ptr_b,ptr_c,ptr_d;
+Mem_Uint8PtrType ptr_a_aux,ptr_b_aux,ptr_c_aux;
 /*----------------------------------------------------------------------------
  *        Local functions
  *----------------------------------------------------------------------------*/
@@ -58,7 +62,9 @@ extern int main( void )
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
-    SCB_EnableDCache();
+  SCB_EnableDCache();
+  
+  Mem_Init();
 
 	printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
@@ -67,6 +73,27 @@ extern int main( void )
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
+  
+  //printf( "size of uint8_t = %d.\n\r", sizeof(uint8_t));
+  
+  ptr_a = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint8_t));
+  ptr_a_aux = ptr_a;
+  
+  ptr_b = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint16_t));
+  ptr_b_aux = ptr_b;
+  
+  ptr_c = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint32_t));
+  ptr_c_aux = ptr_c;
+  ptr_d = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint32_t));
+  
+  printf("Address = %x\n\r", ptr_a);
+  printf("Address = %x\n\r", ptr_b);
+  printf("Address = %x\n\r", ptr_c);
+  printf("Address = %x\n\r", ptr_d);
+  
+  
+  
+  
 
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)

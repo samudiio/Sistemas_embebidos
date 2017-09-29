@@ -27,7 +27,30 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-INPUT (& &)
+INPUT (C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\dbg_console.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\board_lowlevel.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\board_memories.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\exceptions.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\pio.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\mpu.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\pmc.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\uart.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\wdt.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\pio_it.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\supc.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\tc.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\xdma_hardware_interface.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\xdmac.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\xdmad.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\syscalls.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\system_sam.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\timetick.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\app_scheduler.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\Tasks.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\Mem_Alloc.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\led.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\main.o 
+C:\Users\EspiN\Desktop\Practica_2\Practica_2\BaseProject\workspace\Debug\startup_sam.o)
 
 /*------------------------------------------------------------------------------
  *      Linker script for running in internal FLASH on the ATSAMV71Q21
