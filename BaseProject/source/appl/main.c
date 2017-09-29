@@ -47,6 +47,9 @@ static void _ConfigureLeds( void )
  */
 extern int main( void )
 {
+    /*Clear HEAP*/
+    Mem_init();
+
 
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
