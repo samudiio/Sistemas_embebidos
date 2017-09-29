@@ -11,34 +11,43 @@
 /** Mem_Alloc function prototypes definitions */
 
 #include <Mem_Alloc.h>
+#include <stdio.h>
 
 /* -- Global Variables -----------------------*/
-MemHandlerType MemHandler;
-// #define Heap_Size  64000
+#define HeapSize  64000
 
-//static unsigned char HEAP_Buffer[HEAP_SIZE];
+MemHandlerType MemHandler;
 
 /** Mem_Alloc function definitions */
 void Mem_Init(void)
 {
      MemHandler.freeBytes = (uintptr_t)&HEAP_SIZE;
-     MemHandler.memStart = (uint8_t*) &MEM_HEAP_START;
-     MemHandler.memEnd = (uint8_t *) &MEM_HEAP_END;
-     MemHandler.currAddr = (uint8_t *) &MEM_HEAP_START;
+     MemHandler.memStart = (uint32_t*) &MEM_HEAP_START;
+     MemHandler.memEnd = (uint32_t *) &MEM_HEAP_END;
+     MemHandler.currAddr = (uint32_t *) &MEM_HEAP_START;
      for(MemHandler.currAddr = MemHandler.memStart; MemHandler.currAddr <= MemHandler.memEnd; MemHandler.currAddr++){
          *MemHandler.currAddr = 0;
      }
-     MemHandler.currAddr = (uint8_t *) &MEM_HEAP_START;
+     MemHandler.currAddr = (uint32_t *) &MEM_HEAP_START;
 }
 
 Mem_ReturnType Mem_Alloc(Mem_SizeType Size)
 {
-    //Necesita revisión
-    Mem_ReturnType NextAddr;
-    // if(Size < MemHandler.freeBytes){
-    //     NextAddr = &HEAP_Buffer[MemHandler.freeBytes];
-    //     MemHandler.freeBytes -= Size;
-    //     MemHandler.currAddr = (Mem_Uint8PtrType)NextAddr;
-    // }
-    return NextAddr;
+    Mem_ReturnType memAdrss;
+    
+    printf("MemSize Req = %i \n\r", Size);
+    if(Size < MemHandler.freeBytes){
+       
+        MemHandler.freeBytes -= Size;
+        memAdrss = MemHandler.currAddr;
+        MemHandler.currAddr += Size;
+        // uint16_t index;
+        // for(index= 0;index < Size; index++){
+        //     MemHandler.currAddr++;
+        // }
+    }
+    printf("RetMemAdrss = %x \n\r", memAdrss);
+    printf("currAddr = %x \n\r", MemHandler.currAddr);
+    printf("freeBytes = %u \n\r", MemHandler.freeBytes);
+    return memAdrss;
 }

@@ -12,8 +12,8 @@
 #include <stdint.h>
 
 /*-- Types Definitions -------------------------------------------------------*/
-typedef uint8_t* Mem_ReturnType;
-typedef uint8_t* Mem_Uint8PtrType;
+typedef uint32_t* Mem_ReturnType;
+typedef uint32_t* Mem_Uint8PtrType;
 typedef uint16_t Mem_SizeType;
 
 typedef struct{

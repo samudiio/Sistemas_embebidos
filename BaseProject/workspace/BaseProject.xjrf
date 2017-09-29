@@ -49,304 +49,304 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>336</L>
-       <P>..\source\infrastructure\toolset\gcc\startup_sam.c</P>
-       <VL>326</VL>
+       <L>224</L>
+       <P>..\source\bsw\services\system\scheduler\app_scheduler.c</P>
+       <VL>224</VL>
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>224</L>
-       <P>..\source\bsw\services\system\scheduler\app_scheduler.c</P>
-       <VL>211</VL>
+       <L>336</L>
+       <P>..\source\infrastructure\toolset\gcc\startup_sam.c</P>
+       <VL>336</VL>
       </PI.1>
       <PI.10>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>17</C>
-       <L>3</L>
-       <P>..\source\bsw\services\system\memalloc\MemAlloc_Types.h</P>
-      </PI.10>
-      <PI.11>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>54</C>
-       <L>54</L>
-       <P>..\source\bsw\services\system\scheduler\Tasks.c</P>
-       <VL>33</VL>
-      </PI.11>
-      <PI.12>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>128</L>
        <P>..\source\infrastructure\toolset\gcc\sam_sram.ld</P>
        <VL>114</VL>
-      </PI.12>
-      <PI.13>
+      </PI.10>
+      <PI.11>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>18</C>
+       <L>43</L>
+       <P>..\source\infrastructure\toolset\gcc\samv71q21_flash.ld</P>
+       <VL>35</VL>
+      </PI.11>
+      <PI.12>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>..\source\infrastructure\toolset\gcc\sam_sdram.ld</P>
-      </PI.13>
-      <PI.14>
+      </PI.12>
+      <PI.13>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>18</C>
        <L>57</L>
        <P>..\source\infrastructure\bsp\libboard_samv7-ek\source\syscalls.c</P>
        <VL>120</VL>
-      </PI.14>
-      <PI.15>
+      </PI.13>
+      <PI.14>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>82</L>
        <P>..\source\infrastructure\bsp\libboard_samv7-ek\board.h</P>
        <VL>78</VL>
-      </PI.15>
-      <PI.16>
+      </PI.14>
+      <PI.15>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>22</C>
        <L>85</L>
        <P>..\source\infrastructure\derivative\libchip_samv7\chip.h</P>
-      </PI.16>
-      <PI.17>
+      </PI.15>
+      <PI.16>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>136</L>
        <P>..\source\bsw\services\system\timetick\timetick.c</P>
        <VL>100</VL>
-      </PI.17>
-      <PI.18>
+      </PI.16>
+      <PI.17>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>18</C>
        <L>49</L>
        <P>..\source\bsw\mcal\xdma\xdma_hardware_interface.c</P>
        <VL>35</VL>
-      </PI.18>
-      <PI.19>
+      </PI.17>
+      <PI.18>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>..\source\infrastructure\bsp\libboard_samv7-ek\resources\gcc\samv71q21_sram.ld</P>
-      </PI.19>
-      <PI.2>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>30</L>
-       <P>..\source\bsw\services\system\mem_alloc\Mem_Alloc.c</P>
-       <VL>15</VL>
-      </PI.2>
-      <PI.20>
+      </PI.18>
+      <PI.19>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>24</C>
        <L>343</L>
        <P>D:\toolset\gcc\startup_sam.c</P>
-      </PI.20>
-      <PI.21>
+      </PI.19>
+      <PI.2>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>6</C>
+       <L>33</L>
+       <P>..\source\bsw\services\system\mem_alloc\Mem_Alloc.c</P>
+       <VL>24</VL>
+      </PI.2>
+      <PI.20>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>D:\toolset\gcc\sam_flash.ld</P>
        <VL>15</VL>
-      </PI.21>
-      <PI.22>
+      </PI.20>
+      <PI.21>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>161</L>
        <P>D:\hal\libchip_samv7\source\timetick.c</P>
        <VL>130</VL>
-      </PI.22>
-      <PI.23>
+      </PI.21>
+      <PI.22>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>118</L>
        <P>D:\bsp\libboard_samv7-ek\source\syscalls.c</P>
        <VL>107</VL>
-      </PI.23>
-      <PI.24>
+      </PI.22>
+      <PI.23>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>40</C>
        <L>194</L>
        <P>D:\bsp\libboard_samv7-ek\source\dbg_console.c</P>
        <VL>276</VL>
-      </PI.24>
-      <PI.25>
+      </PI.23>
+      <PI.24>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>37</C>
        <L>141</L>
        <P>..\src\main.c</P>
-      </PI.25>
-      <PI.26>
+      </PI.24>
+      <PI.25>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>15</C>
        <L>6</L>
        <P>..\readme.txt</P>
-      </PI.26>
-      <PI.27>
+      </PI.25>
+      <PI.26>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>132</L>
        <P>D:\bsp\libboard_samv7-ek\board.h</P>
        <VL>724</VL>
-      </PI.27>
-      <PI.28>
+      </PI.26>
+      <PI.27>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>D:\bsp\libboard_samv7-ek\include\board_lowlevel.h</P>
        <VL>7</VL>
-      </PI.28>
-      <PI.29>
+      </PI.27>
+      <PI.28>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>27</C>
        <L>43</L>
        <P>D:\toolset\gcc\samv71q21_flash.ld</P>
        <VL>20</VL>
+      </PI.28>
+      <PI.29>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <P>D:\hal\libchip_samv7\include\samv7\system_samv71.h</P>
       </PI.29>
       <PI.3>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>164</L>
-       <P>..\source\bsw\mcal\exceptions\exceptions.c</P>
-       <VL>151</VL>
+       <C>33</C>
+       <L>71</L>
+       <P>..\source\appl\main.c</P>
+       <VL>60</VL>
       </PI.3>
       <PI.30>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <P>D:\hal\libchip_samv7\include\samv7\system_samv71.h</P>
-      </PI.30>
-      <PI.31>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>2150</L>
        <P>D:\hal\libchip_samv7\include\cmsis\CMSIS\Include\core_cm7.h</P>
        <VL>2143</VL>
-      </PI.31>
-      <PI.32>
+      </PI.30>
+      <PI.31>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>157</L>
        <P>D:\hal\libchip_samv7\source\exceptions.c</P>
        <VL>144</VL>
-      </PI.32>
-      <PI.33>
+      </PI.31>
+      <PI.32>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>94</C>
        <L>74</L>
        <P>D:\hal\libchip_samv7\include\cmsis\CMSIS\Include\core_cmFunc.h</P>
        <VL>550</VL>
-      </PI.33>
-      <PI.34>
+      </PI.32>
+      <PI.33>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>D:\hal\libchip_samv7\chip.h</P>
        <VL>11</VL>
-      </PI.34>
-      <PI.35>
+      </PI.33>
+      <PI.34>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>399</L>
        <P>..\src\main_full.c</P>
        <VL>224</VL>
-      </PI.35>
-      <PI.36>
+      </PI.34>
+      <PI.35>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>229</L>
        <P>..\src\main_blinky.c</P>
        <VL>92</VL>
-      </PI.36>
-      <PI.37>
+      </PI.35>
+      <PI.36>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>103</L>
        <P>D:\hal\libchip_samv7\source\wdt.c</P>
        <VL>81</VL>
-      </PI.37>
-      <PI.38>
+      </PI.36>
+      <PI.37>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>331</L>
        <P>D:\hal\libchip_samv7\source\pio.c</P>
        <VL>310</VL>
-      </PI.38>
-      <PI.39>
+      </PI.37>
+      <PI.38>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>342</L>
        <P>D:\hal\libchip_samv7\include\cmsis\CMSIS\Include\core_cmInstr.h</P>
        <VL>342</VL>
-      </PI.39>
-      <PI.4>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>20</C>
-       <L>67</L>
-       <P>..\source\appl\main.c</P>
-       <VL>57</VL>
-      </PI.4>
-      <PI.40>
+      </PI.38>
+      <PI.39>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>71</L>
        <P>D:\bsp\libboard_samv7-ek\source\led.c</P>
        <VL>39</VL>
-      </PI.40>
-      <PI.41>
+      </PI.39>
+      <PI.4>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>157</L>
+       <P>..\source\bsw\mcal\exceptions\exceptions.c</P>
+       <VL>157</VL>
+      </PI.4>
+      <PI.40>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>2688</L>
        <P>D:\os\FreeRTOS_821\Source\tasks.c</P>
        <VL>2688</VL>
-      </PI.41>
-      <PI.42>
+      </PI.40>
+      <PI.41>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>2</C>
        <L>38</L>
        <P>D:\bsp\libboard_samv7-ek\include\math.h</P>
        <VL>3</VL>
-      </PI.42>
-      <PI.43>
+      </PI.41>
+      <PI.42>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>144</L>
        <P>D:\os\FreeRTOS_821\Demo\Common\Full\flop.c</P>
        <VL>96</VL>
-      </PI.43>
-      <PI.44>
+      </PI.42>
+      <PI.43>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>253</L>
        <P>..\src\RegTest.c</P>
        <VL>228</VL>
-      </PI.44>
-      <PI.45>
+      </PI.43>
+      <PI.44>
        <Bookmarks_num_>0</Bookmarks_num_>
        <L>138</L>
        <P>..\src\IntQueueTimer.c</P>
        <VL>113</VL>
-      </PI.45>
-      <PI.46>
+      </PI.44>
+      <PI.45>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>19</C>
        <L>89</L>
        <P>..\src\FreeRTOSConfig.h</P>
        <VL>136</VL>
-      </PI.46>
-      <PI.47>
+      </PI.45>
+      <PI.46>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>D:\hal\utils\utility.h</P>
        <VL>38</VL>
-      </PI.47>
-      <PI.48>
+      </PI.46>
+      <PI.47>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>13</C>
        <L>83</L>
        <P>D:\os\FreeRTOS_821\Demo\Common\Minimal\flop.c</P>
        <VL>56</VL>
-      </PI.48>
-      <PI.49>
+      </PI.47>
+      <PI.48>
        <Bookmarks_num_>0</Bookmarks_num_>
        <P>D:\os\FreeRTOS_821\Demo\Common\include\flop.h</P>
        <VL>37</VL>
+      </PI.48>
+      <PI.49>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>33</C>
+       <L>660</L>
+       <P>D:\os\FreeRTOS_821\Source\portable\GCC\ARM_CM7\r0p1\port.c</P>
+       <VL>644</VL>
       </PI.49>
       <PI.5>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>60</C>
-       <L>54</L>
-       <P>..\source\infrastructure\toolset\gcc\samv71q21_flash.ld</P>
-       <VL>35</VL>
-      </PI.5>
-      <PI.6>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <C>60</C>
-       <L>77</L>
-       <P>Debug\___Lnk.ld</P>
-       <VL>58</VL>
-       <VP>160</VP>
-      </PI.6>
-      <PI.7>
-       <Bookmarks_num_>0</Bookmarks_num_>
-       <L>135</L>
-       <P>..\source\infrastructure\toolset\gcc\sam_flash.ld</P>
-       <VL>117</VL>
-      </PI.7>
-      <PI.8>
-       <Bookmarks_num_>0</Bookmarks_num_>
        <C>21</C>
        <P>..\source\bsw\services\system\memalloc\MemAlloc.c</P>
-      </PI.8>
-      <PI.9>
+      </PI.5>
+      <PI.6>
        <Bookmarks_num_>0</Bookmarks_num_>
        <C>29</C>
        <L>3</L>
        <P>..\source\bsw\services\system\memalloc\MemAlloc.h</P>
+      </PI.6>
+      <PI.7>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>17</C>
+       <L>3</L>
+       <P>..\source\bsw\services\system\memalloc\MemAlloc_Types.h</P>
+      </PI.7>
+      <PI.8>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <C>54</C>
+       <L>54</L>
+       <P>..\source\bsw\services\system\scheduler\Tasks.c</P>
+       <VL>33</VL>
+      </PI.8>
+      <PI.9>
+       <Bookmarks_num_>0</Bookmarks_num_>
+       <L>135</L>
+       <P>..\source\infrastructure\toolset\gcc\sam_flash.ld</P>
+       <VL>117</VL>
       </PI.9>
      </REG_ROOT>
     </EditorOptions>
@@ -822,55 +822,47 @@
       </ActiveDocument>
       <Editor.0>
        <FileBarIndex>1</FileBarIndex>
-       <RectPosBottom>896</RectPosBottom>
-       <RectPosLeft>156</RectPosLeft>
-       <RectPosRight>1009</RectPosRight>
-       <RectPosTop>156</RectPosTop>
+       <RectPosBottom>708</RectPosBottom>
+       <RectPosLeft>104</RectPosLeft>
+       <RectPosRight>873</RectPosRight>
+       <RectPosTop>104</RectPosTop>
        <RelativeFileName>..\source\appl\main.c</RelativeFileName>
       </Editor.0>
       <Editor.1>
-       <FileBarIndex>0</FileBarIndex>
-       <RectPosBottom>767</RectPosBottom>
-       <RectPosLeft>182</RectPosLeft>
-       <RectPosRight>1113</RectPosRight>
-       <RectPosTop>182</RectPosTop>
-       <RelativeFileName>..\source\bsw\mcal\exceptions\exceptions.c</RelativeFileName>
-      </Editor.1>
-      <Editor.2>
-       <FileBarIndex>4</FileBarIndex>
+       <FileBarIndex>2</FileBarIndex>
        <RectPosBottom>682</RectPosBottom>
        <RectPosLeft>78</RectPosLeft>
        <RectPosRight>847</RectPosRight>
        <RectPosTop>78</RectPosTop>
        <RelativeFileName>..\source\bsw\services\system\mem_alloc\Mem_Alloc.c</RelativeFileName>
+      </Editor.1>
+      <Editor.2>
+       <FileBarIndex>0</FileBarIndex>
+       <RectPosBottom>760</RectPosBottom>
+       <RectPosLeft>156</RectPosLeft>
+       <RectPosRight>925</RectPosRight>
+       <RectPosTop>156</RectPosTop>
+       <RelativeFileName>..\source\bsw\services\system\scheduler\app_scheduler.c</RelativeFileName>
       </Editor.2>
       <Editor.3>
-       <FileBarIndex>2</FileBarIndex>
-       <RectPosBottom>870</RectPosBottom>
-       <RectPosLeft>130</RectPosLeft>
-       <RectPosRight>769</RectPosRight>
-       <RectPosTop>130</RectPosTop>
-       <RelativeFileName>..\source\bsw\services\system\scheduler\app_scheduler.c</RelativeFileName>
-      </Editor.3>
-      <Editor.4>
        <FileBarIndex>3</FileBarIndex>
-       <RectPosBottom>844</RectPosBottom>
-       <RectPosLeft>104</RectPosLeft>
-       <RectPosRight>1092</RectPosRight>
-       <RectPosTop>104</RectPosTop>
+       <RectPosBottom>630</RectPosBottom>
+       <RectPosLeft>26</RectPosLeft>
+       <RectPosRight>795</RectPosRight>
+       <RectPosTop>26</RectPosTop>
        <RelativeFileName>..\source\infrastructure\toolset\gcc\startup_sam.c</RelativeFileName>
-      </Editor.4>
+      </Editor.3>
       <EditorHistoryFile.0>
-       <RelativeFileName>..\source\appl\main.c</RelativeFileName>
+       <RelativeFileName>..\source\bsw\services\system\memalloc\MemAlloc.c</RelativeFileName>
       </EditorHistoryFile.0>
       <EditorHistoryFile.1>
-       <RelativeFileName>..\source\infrastructure\toolset\gcc\sam_flash.ld</RelativeFileName>
+       <RelativeFileName>..\source\appl\main.c</RelativeFileName>
       </EditorHistoryFile.1>
       <EditorHistoryFile.2>
-       <RelativeFileName>Debug\___Lnk.ld</RelativeFileName>
+       <RelativeFileName>..\source\bsw\mcal\exceptions\exceptions.c</RelativeFileName>
       </EditorHistoryFile.2>
       <EditorHistoryFile.3>
-       <RelativeFileName>..\source\infrastructure\toolset\gcc\samv71q21_flash.ld</RelativeFileName>
+       <RelativeFileName>..\source\bsw\services\system\scheduler\app_scheduler.c</RelativeFileName>
       </EditorHistoryFile.3>
      </Documents.0>
      <Progress>
@@ -895,7 +887,7 @@
       </Misc.3>
       <WatchPane.0>
        <Watch.0>
-        <WatchName>HEAP_SIZE</WatchName>
+        <WatchName>Mem_Alloc</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
@@ -906,54 +898,6 @@
          <Scale>0</Scale>
         </ExpressionDisplay>
        </Watch.0>
-       <Watch.1>
-        <WatchName>MEM_HEAP_START</WatchName>
-        <ExpressionDisplay>
-         <Color>0</Color>
-         <ColorBack>8421376</ColorBack>
-         <ColorText>0</ColorText>
-         <Enabled>0</Enabled>
-         <Hi type="D">100.0000000000000000</Hi>
-         <Lo type="D">0.0000000000000000</Lo>
-         <Scale>0</Scale>
-        </ExpressionDisplay>
-       </Watch.1>
-       <Watch.2>
-        <WatchName>MEM_HEAP_END</WatchName>
-        <ExpressionDisplay>
-         <Color>0</Color>
-         <ColorBack>8421376</ColorBack>
-         <ColorText>0</ColorText>
-         <Enabled>0</Enabled>
-         <Hi type="D">100.0000000000000000</Hi>
-         <Lo type="D">0.0000000000000000</Lo>
-         <Scale>0</Scale>
-        </ExpressionDisplay>
-       </Watch.2>
-       <Watch.3>
-        <WatchName>MemHandler</WatchName>
-        <ExpressionDisplay>
-         <Color>0</Color>
-         <ColorBack>8421376</ColorBack>
-         <ColorText>0</ColorText>
-         <Enabled>0</Enabled>
-         <Hi type="D">100.0000000000000000</Hi>
-         <Lo type="D">0.0000000000000000</Lo>
-         <Scale>0</Scale>
-        </ExpressionDisplay>
-       </Watch.3>
-       <Watch.4>
-        <WatchName>_szero</WatchName>
-        <ExpressionDisplay>
-         <Color>0</Color>
-         <ColorBack>8421376</ColorBack>
-         <ColorText>0</ColorText>
-         <Enabled>0</Enabled>
-         <Hi type="D">100.0000000000000000</Hi>
-         <Lo type="D">0.0000000000000000</Lo>
-         <Scale>0</Scale>
-        </ExpressionDisplay>
-       </Watch.4>
       </WatchPane.0>
       <WatchPane.2>
        <Watch.0>
@@ -1023,7 +967,7 @@
       <TypeOfWnd>-1</TypeOfWnd>
       <DockRect.0>
        <AreHorz>0</AreHorz>
-       <Percent>878</Percent>
+       <Percent>458</Percent>
        <Type>0</Type>
        <TypeOfWnd>-1</TypeOfWnd>
        <DockRect.0>
@@ -1066,7 +1010,7 @@
        </DockRect.1>
        <DockRect.2>
         <AreHorz>1</AreHorz>
-        <Percent>292</Percent>
+        <Percent>194</Percent>
         <Type>0</Type>
         <TypeOfWnd>-1</TypeOfWnd>
         <DockRect.0>
@@ -1117,7 +1061,7 @@
        </DockRect.5>
        <DockRect.6>
         <AreHorz>1</AreHorz>
-        <Percent>1195</Percent>
+        <Percent>406</Percent>
         <Type>1</Type>
         <TypeOfWnd>-2</TypeOfWnd>
        </DockRect.6>
@@ -1129,7 +1073,7 @@
        </DockRect.7>
        <DockRect.8>
         <AreHorz>1</AreHorz>
-        <Percent>1003</Percent>
+        <Percent>354</Percent>
         <Type>0</Type>
         <TypeOfWnd>-1</TypeOfWnd>
         <DockRect.0>
@@ -1140,13 +1084,13 @@
          <TypeOfWnd>5</TypeOfWnd>
          <Data>
           <HeaderWidth.0>
-           <__>103</__>
+           <__>119</__>
           </HeaderWidth.0>
           <HeaderWidth.1>
-           <__>85</__>
+           <__>75</__>
           </HeaderWidth.1>
           <HeaderWidth.2>
-           <__>603</__>
+           <__>519</__>
           </HeaderWidth.2>
           <HeaderWidth.3>
            <__>210</__>
@@ -1171,19 +1115,19 @@
            <Width>0</Width>
           </Columns.0>
           <Columns.1>
-           <Pos type="D">21.4570858283433130</Pos>
+           <Pos type="D">21.5297450424929200</Pos>
            <Width>0</Width>
           </Columns.1>
           <Columns.2>
-           <Pos type="D">43.2135728542914140</Pos>
+           <Pos type="D">61.4730878186968820</Pos>
            <Width>0</Width>
           </Columns.2>
           <Columns.3>
-           <Pos type="D">62.1756487025948130</Pos>
+           <Pos type="D">63.1728045325779060</Pos>
            <Width>0</Width>
           </Columns.3>
           <Columns.4>
-           <Pos type="D">86.3273453093812440</Pos>
+           <Pos type="D">86.4022662889518360</Pos>
            <Width>0</Width>
           </Columns.4>
          </Data>
@@ -1210,12 +1154,12 @@
       </DockRect.1>
       <DockRect.2>
        <AreHorz>0</AreHorz>
-       <Percent>443</Percent>
+       <Percent>197</Percent>
        <Type>0</Type>
        <TypeOfWnd>-1</TypeOfWnd>
        <DockRect.0>
         <AreHorz>1</AreHorz>
-        <Percent>766</Percent>
+        <Percent>1406</Percent>
         <strTypeOfWnd>Output</strTypeOfWnd>
         <Type>0</Type>
         <TypeOfWnd>0</TypeOfWnd>
@@ -1228,24 +1172,71 @@
        </DockRect.1>
        <DockRect.2>
         <AreHorz>1</AreHorz>
-        <Percent>253</Percent>
-        <strTypeOfWnd>SFR</strTypeOfWnd>
+        <Percent>1149</Percent>
+        <strTypeOfWnd>Memory</strTypeOfWnd>
         <Type>0</Type>
-        <TypeOfWnd>12</TypeOfWnd>
+        <TypeOfWnd>6</TypeOfWnd>
         <Data>
-         <SFRPane>
-          <Tree>
-           <HeaderWidth.0>200</HeaderWidth.0>
-           <HeaderWidth.1>100</HeaderWidth.1>
-           <HeaderWidth.2>400</HeaderWidth.2>
-           <HeaderWidth.3>100</HeaderWidth.3>
-           <HeaderWidth.4>400</HeaderWidth.4>
-          </Tree>
-         </SFRPane>
-         <WndData>
-          <Custom>0</Custom>
-          <strCustom></strCustom>
-         </WndData>
+         <AA type="B">KAPPEECA</AA>
+         <Address>541392800</Address>
+         <AddrMode>0</AddrMode>
+         <Area>0</Area>
+         <Bits>8</Bits>
+         <DisplayMode>256</DisplayMode>
+         <HA type="B">PPPPPPPP</HA>
+         <High>-1</High>
+         <LA type="B">AAAAAAAA</LA>
+         <LimitMAUsPerLine>7</LimitMAUsPerLine>
+         <Low>0</Low>
+         <RealTime>0</RealTime>
+         <strAddress>20450000</strAddress>
+         <SwapFloat>True</SwapFloat>
+         <SwapInt>True</SwapInt>
+         <API.0>
+          <AA type="B">AAAAEFCA</AA>
+          <Address>541392896</Address>
+          <AddressOffset>541392800</AddressOffset>
+          <AOA type="B">KAPPEECA</AOA>
+          <DisplayMode>256</DisplayMode>
+          <FloatLowFirst>1</FloatLowFirst>
+          <IntLowFirst>1</IntLowFirst>
+         </API.0>
+         <API.1>
+          <AA type="B">AAAAAAAA</AA>
+          <Address>0</Address>
+          <AddressOffset>0</AddressOffset>
+          <AOA type="B">AAAAAAAA</AOA>
+          <DisplayMode>0</DisplayMode>
+          <FloatLowFirst>0</FloatLowFirst>
+          <IntLowFirst>0</IntLowFirst>
+         </API.1>
+         <API.2>
+          <AA type="B">AAAAAAAA</AA>
+          <Address>0</Address>
+          <AddressOffset>0</AddressOffset>
+          <AOA type="B">AAAAAAAA</AOA>
+          <DisplayMode>0</DisplayMode>
+          <FloatLowFirst>0</FloatLowFirst>
+          <IntLowFirst>0</IntLowFirst>
+         </API.2>
+         <API.3>
+          <AA type="B">AAAAAAAA</AA>
+          <Address>0</Address>
+          <AddressOffset>0</AddressOffset>
+          <AOA type="B">AAAAAAAA</AOA>
+          <DisplayMode>0</DisplayMode>
+          <FloatLowFirst>0</FloatLowFirst>
+          <IntLowFirst>0</IntLowFirst>
+         </API.3>
+         <API.4>
+          <AA type="B">AAAAEFCA</AA>
+          <Address>541392896</Address>
+          <AddressOffset>541392896</AddressOffset>
+          <AOA type="B">AAAAEFCA</AOA>
+          <DisplayMode>0</DisplayMode>
+          <FloatLowFirst>0</FloatLowFirst>
+          <IntLowFirst>0</IntLowFirst>
+         </API.4>
         </Data>
        </DockRect.2>
        <DockRect.3>
@@ -1268,19 +1259,6 @@
       <Fetch>
        <Beep>True</Beep>
        <DisplayMessage>True</DisplayMessage>
-       <BP.0>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>True</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\bsw\services\system\mem_alloc\Mem_Alloc.c&quot;::31</Name>
-        </__>
-       </BP.0>
       </Fetch>
      </Breakpoints>
      <CASETool>
@@ -1616,28 +1594,28 @@
        </ID.1>
        <ID.10>
         <Data.0>
-         <__>0</__>
+         <__>0x20450000</__>
         </Data.0>
         <Data.1>
-         <__>0x200050E8</__>
+         <__>0</__>
         </Data.1>
         <Data.2>
-         <__>0x2000f7f4</__>
+         <__>0x200050E8</__>
         </Data.2>
         <Data.3>
-         <__>0x08000000</__>
+         <__>0x2000f7f4</__>
         </Data.3>
         <Data.4>
-         <__>0x08007008</__>
+         <__>0x08000000</__>
         </Data.4>
         <Data.5>
-         <__>0x08007094</__>
+         <__>0x08007008</__>
         </Data.5>
         <Data.6>
-         <__>0x8006510</__>
+         <__>0x08007094</__>
         </Data.6>
         <Data.7>
-         <__>0xfff80000</__>
+         <__>0x8006510</__>
         </Data.7>
        </ID.10>
        <ID.11>
@@ -1658,7 +1636,7 @@
        </ID.12>
        <ID.13>
         <Data.0>
-         <__>MEM_HEAP_START</__>
+         <__>0x20450000</__>
         </Data.0>
         <Data.1>
          <__>0x8002e88</__>
@@ -2091,41 +2069,17 @@
         <Items.0>
          <__>
           <Name>ATSAMV7xx21</Name>
-          <Options>5</Options>
+          <Options>1</Options>
           <Items.0>
            <__>
             <Name>General Purpose Registers</Name>
-            <Options>5</Options>
-            <Items.0>
-             <__>
-              <Name>Cortex-M4 Core Registers</Name>
-              <Options>4</Options>
-             </__>
-            </Items.0>
+            <Options>1</Options>
            </__>
           </Items.0>
           <Items.1>
            <__>
-            <Name>VFP</Name>
-            <Options>0</Options>
-           </__>
-          </Items.1>
-          <Items.10>
-           <__>
-            <Name>TWIHS1</Name>
-            <Options>0</Options>
-           </__>
-          </Items.10>
-          <Items.11>
-           <__>
-            <Name>PWM0</Name>
-            <Options>0</Options>
-           </__>
-          </Items.11>
-          <Items.2>
-           <__>
             <Name>System Control Space</Name>
-            <Options>1</Options>
+            <Options>5</Options>
             <Items.0>
              <__>
               <Name>NVIC</Name>
@@ -2163,46 +2117,64 @@
              </__>
             </Items.5>
            </__>
+          </Items.1>
+          <Items.10>
+           <__>
+            <Name>PWM0</Name>
+            <Options>0</Options>
+           </__>
+          </Items.10>
+          <Items.11>
+           <__>
+            <Name>USART0</Name>
+            <Options>0</Options>
+           </__>
+          </Items.11>
+          <Items.2>
+           <__>
+            <Name>HSMCI</Name>
+            <Options>0</Options>
+           </__>
           </Items.2>
           <Items.3>
            <__>
-            <Name>HSMCI</Name>
+            <Name>SSC</Name>
             <Options>0</Options>
            </__>
           </Items.3>
           <Items.4>
            <__>
-            <Name>SSC</Name>
+            <Name>SPI0</Name>
             <Options>0</Options>
            </__>
           </Items.4>
           <Items.5>
            <__>
-            <Name>SPI0</Name>
+            <Name>TC0</Name>
             <Options>0</Options>
            </__>
           </Items.5>
           <Items.6>
            <__>
-            <Name>TC0</Name>
+            <Name>TC1</Name>
             <Options>0</Options>
            </__>
           </Items.6>
           <Items.7>
            <__>
-            <Name>TC1</Name>
+            <Name>TC2</Name>
             <Options>0</Options>
            </__>
           </Items.7>
           <Items.8>
            <__>
-            <Name>TC2</Name>
+            <Name>TWIHS0</Name>
             <Options>0</Options>
            </__>
           </Items.8>
           <Items.9>
            <__>
-            <Name>TWIHS0</Name>
+            <Name>TWIHS1</Name>
             <Options>0</Options>
            </__>
           </Items.9>
