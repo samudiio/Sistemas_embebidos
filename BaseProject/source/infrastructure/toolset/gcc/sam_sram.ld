@@ -121,7 +121,7 @@ SECTIONS
         . = ALIGN(8);
          MEM_HEAP_START = .;
         . = . + HEAP_SIZE;
-        . = ALIGN(8);
+       /* . = ALIGN(8); */
         MEM_HEAP_END = .;
     } > ram_heap
     
