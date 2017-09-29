@@ -46,9 +46,9 @@ Mem_ReturnType Mem_Alloc(Mem_SizeType Size)
         //     MemHandler.currAddr++;
         // }
         //Check Aligment 4byte(32bit)
-        if(MemHandler.currAddr & 0x03 != 0){
+        if((uintptr_t)MemHandler.currAddr & 0x03 != 0){
             // Aligning Address to 4bytes
-            MemHandler.currAddr = (MemHandler.currAddr + 4) & (~0x03);
+            MemHandler.currAddr = (uint32_t *)(((uintptr_t)MemHandler.currAddr + 4) & (~0x03));
         }
     }
     printf("RetMemAdrss = %x \n\r", memAdrss);
