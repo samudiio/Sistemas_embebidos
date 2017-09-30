@@ -135,7 +135,7 @@ SECTIONS
     
     . = ALIGN(4);
     /* my heap section */
-    .my_HEAP (NOLOAD):
+    .HEAP (NOLOAD):
     {
         . = ALIGN(4);         
         MEM_HEAP_START = .;

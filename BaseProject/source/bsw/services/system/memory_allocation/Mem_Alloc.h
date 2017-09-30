@@ -11,8 +11,8 @@
 /*-- Includes ----------------------------------------------------------------*/
 #include "Mem_AllocTypes.h"
 
-extern uint32_t MEM_HEAP_START;
-extern uint32_t MEM_HEAP_END;
+extern uint8_t MEM_HEAP_START;
+extern uint8_t MEM_HEAP_END;
 
 
 
@@ -21,7 +21,7 @@ extern uint32_t MEM_HEAP_END;
  *----------------------------------------------------------------------------*/
 void Mem_Init(void);
 
-void *Mem_Alloc(Mem_SizeType);
+Mem_ReturnType Mem_Alloc(Mem_SizeType);
 
 
 #endif 

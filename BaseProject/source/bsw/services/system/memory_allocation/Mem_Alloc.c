@@ -9,15 +9,17 @@
 /*-- Includes ----------------------------------------------------------------*/
 #include "Mem_Alloc.h"
 
-volatile MemHandlerType my_MemHandler;
+MemHandlerType my_MemHandler;
+
 
 void Mem_Init(void){
 
   my_MemHandler.memStart = &MEM_HEAP_START;
-  my_MemHandler.currAddr = &MEM_HEAP_START;// este debe de ser 8 bits
-  my_MemHandler.memEnd =   &MEM_HEAP_END;
+  my_MemHandler.currAddr = &MEM_HEAP_START;
+  my_MemHandler.memEnd =   &MEM_HEAP_END;  
+  my_MemHandler.freeBytes = my_MemHandler.memEnd - my_MemHandler.currAddr-1;    
  
-  uint32_t *pStart;
+  uint8_t *pStart;
   
   for (pStart = &MEM_HEAP_START; pStart < &MEM_HEAP_END;) {
 	  *pStart++ = 0x0;
@@ -25,25 +27,37 @@ void Mem_Init(void){
 }
 
 
-void *Mem_Alloc(Mem_SizeType ReqSize){
+Mem_ReturnType Mem_Alloc(Mem_SizeType Size){
   
-  uint32_t my_memEnd,my_currAddr;     
-  my_currAddr = (uint32_t)my_MemHandler.currAddr;
-  my_memEnd   = (uint32_t)my_MemHandler.memEnd;      
-  my_MemHandler.freebytes = (my_memEnd - my_currAddr);
-    printf( "\n\n\r");
-  printf( "Free Bytes= %x.\n\r", my_MemHandler.freebytes );
-  printf( "Req Size= %x.\n\r", ReqSize );
+  Mem_ReturnType ret_val = NULL;
   
-  if( ReqSize < my_MemHandler.freebytes ){    
-    my_MemHandler.oldAddr = my_MemHandler.currAddr;
-    my_MemHandler.currAddr+=ReqSize;  
-    printf( "Returned Address = %p.\n\r", (Mem_Uint8PtrType)my_MemHandler.oldAddr );
-    return my_MemHandler.oldAddr;  
-  }
-  else{
-    return NULL;
-  }
+  printf( "\n\n\r");
+  printf( "Free Bytes= %x.\n\r", my_MemHandler.freeBytes );
+  printf( "Req Size= %x.\n\r", Size );      
+
+    if(my_MemHandler.freeBytes > Size)
+    {
+        ret_val = my_MemHandler.currAddr;
+        my_MemHandler.currAddr += Size;
+
+        //assure current add is aligned with 32bit addres
+        if(((uint32_t)my_MemHandler.currAddr % (uint32_t)4 )!= 0)
+        {
+            do
+            {
+                my_MemHandler.currAddr += 1;
+            }while(((uint32_t)my_MemHandler.currAddr % (uint32_t)4 )!= 0);
+        }
+        else
+        {
+            //do nothing, the address is 4-byte aligned
+        }
+        
+        my_MemHandler.freeBytes = my_MemHandler.memEnd - my_MemHandler.currAddr;
+    }
+
+    printf( "Returned Address = %p.\n\r", (Mem_Uint8PtrType)ret_val );
+    return ret_val;
 }
 
 

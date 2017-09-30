@@ -24,8 +24,8 @@ TaskType Tasks[]={
 };
 
 
-Mem_Uint8PtrType ptr_a,ptr_b,ptr_c,ptr_d;
-Mem_Uint8PtrType ptr_a_aux,ptr_b_aux,ptr_c_aux;
+Mem_ReturnType ptr_a,ptr_b,ptr_c,ptr_d,ptr_e;
+
 /*----------------------------------------------------------------------------
  *        Local functions
  *----------------------------------------------------------------------------*/
@@ -76,20 +76,12 @@ extern int main( void )
   
   //printf( "size of uint8_t = %d.\n\r", sizeof(uint8_t));
   
-  ptr_a = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint8_t));
-  ptr_a_aux = ptr_a;
+  ptr_a = (Mem_ReturnType)Mem_Alloc(0x2800);  
+  ptr_b = (Mem_ReturnType)Mem_Alloc(0x2);  
+  ptr_c = (Mem_ReturnType)Mem_Alloc(0x3);
+  ptr_d = (Mem_ReturnType)Mem_Alloc(0x5);
+  ptr_e = (Mem_ReturnType)Mem_Alloc(0x7);
   
-  ptr_b = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint16_t));
-  ptr_b_aux = ptr_b;
-  
-  ptr_c = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint32_t));
-  ptr_c_aux = ptr_c;
-  ptr_d = (Mem_Uint8PtrType)Mem_Alloc(1*sizeof(uint32_t));
-  
-  printf("Address = %x\n\r", ptr_a);
-  printf("Address = %x\n\r", ptr_b);
-  printf("Address = %x\n\r", ptr_c);
-  printf("Address = %x\n\r", ptr_d);
   
   
   
