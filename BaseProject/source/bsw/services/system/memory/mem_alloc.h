@@ -11,8 +11,8 @@
 /*-- Includes ----------------------------------------------------------------*/
 #include "Mem_AllocTypes.h"
 
-extern uint32_t MEM_HEAP_START;
-extern uint32_t MEM_HEAP_END;
+extern uint8_t MEM_HEAP_START;
+extern uint8_t MEM_HEAP_END;
 
 /*
 * \brief    Initialize the Heap content to zero

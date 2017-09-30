@@ -70,7 +70,7 @@ extern int main( void )
 	printf("\n\r"); 
 	uint8_t *ptr1; 
 	// Initial memory allocation 
-	ptr1 = (uint8_t*) Mem_Alloc(0x01);
+	ptr1 = (uint8_t*) Mem_Alloc(0x2800);
 	printf("*ptr1 Address = %x\n\r", ptr1); 
 	printf("\n\r"); 
 	
@@ -86,10 +86,14 @@ extern int main( void )
 	printf("\n\r");
 
     uint8_t *ptr4;
-    ptr4 = (uint8_t*) Mem_Alloc(0x04);
+    ptr4 = (uint8_t*) Mem_Alloc(0x05);
     printf("*ptr3 Address = %x\n\r", ptr4);
     printf("\n\r");
 
+    uint8_t *ptr5;
+        ptr5 = (uint8_t*) Mem_Alloc(0x07);
+        printf("*ptr3 Address = %x\n\r", ptr5);
+        printf("\n\r");
 
   	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);

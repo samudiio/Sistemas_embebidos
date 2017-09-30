@@ -127,10 +127,10 @@ SECTIONS
     .heap (NOLOAD):
     {
         . = ALIGN(8);
-         MEM_HEAP_START = .;
+         _sheap = .;
         . = . + HEAP_SIZE;
         . = ALIGN(8);
-        MEM_HEAP_END = .;
+        _eheap = .;
     } > ram
 
     . = ALIGN(4);

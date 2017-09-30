@@ -20,11 +20,11 @@ MemHandlerType New_Heap;
 void Mem_Init(void)
 {
     uint16_t idx;
-    uint8_t *heap_address = (uint8_t *)&MEM_HEAP_START;
+    uint8_t *heap_address = &MEM_HEAP_START;
 
-    New_Heap.memStart = (uint8_t *)&MEM_HEAP_START;
-    New_Heap.memEnd = (uint8_t *)&MEM_HEAP_END;
-    New_Heap.currAddr = (uint8_t *)&MEM_HEAP_START;
+    New_Heap.memStart = &MEM_HEAP_START;
+    New_Heap.memEnd = &MEM_HEAP_END;
+    New_Heap.currAddr = &MEM_HEAP_START;
     New_Heap.freeBytes = (New_Heap.memEnd - New_Heap.memStart) -1;
 
     for(idx = 0; idx < New_Heap.freeBytes; idx++)
