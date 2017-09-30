@@ -55,7 +55,7 @@
 
 #undef errno
 extern int errno;
-extern int  _sheap;
+extern int  MEM_HEAP_START;
 
 /*----------------------------------------------------------------------------
  *        Exported functions
@@ -70,7 +70,7 @@ extern caddr_t _sbrk ( int incr )
 	unsigned char *prev_sheap;
 
 	if ( heap == NULL ) {
-		heap = (unsigned char *)&_sheap;
+		heap = (unsigned char *)&MEM_HEAP_START;
 	}
 	prev_sheap = heap;
 

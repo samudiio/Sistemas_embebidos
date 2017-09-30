@@ -169,7 +169,7 @@ void vfnScheduler_Init(TaskType *TaskArray)
   gu8Scheduler_Status = TASK_SCHEDULER_INIT;
 
   //Reserve 10Kbytes of memory*/
-  Mem_Alloc(10240);
+  //Mem_Alloc(10240);
 
   for (task_idx = 0; task_idx < (uint8_t)TASK_MAXNUM; task_idx++)
   {

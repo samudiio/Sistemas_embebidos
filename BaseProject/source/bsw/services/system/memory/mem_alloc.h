@@ -1,5 +1,5 @@
 /*
- * mem_alloc.h
+ * Mem_Alloc.h
  *
  *  Created on: Sep 27, 2017
  *  Brief:      Interfaces provided to the user component modules
@@ -9,21 +9,23 @@
 #define MEM_ALLOC_H_
 
 /*-- Includes ----------------------------------------------------------------*/
-#include "mem_alloctypes.h"
+#include "Mem_AllocTypes.h"
 
+extern uint32_t MEM_HEAP_START;
+extern uint32_t MEM_HEAP_END;
 
 /*
 * \brief    Initialize the Heap content to zero
 * \param    void
 * \return   void
 */
-void Mem_init(void);
+void Mem_Init(void);
 
 /*
 * \brief    Allocates and returns the initial address of the memory currently being allocated
 * \param    size        Size in Bytes to be allocated
 * \return   init_add     Initial address of the new allocated memory space
 */
-Mem_ReturnType Mem_Alloc(Mem_SizeType size);
+Mem_ReturnType Mem_Alloc(Mem_SizeType Size);
 
 #endif /* MEM_ALLOC_H_ */

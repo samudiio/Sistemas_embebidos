@@ -48,41 +48,48 @@ static void _ConfigureLeds( void )
 extern int main( void )
 {
     /*Clear HEAP*/
-    Mem_init();
+    Mem_Init();
+
 
 
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
 
 	/* Output example information */
-	printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	printf( "-- %s\n\r", BOARD_NAME ) ;
-	printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
+	//printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
+	//printf( "-- %s\n\r", BOARD_NAME ) ;
+	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
     SCB_EnableDCache();
 
-	printf( "Configure LED PIOs.\n\r" ) ;
+	//printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
 	
 	printf("\n\r"); 
 	uint8_t *ptr1; 
 	// Initial memory allocation 
-	ptr1 = (uint8_t*) Mem_Alloc(sizeof(uint8_t)); 
+	ptr1 = (uint8_t*) Mem_Alloc(0x01);
 	printf("*ptr1 Address = %x\n\r", ptr1); 
 	printf("\n\r"); 
 	
 	uint32_t *ptr2; 
 	// Initial memory allocation 
-	ptr2 = (uint32_t*) Mem_Alloc(sizeof(uint32_t)); 
+	ptr2 = (uint32_t*) Mem_Alloc(0x02);
 	printf("*ptr2 Address = %x\n\r", ptr2); 	
    
 	printf("\n\r"); 
 	uint8_t *ptr3; 
-	ptr3 = (uint8_t*) Mem_Alloc(sizeof(uint8_t)); 
+	ptr3 = (uint8_t*) Mem_Alloc(0x03);
 	printf("*ptr3 Address = %x\n\r", ptr3); 
 	printf("\n\r");
+
+    uint8_t *ptr4;
+    ptr4 = (uint8_t*) Mem_Alloc(0x04);
+    printf("*ptr3 Address = %x\n\r", ptr4);
+    printf("\n\r");
+
 
   	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);
