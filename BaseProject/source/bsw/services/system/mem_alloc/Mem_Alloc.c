@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 /* -- Global Variables -----------------------*/
-#define HeapSize  64000
+#define HeapSize  10000
 
 MemHandlerType MemHandler;
 

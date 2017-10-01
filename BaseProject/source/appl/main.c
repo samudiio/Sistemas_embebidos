@@ -66,35 +66,37 @@ extern int main( void )
 	// printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
 
-  printf("\n\r");
+    // printf("\n\r");
+	// uint8_t *ptr1;
+	// // Initial memory allocation
+	// ptr1 = (uint8_t*) Mem_Alloc(sizeof(uint8_t));
+	// printf("*ptr1 Address = %x\n\r", ptr1);
+
+	// printf("\n\r");
+
+	// uint32_t *ptr2;
+	// // Initial memory allocation
+	// ptr2 = (uint32_t*) Mem_Alloc(sizeof(uint32_t));
+	// printf("*ptr2 Address = %x\n\r", ptr2);
+
+	// printf("\n\r"); 
+	// uint8_t *ptr3; 
+	// ptr3 = (uint8_t*) Mem_Alloc(sizeof(uint8_t)); 
+	// printf("*ptr3 Address = %x\n\r", ptr3); 
+	// printf("\n\r");
+
+	// Initial memory allocation
 	uint8_t *ptr1;
-	// Initial memory allocation
-	ptr1 = (uint8_t*) Mem_Alloc(sizeof(uint8_t));
-	printf("*ptr1 Address = %x\n\r", ptr1);
-
-	printf("\n\r");
-
-	uint32_t *ptr2;
-	// Initial memory allocation
-	ptr2 = (uint32_t*) Mem_Alloc(sizeof(uint32_t));
-	printf("*ptr2 Address = %x\n\r", ptr2);
-
-	printf("\n\r"); 
-	uint8_t *ptr3; 
-	ptr3 = (uint8_t*) Mem_Alloc(sizeof(uint8_t)); 
-	printf("*ptr3 Address = %x\n\r", ptr3); 
-	printf("\n\r");
-
-	/* uint8_t *ptr1;
-	// Initial memory allocation
 	ptr1 = (uint8_t*) malloc(sizeof(uint8_t));
 	printf("*ptr1 Address = %x\n\r", ptr1);
 
-	uint32_t *ptr2;
-	// Initial memory allocation
-	ptr2 = (uint32_t*) mal
-	loc(sizeof(uint32_t));
-	printf("*ptr2 Address = %x\n\r", ptr2); */
+	uint16_t *ptr2;
+	ptr2 = (uint16_t*) malloc(sizeof(uint16_t));
+	printf("*ptr2 Address = %x\n\r", ptr2);
+
+	uint64_t *ptr3;
+	ptr3 = (uint64_t*)malloc(sizeof(uint64_t));
+	printf("*ptr3 Address = %x\n\r", ptr3);
 
   	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);
