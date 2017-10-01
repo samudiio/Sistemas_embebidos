@@ -47,10 +47,34 @@ static void _ConfigureLeds( void )
  */
 extern int main( void )
 {
+    uint8_t *prt1;
+    uint8_t *prt2;
+    uint8_t *prt3;
+    uint8_t *prt4;
+    uint8_t *prt5;
+
     /*Clear HEAP*/
     Mem_Init();
 
+    // Allocate 1 byte of memory
+    prt1 = (uint8_t*) Mem_Alloc(0x2800);
+    printf("*ptr1 Address = %x\n\n\r", prt1);
 
+    // Allocate 2 bytes of memory
+    prt2 = (uint8_t*) Mem_Alloc(0x02);
+    printf("*ptr2 Address = %x\n\n\r", prt2);
+
+    // Allocate 3 bytes of memory
+    prt3 = (uint8_t*) Mem_Alloc(0x03);
+    printf("*ptr3 Address = %x\n\n\r", prt3);
+
+    // Allocate 5 bytes of memory
+    prt4 = (uint8_t*) Mem_Alloc(0x05);
+    printf("*ptr4 Address = %x\n\n\r", prt4);
+
+    // Allocate 7 bytes of memory
+    prt5 = (uint8_t*) Mem_Alloc(0x07);
+    printf("*ptr4 Address = %x\n\n\r", prt5);
 
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
@@ -67,33 +91,7 @@ extern int main( void )
 	//printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
 	
-	printf("\n\r"); 
-	uint8_t *ptr1; 
-	// Initial memory allocation 
-	ptr1 = (uint8_t*) Mem_Alloc(0x2800);
-	printf("*ptr1 Address = %x\n\r", ptr1); 
-	printf("\n\r"); 
-	
-	uint32_t *ptr2; 
-	// Initial memory allocation 
-	ptr2 = (uint32_t*) Mem_Alloc(0x02);
-	printf("*ptr2 Address = %x\n\r", ptr2); 	
-   
-	printf("\n\r"); 
-	uint8_t *ptr3; 
-	ptr3 = (uint8_t*) Mem_Alloc(0x03);
-	printf("*ptr3 Address = %x\n\r", ptr3); 
-	printf("\n\r");
 
-    uint8_t *ptr4;
-    ptr4 = (uint8_t*) Mem_Alloc(0x05);
-    printf("*ptr3 Address = %x\n\r", ptr4);
-    printf("\n\r");
-
-    uint8_t *ptr5;
-        ptr5 = (uint8_t*) Mem_Alloc(0x07);
-        printf("*ptr3 Address = %x\n\r", ptr5);
-        printf("\n\r");
 
   	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);
