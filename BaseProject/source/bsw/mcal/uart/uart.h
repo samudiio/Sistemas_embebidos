@@ -31,10 +31,18 @@
 #ifndef UART_H
 #define UART_H
 
+#include "Uart_Cfg.h"
+#include "Uart_Types.h"
+
+//extern const Uart_ConfigType Uart_Config[];
 
 //------------------------------------------------------------------------------
 //         Global functions
 //------------------------------------------------------------------------------
+
+void Uart_Init(const Uart_ConfigType *Config);
+
+Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data);
 
 void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, 
 		uint32_t masterClock);

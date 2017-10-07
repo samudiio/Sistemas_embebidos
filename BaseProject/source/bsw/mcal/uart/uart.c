@@ -37,14 +37,121 @@
 /*------------------------------------------------------------------------------
  *         Headers
  *----------------------------------------------------------------------------*/
-#include "chip.h"
+//#include "chip.h"
+#include "uart.h"
+#include "samv71q21.h"
 
-#include <assert.h>
-#include <string.h>
+
+//#include <assert.h>
+//#include <string.h>
+
+
+/*------------------------------------------------------------------------------
+ *         Defines
+ *----------------------------------------------------------------------------*/
+
+#define UART_MAX_NUM_CH 5
+
+
+/*------------------------------------------------------------------------------
+ *         Types Definitions
+ *----------------------------------------------------------------------------*/
+
+typedef enum
+{
+    Uart_NotBussy = 0,
+    Uart_Bussy,
+}Uart_State_Type;
+
+/*
+ * Channel-specific status parameters
+ */
+typedef struct
+{
+    uint8_t Channel;
+    Uart_State_Type TxBussy;
+    Uart_State_Type RxBussy;
+}Uart_ChStatusType;
+
+/*
+ * Driver-specific status parameters
+ */
+typedef struct
+{
+    uint8_t ChannelsNumber;
+    const Uart_ChStatusType *PtrChStatus;
+}Uart_StatusType;
+
+
+/*------------------------------------------------------------------------------
+ *         Global Variables
+ *----------------------------------------------------------------------------*/
+
+const Uart_ConfigType *UartConfigPtr;
+const Uart_StatusType *UartStatusPtr;
+const Uart *UartArray[UART_MAX_NUM_CH] = {UART0, UART1, UART2, UART3, UART4};
+
+const Uart_ChStatusType ChStatus[] =
+{
+    {
+        UartCfg_Ch0,
+        Uart_NotBussy,
+        Uart_NotBussy,
+    }
+};
+
+const Uart_StatusType Uart_Status[] =
+{
+    {
+        sizeof(ChStatus)/sizeof(ChStatus[0]),
+        &ChStatus[0]
+    }
+};
+
+
+/*----------------------------------------------------------------------------
+ *        Local functions
+ *----------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------
  *         Exported functions
  *----------------------------------------------------------------------------*/
+
+void Uart_Init(const Uart_ConfigType *Config)
+{
+    uint8_t Uart_Idx;
+    uint8_t PhyChannel;
+    const Uart *LocalUart;
+
+    UartConfigPtr = Config;
+
+    /*Memory allocation for satus control structure*/
+    UartStatusPtr = (Uart_StatusType*) Mem_Alloc( (sizeof(Uart_StatusType)) * (UartConfigPtr->NoOfChannels) );
+
+    /*para los devices*/
+    //for()
+
+    for(Uart_Idx=0; Uart_Idx < UartConfigPtr->NoOfChannels; Uart_Idx++)
+    {
+        PhyChannel = UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId;
+        LocalUart = UartArray[PhyChannel];
+    }
+}
+
+
+Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data)
+{
+    uint8_t PhyChannel;
+    const Uart *LocalUart;
+
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+
+    LocalUart = UartArray[PhyChannel];
+
+    return 0;
+}
+
+
 
 /**
  * \brief Configures an UART peripheral with the specified parameters.
@@ -55,10 +162,7 @@
  *  \param baudrate  Baudrate at which the UART should operate (in Hz).
  *  \param masterClock  Frequency of the system master clock (in Hz).
  */
-void UART_Configure(Uart *uart,
-		uint32_t mode,
-		uint32_t baudrate,
-		uint32_t masterClock)
+void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock)
 {
 	/* Reset and disable receiver & transmitter*/
 	uart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX

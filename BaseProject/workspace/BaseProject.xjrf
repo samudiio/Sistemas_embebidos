@@ -49,8 +49,8 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>42</C>
-       <L>22</L>
+       <C>34</C>
+       <L>23</L>
        <P>..\source\appl\main.c</P>
       </PI.0>
       <PI.1>
@@ -1921,23 +1921,35 @@
        <Items.0>
         <__>
          <Name>Files</Name>
-         <Options>1</Options>
+         <Options>5</Options>
          <Items.0>
           <__>
            <Name>appl</Name>
-           <Options>1</Options>
+           <Options>5</Options>
+           <Items.0>
+            <__>
+             <Name>main.c</Name>
+             <Options>4</Options>
+            </__>
+           </Items.0>
           </__>
          </Items.0>
          <Items.1>
           <__>
            <Name>board</Name>
            <Options>1</Options>
+           <Items.0>
+            <__>
+             <Name>board_lowlevel.c</Name>
+             <Options>4</Options>
+            </__>
+           </Items.0>
           </__>
          </Items.1>
          <Items.2>
           <__>
            <Name>ecual</Name>
-           <Options>5</Options>
+           <Options>1</Options>
            <Items.0>
             <__>
              <Name>led.c</Name>
@@ -1974,12 +1986,6 @@
           <__>
            <Name>toolset</Name>
            <Options>1</Options>
-           <Items.0>
-            <__>
-             <Name>sam_flash.ld</Name>
-             <Options>4</Options>
-            </__>
-           </Items.0>
           </__>
          </Items.5>
         </__>
