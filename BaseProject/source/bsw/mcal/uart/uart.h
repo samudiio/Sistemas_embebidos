@@ -36,13 +36,69 @@
 
 //extern const Uart_ConfigType Uart_Config[];
 
+#define UART_MASK_RXRDY     1
+#define UART_MASK_TXRDY     2
+#define UART_MASK_OVRE      32
+#define UART_MASK_FRAME     64
+#define UART_MASK_PARE      128
+#define UART_MASK_TXEMPTY   512
+
 //------------------------------------------------------------------------------
 //         Global functions
 //------------------------------------------------------------------------------
 
+Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data);
+
+/*
+ * Brief: Initializes the UART module
+ */
 void Uart_Init(const Uart_ConfigType *Config);
 
-Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data);
+/*
+ * Brief: Sets the requested baudrate to the addressed UART channel
+ */
+Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate);
+
+/*
+ * Brief: Enables or disables the transmitter of the UART module
+ */
+void Uart_SetTxEnable(uint8_t Channel, uint32_t Enable);
+
+/*
+ * Brief: Enables or disables the receiver of the UART module
+ */
+void Uart_SetRxEnable(uint8_t Channel, uint32_t Enable);
+
+/*
+ * Brief: Sends one packet of data through the specified UART module
+ */
+Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte);
+
+/*
+ * Brief: Sends a packet of data through the specified UART channel
+ */
+Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length);
+
+/*
+ * Brief: Reads and returns a character from the UART module
+ */
+void Uart_GetByte(uint8_t Channel, uint8_t Byte);
+
+/*
+ * Brief: Reads and returns the current status of the addressed UART module
+ */
+void Uart_GetStatus(uint8_t Channel, uint32_t *Status);
+
+/*
+ * Brief: Enable/disable the UART module interrupts according to the IntMode and Enable parameters
+ */
+void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable);
+
+
+
+
+
+
 
 void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, 
 		uint32_t masterClock);

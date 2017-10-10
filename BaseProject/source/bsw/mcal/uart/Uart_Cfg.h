@@ -14,17 +14,24 @@
 #define UART_CFG_TXISREN        0x01
 #define UART_CFG_RXISREN        0x02
 
+#define CFG_INT_DISABLED        0
+#define CFG_INT_RXRDY           1
+#define CFG_INT_TXRDY           2
+#define CFG_INT_OVR_ERROR       32
+#define CFG_INT_FRAME_ERROR     64
+#define CFG_INT_PAR_ERROR       128
+#define CFG_INT_TXEMPTY         512
 
 typedef enum
 {
-    UartCfg_Ch0 = 0,
-    UartCfg_Ch1,
-    UartCfg_Ch2,
-    UartCfg_Ch3,
-    UartCfg_Ch4
+    UartCfg_PhyCh_0 = 0,
+    UartCfg_PhyCh_1,
+    UartCfg_PhyCh_2,
+    UartCfg_PhyCh_3,
+    UartCfg_PhyCh_4
 }Uart_Ch_Type;
 
-typedef uint8_t Uart_Interrupt_Type;
+typedef uint32_t Uart_Interrupt_Type;
 
 typedef enum
 {
@@ -35,12 +42,10 @@ typedef enum
 typedef enum
 {
     UartCfg_Mde_Normal = 0,
-    UartCfg_Mde_Automatic_Echo,
     UartCfg_Mde_Local_Loopback,
+    UartCfg_Mde_Automatic_Echo,
     UartCfg_Mde_Remote_Loopback
 }Uart_ChMode_Type;
-
-typedef uint16_t Uart_BaudRateType;
 
 typedef enum
 {
@@ -48,39 +53,56 @@ typedef enum
     UartCfg_Par_Odd
 }Uart_Parity_Type;
 
-typedef void (*TxNotification)(void);
-typedef void (*RxNotification)(void);
+typedef uint32_t Uart_BaudRateType;
+
+/*
+ * Configuration parameters of the Uart callback notifications
+ */
+typedef struct
+{
+    void (*TxNotification)(void);
+    void (*RxNotification)(void);
+    void (*ErrorNotification)(uint8_t Error_Type);
+}CallbackFunctionsType;
 
 /*
  * Channel-specific configuration parameters
  */
 typedef struct
 {
-    Uart_Ch_Type        ChannelId;            /*Physical Uart channel*/
-    Uart_Interrupt_Type InterruptEnable;
-    Uart_BrSrcCk_Type   SourceClk;
-    Uart_ChMode_Type    TestMode;
-    Uart_BaudRateType   BaudRate;
-    Uart_Parity_Type    Parity;
-    TxNotification      TxNtfFcnPtr;
-    RxNotification      RxNtfFcnPtr;
-    void (*ErrorNotification)(uint8_t Error_Type);
+    Uart_Ch_Type            ChannelId;            /*Physical Uart channel*/
+    Uart_Interrupt_Type     InterruptEnable;
+    Uart_ChMode_Type        TestMode;
+    Uart_Parity_Type        Parity;
+    Uart_BaudRateType       BaudRate;
+    CallbackFunctionsType   CallbackFunctions;
 }Uart_ChannelConfigType;
 
 /*
  * Driver-specific configuration parameters
+ * Configuration of the UART (Uart driver) module
  */
 typedef struct
 {
-    uint8_t NoOfChannels;
+    uint8_t UartNoOfChannels;
+    Uart_BrSrcCk_Type SourceClk;
     const Uart_ChannelConfigType *PtrChannelConfig;
 }Uart_ConfigType;
 
 
+/*
+ * Brief: End of transmission notification
+ */
 void vfnTxNotification(void);
 
+/*
+ * Brief: Data reception notification
+ */
 void vfnRxNotification(void);
 
-
+/*
+ * Brief: Error notification
+ */
+void vfnErrorNotification(uint8_t Error_Type);
 
 #endif /* UART_CFG_H */
