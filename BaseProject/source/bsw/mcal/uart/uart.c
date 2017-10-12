@@ -41,9 +41,10 @@
 #include "uart.h"
 #include "samv71q21.h"
 
+#include "board.h"
 
 //#include <assert.h>
-//#include <string.h>
+#include <string.h>
 
 
 /*------------------------------------------------------------------------------
@@ -51,7 +52,7 @@
  *----------------------------------------------------------------------------*/
 
 #define UART_MAX_NUM_CH 5
-
+#define NOCOMPILAR 0
 
 /*------------------------------------------------------------------------------
  *         Types Definitions
@@ -78,7 +79,7 @@ typedef struct
  */
 typedef struct
 {
-    uint8_t ChannelsNumber;
+    uint8_t ChannelNumber;
     const Uart_ChStatusType *PtrChStatus;
 }Uart_StatusType;
 
@@ -90,6 +91,7 @@ typedef struct
 const Uart_ConfigType *UartConfigPtr;
 const Uart_StatusType *UartStatusPtr;
 const Uart *UartArray[UART_MAX_NUM_CH] = {UART0, UART1, UART2, UART3, UART4};
+const uint32_t UartPeriphId[UART_MAX_NUM_CH] = {ID_UART0, ID_UART1, ID_UART2, ID_UART3, ID_UART4};
 
 const Uart_ChStatusType ChStatus[] =
 {
@@ -143,7 +145,10 @@ void Uart_Init(const Uart_ConfigType *Config)
 {
     uint8_t Uart_Idx;
     uint8_t PhyChannel;
-    const Uart *LocalUart;
+    uint8_t Mdiv_Val;
+    uint8_t Isr_Val;
+    uint32_t Pck;
+    Uart *LocalUart;
 
     UartConfigPtr = Config;
 
@@ -156,22 +161,109 @@ void Uart_Init(const Uart_ConfigType *Config)
     for(Uart_Idx=0; Uart_Idx < UartConfigPtr->UartNoOfChannels; Uart_Idx++)
     {
         PhyChannel = UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId;
-        LocalUart = UartArray[PhyChannel];
+        LocalUart = (Uart *)UartArray[PhyChannel];
+
+        /* Reset and disable receiver & transmitter*/
+        LocalUart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
+            | UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
+
+        /*Configure TxRdy, RxRdy interrupts*/
+        LocalUart->UART_IDR = (0xFFFFFFFC | UartConfigPtr->PtrChannelConfig[Uart_Idx].InterruptEnable);
+
+        /* Configure Parity type, Baud rate source clock and Channel mode*/
+        LocalUart->UART_MR = (UartConfigPtr->PtrChannelConfig[Uart_Idx].TestMode << UART_MR_CHMODE_Pos) \
+                           | (UartConfigPtr->PtrChannelConfig[Uart_Idx].BrSourceClk << UART_MR_BRSRCCK_Pos) \
+                           | (UartConfigPtr->PtrChannelConfig[Uart_Idx].Parity << UART_MR_PAR_Pos);
+
+        if(UartConfigPtr->PtrChannelConfig[Uart_Idx].BrSourceClk == UartCfg_Clk_Peripheral)
+        {
+            /* Enable the peripheral clock in the PMC*/
+            PMC_EnablePeripheral(UartPeriphId[PhyChannel]);
+
+            /* Configure baudrate (BRSRCCK = 0)*/
+            LocalUart->UART_BRGR = (BOARD_MCK / UartConfigPtr->PtrChannelConfig[Uart_Idx].BaudRate) / 16;
+        }
+        else if(UartConfigPtr->PtrChannelConfig[Uart_Idx].BrSourceClk == UartCfg_Clk_PCK)
+        {
+            /*baud rate is independent of the processor/bus clock, processor clock can be changed while UART is enabled*/
+
+            /* check if there is MDIV value */
+            Mdiv_Val = ( (PMC->PMC_MCKR & PMC_MCKR_MDIV_Msk) >> PMC_MCKR_MDIV_Pos);
+
+            if(Mdiv_Val == 0) {
+              Pck = BOARD_MCK;
+            } else if(Mdiv_Val == 3 ) {
+              Pck = BOARD_MCK * Mdiv_Val;
+            } else {
+              Pck = BOARD_MCK * (Mdiv_Val*2);
+            }
+
+            /* Configure baudrate (BRSRCCK = 1)*/
+            LocalUart->UART_BRGR = (Pck / UartConfigPtr->PtrChannelConfig[Uart_Idx].BaudRate) / 16;
+        }
+        else
+        {
+            /*Do nothing*/
+        }
+
+        /* Check interrupt configuration to enable/disable Tx or Rx */
+        Isr_Val = UartConfigPtr->PtrChannelConfig[Uart_Idx].InterruptEnable;
+
+        switch(Isr_Val)
+        {
+            case 1:
+                /*Enable Tx*/
+                Uart_SetTxEnable(Uart_Idx, ENABLE);
+                /*Disable Rx*/
+                Uart_SetRxEnable(Uart_Idx, DISABLE);
+                break;
+            case 2:
+                /*Enable Rx*/
+                Uart_SetRxEnable(Uart_Idx, TRUE);
+                /*Disable Tx*/
+                Uart_SetTxEnable(Uart_Idx, FALSE);
+                break;
+            case 3:
+                /*Enable Tx*/
+                Uart_SetTxEnable(Uart_Idx, TRUE);
+                /*Enable Rx*/
+                Uart_SetRxEnable(Uart_Idx, TRUE);
+                break;
+            default:
+                break;
+        }
     }
 }
 
-
-Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data)
+#if NOCOMPILAR
+/**
+ * \brief Configures an UART peripheral with the specified parameters.
+ *
+ *
+ *  \param uart  Pointer to the UART peripheral to configure.
+ *  \param mode  Desired value for the UART mode register (see the datasheet).
+ *  \param baudrate  Baudrate at which the UART should operate (in Hz).
+ *  \param masterClock  Frequency of the system master clock (in Hz).
+ */
+void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock)
 {
-    uint8_t PhyChannel;
-    const Uart *LocalUart;
+    /* Reset and disable receiver & transmitter*/
+    uart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
+        | UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
 
-    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    uart->UART_IDR = 0xFFFFFFFF;
 
-    LocalUart = UartArray[PhyChannel];
+    /* Configure mode*/
+    uart->UART_MR = mode;
 
-    return 0;
+    /* Configure baudrate*/
+    uart->UART_BRGR = (masterClock / baudrate) / 16;
+
+    uart->UART_CR = UART_CR_TXEN | UART_CR_RXEN;
+
 }
+#endif
+
 
 /*
  * Brief: Sets the requested baudrate to the addressed UART channel
@@ -185,11 +277,73 @@ Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data)
  */
 Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
 {
-    Std_ReturnType ErrorCode = E_NOT_OK;
+    uint8_t PhyChannel;
+    uint8_t Mdiv_Val;
+    uint32_t Pck;
+    Uart *LocalUart;
+    Std_ReturnType RetVal = E_NOT_OK;
+
+    /*Stop UART transmision*/
+
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
 
 
-    return ErrorCode;
+    if(UartConfigPtr->PtrChannelConfig[Channel].BrSourceClk == UartCfg_Clk_Peripheral)
+    {
+        /* Enable the peripheral clock in the PMC*/
+        PMC_EnablePeripheral(UartPeriphId[PhyChannel]);
+
+        /* Configure baudrate (BRSRCCK = 0)*/
+        LocalUart->UART_BRGR = (BOARD_MCK / UartConfigPtr->PtrChannelConfig[Channel].BaudRate) / 16;
+    }
+    else if(UartConfigPtr->PtrChannelConfig[Channel].BrSourceClk == UartCfg_Clk_PCK)
+    {
+        /*baud rate is independent of the processor/bus clock, processor clock can be changed while UART is enabled*/
+
+        /* check if there is MDIV value */
+        Mdiv_Val = ( (PMC->PMC_MCKR & PMC_MCKR_MDIV_Msk) >> PMC_MCKR_MDIV_Pos);
+
+        if(Mdiv_Val == 0) {
+          Pck = BOARD_MCK;
+        } else if(Mdiv_Val == 3 ) {
+          Pck = BOARD_MCK * Mdiv_Val;
+        } else {
+          Pck = BOARD_MCK * (Mdiv_Val*2);
+        }
+
+        /* Configure baudrate (BRSRCCK = 1)*/
+        LocalUart->UART_BRGR = (Pck / UartConfigPtr->PtrChannelConfig[Channel].BaudRate) / 16;
+    }
+    else
+    {
+        /*Do nothing*/
+    }
+
+    /*Restore UART transmision*/
+
+    return RetVal;
 }
+
+#if NOCOMPILAR
+/**
+ * \brief Enables or disables the transmitter of an UART peripheral.
+ *
+ *
+ * \param uart  Pointer to an UART peripheral
+ * \param enabled  If true, the transmitter is enabled; otherwise it is
+ *  disabled.
+ */
+void UART_SetTransmitterEnabled(Uart *uart, uint8_t enabled)
+{
+    if (enabled) {
+        uart->UART_CR = UART_CR_TXEN;
+    } else {
+        uart->UART_CR = UART_CR_TXDIS;
+    }
+}
+#endif
+
 
 /*
  * Brief: Enables or disables the transmitter of the UART module
@@ -201,10 +355,41 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
  * @Return type
  *  void
  */
-void Uart_SetTxEnable(uint8_t Channel, uint32_t Enable)
+void Uart_SetTxEnable(uint8_t Channel, uint8_t Enable)
 {
+    uint8_t PhyChannel;
+    Uart *LocalUart;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
+
+    if(Enable == 1)
+    {
+        LocalUart->UART_CR = UART_CR_TXEN;
+    }
+    else
+    {
+        LocalUart->UART_CR = UART_CR_TXDIS;
+    }
 }
+
+#if NOCOMPILAR
+/**
+ * \brief Enables or disables the receiver of an UART peripheral
+ *
+ *
+ * \param uart  Pointer to an UART peripheral
+ * \param enabled  If true, the receiver is enabled; otherwise it is disabled.
+ */
+void UART_SetReceiverEnabled(Uart *uart, uint8_t enabled)
+{
+    if (enabled) {
+        uart->UART_CR = UART_CR_RXEN;
+    } else {
+        uart->UART_CR = UART_CR_RXDIS;
+    }
+}
+#endif
 
 /*
  * Brief: Enables or disables the receiver of the UART module
@@ -216,9 +401,22 @@ void Uart_SetTxEnable(uint8_t Channel, uint32_t Enable)
  * @Return type
  *  void
  */
-void Uart_SetRxEnable(uint8_t Channel, uint32_t Enable)
+void Uart_SetRxEnable(uint8_t Channel, uint8_t Enable)
 {
+    uint8_t PhyChannel;
+    Uart *LocalUart;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
+
+    if(Enable == 1)
+    {
+        LocalUart->UART_CR = UART_CR_RXEN;
+    }
+    else
+    {
+        LocalUart->UART_CR = UART_CR_RXDIS;
+    }
 }
 
 /*
@@ -233,10 +431,15 @@ void Uart_SetRxEnable(uint8_t Channel, uint32_t Enable)
  */
 Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
 {
-    Std_ReturnType ErrorCode = E_NOT_OK;
+    Std_ReturnType RetVal = E_NOT_OK;
+    uint8_t PhyChannel;
+    const Uart *LocalUart;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
 
-    return ErrorCode;
+    LocalUart = UartArray[PhyChannel];
+
+    return RetVal;
 }
 
 /*
@@ -252,10 +455,10 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
  */
 Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length)
 {
-    Std_ReturnType ErrorCode = E_NOT_OK;
+    Std_ReturnType RetVal = E_NOT_OK;
 
 
-    return ErrorCode;
+    return RetVal;
 }
 
 /*
@@ -361,64 +564,8 @@ void UART4_Handler()
 
 
 
-/**
- * \brief Configures an UART peripheral with the specified parameters.
- *
- *
- *  \param uart  Pointer to the UART peripheral to configure.
- *  \param mode  Desired value for the UART mode register (see the datasheet).
- *  \param baudrate  Baudrate at which the UART should operate (in Hz).
- *  \param masterClock  Frequency of the system master clock (in Hz).
- */
-void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock)
-{
-	/* Reset and disable receiver & transmitter*/
-	uart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
-		| UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
 
-	uart->UART_IDR = 0xFFFFFFFF;
 
-	/* Configure mode*/
-	uart->UART_MR = mode;
-
-	/* Configure baudrate*/
-	uart->UART_BRGR = (masterClock / baudrate) / 16;
-
-	uart->UART_CR = UART_CR_TXEN | UART_CR_RXEN;
-
-}
-/**
- * \brief Enables or disables the transmitter of an UART peripheral.
- *
- *
- * \param uart  Pointer to an UART peripheral
- * \param enabled  If true, the transmitter is enabled; otherwise it is
- *  disabled.
- */
-void UART_SetTransmitterEnabled(Uart *uart, uint8_t enabled)
-{
-	if (enabled) {
-		uart->UART_CR = UART_CR_TXEN;
-	} else {
-		uart->UART_CR = UART_CR_TXDIS;
-	}
-}
-
-/**
- * \brief Enables or disables the receiver of an UART peripheral
- *
- *
- * \param uart  Pointer to an UART peripheral
- * \param enabled  If true, the receiver is enabled; otherwise it is disabled.
- */
-void UART_SetReceiverEnabled(Uart *uart, uint8_t enabled)
-{
-	if (enabled) {
-		uart->UART_CR = UART_CR_RXEN;
-	} else {
-		uart->UART_CR = UART_CR_RXDIS;
-	}
-}
 
 /**
  * \brief   Return 1 if a character can be read in UART

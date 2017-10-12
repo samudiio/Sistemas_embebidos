@@ -14,10 +14,26 @@
  */
 const Uart_ChannelConfigType ChannelConfig[] =
 {
+    /*Logical Channel 1*/
+    {
+        UartCfg_PhyCh_4,
+        (UART_CFG_TXISREN | UART_CFG_RXISREN),
+        UartCfg_Mde_Local_Loopback,
+        UartCfg_Clk_Peripheral,
+        UartCfg_Par_NO,
+        115200,
+        {
+            vfnTxNotification,
+            vfnRxNotification,
+            vfnErrorNotification
+        }
+    },
+    /*Logical Channel 2*/
     {
         UartCfg_PhyCh_0,
         UART_CFG_TXISREN,
-        UartCfg_Mde_Remote_Loopback,
+        UartCfg_Mde_Normal,
+        UartCfg_Clk_PCK,
         UartCfg_Par_Even,
         19200,
         {
@@ -35,7 +51,6 @@ const Uart_ConfigType Uart_Config[] =
 {
     {
         sizeof(ChannelConfig)/sizeof(ChannelConfig[0]),
-        UartCfg_Clk_Peripheral,
         &ChannelConfig[0]
     }
 };

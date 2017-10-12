@@ -42,15 +42,16 @@ typedef enum
 typedef enum
 {
     UartCfg_Mde_Normal = 0,
-    UartCfg_Mde_Local_Loopback,
     UartCfg_Mde_Automatic_Echo,
+    UartCfg_Mde_Local_Loopback,
     UartCfg_Mde_Remote_Loopback
 }Uart_ChMode_Type;
 
 typedef enum
 {
     UartCfg_Par_Even = 0,
-    UartCfg_Par_Odd
+    UartCfg_Par_Odd  = 1,
+    UartCfg_Par_NO   = 4
 }Uart_Parity_Type;
 
 typedef uint32_t Uart_BaudRateType;
@@ -73,6 +74,7 @@ typedef struct
     Uart_Ch_Type            ChannelId;            /*Physical Uart channel*/
     Uart_Interrupt_Type     InterruptEnable;
     Uart_ChMode_Type        TestMode;
+    Uart_BrSrcCk_Type       BrSourceClk;
     Uart_Parity_Type        Parity;
     Uart_BaudRateType       BaudRate;
     CallbackFunctionsType   CallbackFunctions;
@@ -85,7 +87,6 @@ typedef struct
 typedef struct
 {
     uint8_t UartNoOfChannels;
-    Uart_BrSrcCk_Type SourceClk;
     const Uart_ChannelConfigType *PtrChannelConfig;
 }Uart_ConfigType;
 
@@ -104,5 +105,8 @@ void vfnRxNotification(void);
  * Brief: Error notification
  */
 void vfnErrorNotification(uint8_t Error_Type);
+
+
+extern const Uart_ConfigType Uart_Config[];
 
 #endif /* UART_CFG_H */

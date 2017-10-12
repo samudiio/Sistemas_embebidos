@@ -74,6 +74,7 @@ typedef struct {
 #define   UART_MR_PAR_SPACE (0x2u << 9) /**< \brief (UART_MR) Space: parity forced to 0 */
 #define   UART_MR_PAR_MARK (0x3u << 9) /**< \brief (UART_MR) Mark: parity forced to 1 */
 #define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No parity */
+#define UART_MR_BRSRCCK_Pos 12
 #define UART_MR_BRSRCCK (0x1u << 12) /**< \brief (UART_MR) Baud Rate Source Clock */
 #define   UART_MR_BRSRCCK_PERIPH_CLK (0x0u << 12) /**< \brief (UART_MR) The baud rate is driven by the peripheral clock */
 #define   UART_MR_BRSRCCK_PMC_PCK (0x1u << 12) /**< \brief (UART_MR) The baud rate is driven by a PMC programmable clock PCK (see section Power Management Controller (PMC)). */

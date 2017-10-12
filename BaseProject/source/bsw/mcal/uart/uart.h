@@ -47,8 +47,6 @@
 //         Global functions
 //------------------------------------------------------------------------------
 
-Std_ReturnType Uart_PutChar(uint8_t Channel, uint8_t Data);
-
 /*
  * Brief: Initializes the UART module
  */
@@ -62,12 +60,12 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate);
 /*
  * Brief: Enables or disables the transmitter of the UART module
  */
-void Uart_SetTxEnable(uint8_t Channel, uint32_t Enable);
+void Uart_SetTxEnable(uint8_t Channel, uint8_t Enable);
 
 /*
  * Brief: Enables or disables the receiver of the UART module
  */
-void Uart_SetRxEnable(uint8_t Channel, uint32_t Enable);
+void Uart_SetRxEnable(uint8_t Channel, uint8_t Enable);
 
 /*
  * Brief: Sends one packet of data through the specified UART module
@@ -100,8 +98,7 @@ void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable);
 
 
 
-void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, 
-		uint32_t masterClock);
+/*void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock);*/
 
 void UART_SetTransmitterEnabled(Uart *uart, uint8_t enabled);
 

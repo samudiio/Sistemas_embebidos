@@ -5,6 +5,7 @@
 #include "board.h"
 #include "app_scheduler.h"
 #include "Tasks.h"    
+#include "uart.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -21,6 +22,8 @@ TaskType Tasks[]={
   {      2,        TASK_50MS,      vfnTsk_50ms   },
   {      1,        TASK_100MS,     vfnTsk_100ms  }
 };
+
+uint8_t pTxBuffer[] = {"This is UART Tx Buffer.........\n\r"};
 
 /*----------------------------------------------------------------------------
  *        Local functions
@@ -52,29 +55,39 @@ extern int main( void )
     uint8_t *prt3;
     uint8_t *prt4;
     uint8_t *prt5;
+    uint8_t *pBuffer = &pTxBuffer[0];
 
     /*Clear HEAP*/
     Mem_Init();
 
+    Uart_Init(Uart_Config);
+
+    while (*pBuffer != '\0')
+    {
+        UART_PutChar(UART4, *pBuffer);
+        pBuffer++;
+    }
+    UART_PutChar(UART4, *pBuffer);
+
     // Allocate 1 byte of memory
-    prt1 = (uint8_t*) Mem_Alloc(0x2800);
-    printf("*ptr1 Address = %x\n\n\r", prt1);
+    //prt1 = (uint8_t*) Mem_Alloc(0x2800);
+    //printf("*ptr1 Address = %x\n\n\r", prt1);
 
     // Allocate 2 bytes of memory
-    prt2 = (uint8_t*) Mem_Alloc(0x02);
-    printf("*ptr2 Address = %x\n\n\r", prt2);
+    //prt2 = (uint8_t*) Mem_Alloc(0x02);
+    //printf("*ptr2 Address = %x\n\n\r", prt2);
 
     // Allocate 3 bytes of memory
-    prt3 = (uint8_t*) Mem_Alloc(0x03);
-    printf("*ptr3 Address = %x\n\n\r", prt3);
+    //prt3 = (uint8_t*) Mem_Alloc(0x03);
+    //printf("*ptr3 Address = %x\n\n\r", prt3);
 
     // Allocate 5 bytes of memory
-    prt4 = (uint8_t*) Mem_Alloc(0x05);
-    printf("*ptr4 Address = %x\n\n\r", prt4);
+    //prt4 = (uint8_t*) Mem_Alloc(0x05);
+    //printf("*ptr4 Address = %x\n\n\r", prt4);
 
     // Allocate 7 bytes of memory
-    prt5 = (uint8_t*) Mem_Alloc(0x07);
-    printf("*ptr4 Address = %x\n\n\r", prt5);
+    //prt5 = (uint8_t*) Mem_Alloc(0x07);
+    //printf("*ptr4 Address = %x\n\n\r", prt5);
 
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
