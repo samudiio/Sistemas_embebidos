@@ -34,14 +34,15 @@
 #include "Uart_Cfg.h"
 #include "Uart_Types.h"
 
-//extern const Uart_ConfigType Uart_Config[];
-
-#define UART_MASK_RXRDY     1
-#define UART_MASK_TXRDY     2
-#define UART_MASK_OVRE      32
-#define UART_MASK_FRAME     64
-#define UART_MASK_PARE      128
-#define UART_MASK_TXEMPTY   512
+typedef enum
+{
+    UART_MASK_RXRDY     = 1,
+    UART_MASK_TXRDY     = 2,
+    UART_MASK_OVRE      = 32,
+    UART_MASK_FRAME     = 64,
+    UART_MASK_PARE      = 128,
+    UART_MASK_TXEMPTY   = 512
+}UartMasks;
 
 //------------------------------------------------------------------------------
 //         Global functions
@@ -80,12 +81,12 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
 /*
  * Brief: Reads and returns a character from the UART module
  */
-void Uart_GetByte(uint8_t Channel, uint8_t Byte);
+void Uart_GetByte(uint8_t Channel, uint8_t *Byte);
 
 /*
  * Brief: Reads and returns the current status of the addressed UART module
  */
-void Uart_GetStatus(uint8_t Channel, uint32_t *Status);
+void Uart_GetStatus(uint8_t Channel, UartMasks *Status);
 
 /*
  * Brief: Enable/disable the UART module interrupts according to the IntMode and Enable parameters

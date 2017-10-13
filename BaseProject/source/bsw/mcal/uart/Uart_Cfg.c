@@ -14,7 +14,7 @@
  */
 const Uart_ChannelConfigType ChannelConfig[] =
 {
-    /*Logical Channel 1*/
+    /*Logical Channel 0*/
     {
         UartCfg_PhyCh_4,
         (UART_CFG_TXISREN | UART_CFG_RXISREN),
@@ -28,7 +28,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
             vfnErrorNotification
         }
     },
-    /*Logical Channel 2*/
+    /*Logical Channel 1*/
     {
         UartCfg_PhyCh_0,
         UART_CFG_TXISREN,

@@ -130,6 +130,15 @@ void Uart_Isr(uint8_t Channel)
 
 }
 
+/**
+ * \brief   Return 1 if a character can be send to UART
+ * \param uart  Pointer to an UART peripheral.
+ */
+static uint32_t UART_IsTxSent(Uart *uart)
+{
+    return (uart->UART_SR & UART_SR_TXEMPTY);
+}
+
 /*------------------------------------------------------------------------------
  *         Exported functions
  *----------------------------------------------------------------------------*/
@@ -424,6 +433,28 @@ void Uart_SetRxEnable(uint8_t Channel, uint8_t Enable)
     }
 }
 
+#if COMPILAR
+/**
+ * \brief  Sends one packet of data through the specified UART peripheral. This
+ * function operates synchronously, so it only returns when the data has been
+ * actually sent.
+ *
+ * \param uart  Pointer to an UART peripheral.
+ * \param c  Character to send
+ */
+void UART_PutChar( Uart *uart, uint8_t c)
+{
+    /* Wait for the transmitter to be ready*/
+    while (!UART_IsRxReady(uart) && !UART_IsTxSent(uart));
+
+    /* Send character*/
+    uart->UART_THR = c;
+
+    /* Wait for the transfer to complete*/
+    while (!UART_IsTxSent(uart));
+}
+#endif
+
 /*
  * Brief: Sends one packet of data through the specified UART module
  * @Param in:
@@ -436,16 +467,39 @@ void Uart_SetRxEnable(uint8_t Channel, uint8_t Enable)
  */
 Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
 {
-    Std_ReturnType RetVal = E_NOT_OK;
     uint8_t PhyChannel;
-    const Uart *LocalUart;
+    Uart *LocalUart;
+    Std_ReturnType RetVal = E_NOT_OK;
 
     PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
 
-    LocalUart = UartArray[PhyChannel];
+    /* Wait for the transmitter to be ready*/
+    while (!UART_IsRxReady(LocalUart) && !UART_IsTxSent(LocalUart));
+
+    /* Send character*/
+    LocalUart->UART_THR = Byte;
+
+    /* Wait for the transfer to complete*/
+    while (!UART_IsTxSent(LocalUart));
+
+    //RetVal = E_OK;                                                    /*To do -   Check where to assign this variable*/
 
     return RetVal;
 }
+
+#if COMPILAR
+void UART_SendBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
+{
+    uint8_t *pData = pBuffer;
+    uint32_t Len =0;
+
+    for(Len =0; Len<BuffLen; Len++ ) {
+        UART_PutChar(uart, *pData);
+        pData++;
+    }
+}
+#endif
 
 /*
  * Brief: Sends a packet of data through the specified UART channel
@@ -460,11 +514,34 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
  */
 Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length)
 {
+    uint8_t *pData = Buffer;
+    uint32_t Len =0;
     Std_ReturnType RetVal = E_NOT_OK;
 
+    for(Len =0; Len < Length; Len++ ) {
+        Uart_SendByte(Channel, *pData);
+        pData++;
+    }
+
+    //RetVal = E_OK;                                                    /*To do -   Check where to assign this variable*/
 
     return RetVal;
 }
+
+#if COMPILAR
+/**
+ * \brief  Reads and returns a character from the UART.
+ *
+ * \note This function is synchronous (i.e. uses polling).
+ * \param uart  Pointer to an UART peripheral.
+ * \return Character received.
+ */
+uint8_t UART_GetChar(Uart *uart)
+{
+    while (!UART_IsRxReady(uart));
+    return uart->UART_RHR;
+}
+#endif
 
 /*
  * Brief: Reads and returns a character from the UART module
@@ -476,10 +553,28 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
  * @Return type
  *  void
  */
-void Uart_GetByte(uint8_t Channel, uint8_t Byte)
+void Uart_GetByte(uint8_t Channel, uint8_t *Byte)
 {
+    uint8_t PhyChannel;
+    Uart *LocalUart;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
+
+    while (!UART_IsRxReady(LocalUart));
+    *Byte = LocalUart->UART_RHR;
 }
+
+#if COMPILAR
+/**
+ * \brief   Get present status
+ * \param uart  Pointer to an UART peripheral.
+ */
+uint32_t UART_GetStatus(Uart *uart)
+{
+    return uart->UART_SR;
+}
+#endif
 
 /*
  * Brief: Reads and returns the current status of the addressed UART module
@@ -490,9 +585,15 @@ void Uart_GetByte(uint8_t Channel, uint8_t Byte)
  * @Return type
  *  void
  */
-void Uart_GetStatus(uint8_t Channel, uint32_t *Status)
+void Uart_GetStatus(uint8_t Channel, UartMasks *Status)
 {
+    uint8_t PhyChannel;
+    Uart *LocalUart;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
+
+    *Status = LocalUart->UART_SR;
 }
 
 /*
@@ -589,18 +690,7 @@ uint32_t UART_IsRxReady(Uart *uart)
 	return (uart->UART_SR & UART_SR_RXRDY);
 }
 
-/**
- * \brief  Reads and returns a character from the UART.
- *
- * \note This function is synchronous (i.e. uses polling).
- * \param uart  Pointer to an UART peripheral.
- * \return Character received.
- */
-uint8_t UART_GetChar(Uart *uart)
-{
-	while (!UART_IsRxReady(uart));
-	return uart->UART_RHR;
-}
+
 
 /**
  * \brief   Return 1 if a character can be send to UART
@@ -611,43 +701,11 @@ uint32_t UART_IsTxReady(Uart *uart)
 	return (uart->UART_SR & UART_SR_TXRDY);
 }
 
-/**
- * \brief   Return 1 if a character can be send to UART
- * \param uart  Pointer to an UART peripheral.
- */
-static uint32_t UART_IsTxSent(Uart *uart)
-{
-	return (uart->UART_SR & UART_SR_TXEMPTY);
-}
 
-/**
- * \brief  Sends one packet of data through the specified UART peripheral. This
- * function operates synchronously, so it only returns when the data has been
- * actually sent.
- *
- * \param uart  Pointer to an UART peripheral.
- * \param c  Character to send
- */
-void UART_PutChar( Uart *uart, uint8_t c)
-{
-	/* Wait for the transmitter to be ready*/
-	while (!UART_IsRxReady(uart) && !UART_IsTxSent(uart));
 
-	/* Send character*/
-	uart->UART_THR = c;
 
-	/* Wait for the transfer to complete*/
-	while (!UART_IsTxSent(uart));
-}
 
-/**
- * \brief   Get present status
- * \param uart  Pointer to an UART peripheral.
- */
-uint32_t UART_GetStatus(Uart *uart)
-{
-	return uart->UART_SR;
-}
+
 
 /**
  * \brief   Enable interrupt
@@ -678,16 +736,7 @@ uint32_t UART_GetItMask(Uart *uart)
 	return uart->UART_IMR;
 }
 
-void UART_SendBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
-{
-	uint8_t *pData = pBuffer;
-	uint32_t Len =0;
 
-	for(Len =0; Len<BuffLen; Len++ ) {
-		UART_PutChar(uart, *pData);
-		pData++;
-	}
-}
 
 void UART_ReceiveBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
 {
