@@ -46,5 +46,9 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16 Length);
 void Uart_GetByte (uint8_t Channel, uint8_t Byte);
 
 // Reads and returns the current status of the addressed UART module
-void Uart_GetStatus (uint8_t Channel, uint32_t *Status)
+void Uart_GetStatus (uint8_t Channel, uint32_t *Status);
+
+// Reads and returns the current status of the addressed UART module.
+// Enable/disable the UART module interrupts according to the IntMode and Enable parameters.
+void Uart_EnableInt (uint8_t Channel, uint32_t IntMode, uint8_t Enabl );
  #endif /* Uart_H_ */
