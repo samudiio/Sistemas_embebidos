@@ -18,7 +18,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
     {
         UartCfg_PhyCh_4,
         (UART_CFG_TXISREN | UART_CFG_RXISREN),
-        UartCfg_Mde_Local_Loopback,
+        UartCfg_Mde_Normal,
         UartCfg_Clk_Peripheral,
         UartCfg_Par_NO,
         115200,
@@ -32,7 +32,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
     {
         UartCfg_PhyCh_0,
         UART_CFG_TXISREN,
-        UartCfg_Mde_Normal,
+        UartCfg_Mde_Local_Loopback,
         UartCfg_Clk_PCK,
         UartCfg_Par_Even,
         19200,

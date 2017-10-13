@@ -98,7 +98,7 @@ void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable);
 
 
 
-/*void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock);*/
+void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock);
 
 void UART_SetTransmitterEnabled(Uart *uart, uint8_t enabled);
 

@@ -147,6 +147,15 @@
  * UART0
  * - \ref PINS_UART0
  *
+ * UART1
+ * - \ref PINS_UART1
+ *
+ * UART2
+ * - \ref PINS_UART2
+ *
+ * UART3
+ * - \ref PINS_UART3
+ *
  * UART4
  * - \ref PINS_UART4
  *
@@ -249,10 +258,19 @@
 #define PINS_SSC_CODEC \
 		{PIN_SSC_TD,  PIN_SSC_TK, PIN_SSC_TF, PIN_SSC_RD,  PIN_SSC_RK, PIN_SSC_RF}
 
-/** UART pins (UTXD0 and URXD0) definitions, PA9,10. */
+/** UART pins (UTXD0 and URXD0) definitions, PA9,10. Default*/
 #define PINS_UART0  \
 		{PIO_PA9A_URXD0 | PIO_PA10A_UTXD0, PIOA, ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT}
-/** UART pins (UTXD4 and URXD4) definitions, PD19,18. */
+/** UART pins (UTXD1 and URXD1) definitions, PA6,5. */
+#define PINS_UART1  \
+        {PIO_PA5C_URXD1 | PIO_PA6C_UTXD1, PIOA, ID_PIOA, PIO_PERIPH_C, PIO_DEFAULT}
+/** UART pins (UTXD2 and URXD2) definitions, PD26,25. */
+#define PINS_UART2  \
+        {PIO_PD25C_URXD2 | PIO_PD26C_UTXD2, PIOD, ID_PIOD, PIO_PERIPH_C, PIO_DEFAULT}
+/** UART pins (UTXD3 and URXD3) definitions, PD30,28. */
+#define PINS_UART3  \
+        {PIO_PD28A_URXD3 | PIO_PD30A_UTXD3, PIOD, ID_PIOD, PIO_PERIPH_A, PIO_DEFAULT}
+/** UART pins (UTXD4 and URXD4) definitions, PD19,18. Default*/
 #define PINS_UART4 \
 		{PIO_PD18C_URXD4 | PIO_PD19C_UTXD4, PIOD, ID_PIOD, PIO_PERIPH_C, PIO_DEFAULT}
 

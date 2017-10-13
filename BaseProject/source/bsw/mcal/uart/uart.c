@@ -52,7 +52,8 @@
  *----------------------------------------------------------------------------*/
 
 #define UART_MAX_NUM_CH 5
-#define NOCOMPILAR 0
+
+#define COMPILAR    TRUE
 
 /*------------------------------------------------------------------------------
  *         Types Definitions
@@ -92,6 +93,7 @@ const Uart_ConfigType *UartConfigPtr;
 const Uart_StatusType *UartStatusPtr;
 const Uart *UartArray[UART_MAX_NUM_CH] = {UART0, UART1, UART2, UART3, UART4};
 const uint32_t UartPeriphId[UART_MAX_NUM_CH] = {ID_UART0, ID_UART1, ID_UART2, ID_UART3, ID_UART4};
+const Pin UartPinId[UART_MAX_NUM_CH] = {PINS_UART0, PINS_UART1, PINS_UART2, PINS_UART3, PINS_UART4};
 
 const Uart_ChStatusType ChStatus[] =
 {
@@ -180,6 +182,9 @@ void Uart_Init(const Uart_ConfigType *Config)
             /* Enable the peripheral clock in the PMC*/
             PMC_EnablePeripheral(UartPeriphId[PhyChannel]);
 
+            /* Configure Uart pins*/
+            PIO_Configure( &UartPinId[PhyChannel], PIO_LISTSIZE( UartPinId[PhyChannel] ) );
+
             /* Configure baudrate (BRSRCCK = 0)*/
             LocalUart->UART_BRGR = (BOARD_MCK / UartConfigPtr->PtrChannelConfig[Uart_Idx].BaudRate) / 16;
         }
@@ -235,7 +240,7 @@ void Uart_Init(const Uart_ConfigType *Config)
     }
 }
 
-#if NOCOMPILAR
+#if COMPILAR
 /**
  * \brief Configures an UART peripheral with the specified parameters.
  *
@@ -325,7 +330,7 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
     return RetVal;
 }
 
-#if NOCOMPILAR
+#if COMPILAR
 /**
  * \brief Enables or disables the transmitter of an UART peripheral.
  *
@@ -373,7 +378,7 @@ void Uart_SetTxEnable(uint8_t Channel, uint8_t Enable)
     }
 }
 
-#if NOCOMPILAR
+#if COMPILAR
 /**
  * \brief Enables or disables the receiver of an UART peripheral
  *
@@ -558,7 +563,15 @@ void UART3_Handler()
  */
 void UART4_Handler()
 {
-    Uart_Isr(4);
+    //Uart_Isr(4);
+    uint32_t Status = UART_GetStatus(UART4);
+
+    if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
+        UART4->UART_CR = UART_CR_RSTSTA;
+        printf("Error \n\r");
+    }
+
+    printf("%c", (char)UART4->UART_RHR);
 }
 
 

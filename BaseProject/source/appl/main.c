@@ -9,6 +9,20 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+/******************* Testing macros **********************************/
+#define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No parity */
+#define   UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal mode */
+
+#define UART_IER_RXRDY (0x1u << 0) /**< \brief (UART_IER) Enable RXRDY Interrupt */
+#define UART_IER_OVRE (0x1u << 5) /**< \brief (UART_IER) Enable Overrun Error Interrupt */
+#define UART_IER_FRAME (0x1u << 6) /**< \brief (UART_IER) Enable Framing Error Interrupt */
+#define UART_IER_PARE (0x1u << 7) /**< \brief (UART_IER) Enable Parity Error Interrupt */
+
+#define UART_PINS           {PINS_UART4}
+#define COMPILAR 1
+/******************* End of testing macros ***************************/
+
+
 /*----------------------------------------------------------------------------
  *        Local definitions
  *----------------------------------------------------------------------------*/
@@ -23,7 +37,7 @@ TaskType Tasks[]={
   {      1,        TASK_100MS,     vfnTsk_100ms  }
 };
 
-uint8_t pTxBuffer[] = {"This is UART Tx Buffer.........\n\r"};
+uint8_t pTxBuffer[] = {"Test UART Tx Buffer.........\n\r"};
 
 /*----------------------------------------------------------------------------
  *        Local functions
@@ -39,6 +53,31 @@ static void _ConfigureLeds( void )
 	LED_Configure( 0 ) ;
 	LED_Configure( 1 ) ;
 }
+
+#if COMPILAR
+/* Init UART4 example function*/
+void vfnSerialCtrl_Configure( void )
+{
+    PMC_EnablePeripheral(ID_UART4);
+
+    const Pin my_pins[] = UART_PINS;
+    PIO_Configure( my_pins, PIO_LISTSIZE( my_pins ) );
+
+    UART_Configure(UART4, (UART_MR_PAR_NO | UART_MR_CHMODE_NORMAL), 115200, BOARD_MCK);
+
+    NVIC_ClearPendingIRQ(UART4_IRQn);
+    NVIC_SetPriority(UART4_IRQn ,1);
+
+    /* Enables the UART to transfer and receive data. */
+    UART_SetTransmitterEnabled (UART4 , 1);
+    UART_SetReceiverEnabled (UART4 , 1);
+
+    //UART_EnableIt(UART4, (UART_IER_RXRDY | UART_IER_OVRE | UART_IER_FRAME | UART_IER_PARE));
+    /* Enable interrupt  */
+    NVIC_EnableIRQ(UART4_IRQn);
+
+}
+#endif
 
 /*----------------------------------------------------------------------------
  *        Exported functions
@@ -56,10 +95,12 @@ extern int main( void )
     uint8_t *prt4;
     uint8_t *prt5;
     uint8_t *pBuffer = &pTxBuffer[0];
+    uint8_t character = 0;
 
     /*Clear HEAP*/
     Mem_Init();
 
+    //vfnSerialCtrl_Configure();
     Uart_Init(Uart_Config);
 
     while (*pBuffer != '\0')
@@ -68,6 +109,8 @@ extern int main( void )
         pBuffer++;
     }
     UART_PutChar(UART4, *pBuffer);
+
+//    character = UART_GetChar(UART4);
 
     // Allocate 1 byte of memory
     //prt1 = (uint8_t*) Mem_Alloc(0x2800);
@@ -94,7 +137,7 @@ extern int main( void )
 
 	/* Output example information */
 	//printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	//printf( "-- %s\n\r", BOARD_NAME ) ;
+	printf( "-- %s\n\r", BOARD_NAME ) ;
 	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	/* Enable I and D cache */
