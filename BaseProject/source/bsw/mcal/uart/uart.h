@@ -96,9 +96,6 @@ void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable);
 
 
 
-
-
-
 void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock);
 
 void UART_SetTransmitterEnabled(Uart *uart, uint8_t enabled);
@@ -107,7 +104,7 @@ void UART_SetReceiverEnabled(Uart *uart, uint8_t enabled);
 
 void UART_PutChar( Uart *uart, uint8_t c);
 
-uint32_t UART_IsRxReady(Uart *uart);
+
 
 uint8_t UART_GetChar(Uart *uart);
 
@@ -125,7 +122,8 @@ void UART_ReceiveBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen);
 
 void UART_CompareConfig(Uart *uart, uint8_t Val1, uint8_t Val2);
 
-uint32_t UART_IsTxReady(Uart *uart);
+//uint32_t UART_IsTxReady(Uart *uart);
+//uint32_t UART_IsRxReady(Uart *uart);
 
 #endif //#ifndef UART_H
 

@@ -51,7 +51,12 @@
  *         Defines
  *----------------------------------------------------------------------------*/
 
-#define UART_MAX_NUM_CH 5
+#define UART_CH0        0
+#define UART_CH1        1
+#define UART_CH2        2
+#define UART_CH3        3
+#define UART_CH4        4
+#define UART_MAX_CH     5
 
 #define COMPILAR    TRUE
 
@@ -91,9 +96,9 @@ typedef struct
 
 const Uart_ConfigType *UartConfigPtr;
 const Uart_StatusType *UartStatusPtr;
-const Uart *UartArray[UART_MAX_NUM_CH] = {UART0, UART1, UART2, UART3, UART4};
-const uint32_t UartPeriphId[UART_MAX_NUM_CH] = {ID_UART0, ID_UART1, ID_UART2, ID_UART3, ID_UART4};
-const Pin UartPinId[UART_MAX_NUM_CH] = {PINS_UART0, PINS_UART1, PINS_UART2, PINS_UART3, PINS_UART4};
+const Uart *UartArray[UART_MAX_CH] = {UART0, UART1, UART2, UART3, UART4};
+const uint32_t UartPeriphId[UART_MAX_CH] = {ID_UART0, ID_UART1, ID_UART2, ID_UART3, ID_UART4};
+const Pin UartPinId[UART_MAX_CH] = {PINS_UART0, PINS_UART1, PINS_UART2, PINS_UART3, PINS_UART4};
 
 const Uart_ChStatusType ChStatus[] =
 {
@@ -127,7 +132,24 @@ const Uart_StatusType Uart_Status[] =
  */
 void Uart_Isr(uint8_t Channel)
 {
+    uint8_t PhyChannel;
+    Uart *LocalUart;
+    UartMasks Status = 0;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
+
+    Uart_GetStatus(Channel, &Status);
+
+    /*Check Overrun, Framing and Parity Error in status register*/
+    if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
+        /*Resets the status bits PARE, FRAME, CMP and OVRE in the UART_SR.*/
+        LocalUart->UART_CR = UART_CR_RSTSTA;
+        printf("Error \n\r");
+    }
+
+    /*Last Received Character*/
+    printf("%c", (char)LocalUart->UART_RHR);
 }
 
 /**
@@ -137,6 +159,24 @@ void Uart_Isr(uint8_t Channel)
 static uint32_t UART_IsTxSent(Uart *uart)
 {
     return (uart->UART_SR & UART_SR_TXEMPTY);
+}
+
+/**
+ * \brief   Return 1 if a character can be read in UART
+ * \param uart  Pointer to an UART peripheral.
+ */
+uint32_t UART_IsRxReady(Uart *uart)
+{
+    return (uart->UART_SR & UART_SR_RXRDY);
+}
+
+/**
+ * \brief   Return 1 if a character can be send to UART
+ * \param uart  Pointer to an UART peripheral.
+ */
+uint32_t UART_IsTxReady(Uart *uart)
+{
+    return (uart->UART_SR & UART_SR_TXRDY);
 }
 
 /*------------------------------------------------------------------------------
@@ -566,6 +606,19 @@ void Uart_GetByte(uint8_t Channel, uint8_t *Byte)
 }
 
 #if COMPILAR
+void UART_ReceiveBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
+{
+    uint32_t Len =0;
+
+    for(Len =0; Len<BuffLen; Len++ ) {
+        *pBuffer = UART_GetChar(uart);
+        pBuffer++;
+    }
+}
+#endif
+
+
+#if COMPILAR
 /**
  * \brief   Get present status
  * \param uart  Pointer to an UART peripheral.
@@ -596,6 +649,28 @@ void Uart_GetStatus(uint8_t Channel, UartMasks *Status)
     *Status = LocalUart->UART_SR;
 }
 
+#if COMPILAR
+/**
+ * \brief   Enable interrupt
+ * \param uart  Pointer to an UART peripheral.
+ * \param mode  Interrupt mode.
+ */
+void UART_EnableIt(Uart *uart,uint32_t mode)
+{
+    uart->UART_IER = mode;
+}
+
+/**
+ * \brief   Disable interrupt
+ * \param uart  Pointer to an UART peripheral.
+ * \param mode  Interrupt mode.
+ */
+void UART_DisableIt(Uart *uart,uint32_t mode)
+{
+    uart->UART_IDR = mode;
+}
+#endif
+
 /*
  * Brief: Enable/disable the UART module interrupts according to the IntMode and Enable parameters
  * @Param in:
@@ -609,7 +684,20 @@ void Uart_GetStatus(uint8_t Channel, UartMasks *Status)
  */
 void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable)
 {
+    uint8_t PhyChannel;
+    Uart *LocalUart;
 
+    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
+    LocalUart = (Uart *)UartArray[PhyChannel];
+
+    if(Enable == 1)
+    {
+        LocalUart->UART_IER = IntMode;
+    }
+    else
+    {
+        LocalUart->UART_IDR = IntMode;
+    }
 }
 
 /*
@@ -620,7 +708,7 @@ void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable)
  */
 void UART0_Handler()
 {
-    Uart_Isr(0);
+    Uart_Isr(UART_CH0);
 }
 
 /*
@@ -631,7 +719,7 @@ void UART0_Handler()
  */
 void UART1_Handler()
 {
-    Uart_Isr(1);
+    Uart_Isr(UART_CH1);
 }
 
 /*
@@ -642,7 +730,7 @@ void UART1_Handler()
  */
 void UART2_Handler()
 {
-    Uart_Isr(2);
+    Uart_Isr(UART_CH2);
 }
 
 /*
@@ -653,7 +741,7 @@ void UART2_Handler()
  */
 void UART3_Handler()
 {
-    Uart_Isr(3);
+    Uart_Isr(UART_CH3);
 }
 
 /*
@@ -664,69 +752,11 @@ void UART3_Handler()
  */
 void UART4_Handler()
 {
-    //Uart_Isr(4);
-    uint32_t Status = UART_GetStatus(UART4);
-
-    if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
-        UART4->UART_CR = UART_CR_RSTSTA;
-        printf("Error \n\r");
-    }
-
-    printf("%c", (char)UART4->UART_RHR);
+    Uart_Isr(UART_CH4);
 }
 
 
-
-
-
-
-
-/**
- * \brief   Return 1 if a character can be read in UART
- * \param uart  Pointer to an UART peripheral.
- */
-uint32_t UART_IsRxReady(Uart *uart)
-{
-	return (uart->UART_SR & UART_SR_RXRDY);
-}
-
-
-
-/**
- * \brief   Return 1 if a character can be send to UART
- * \param uart  Pointer to an UART peripheral.
- */
-uint32_t UART_IsTxReady(Uart *uart)
-{
-	return (uart->UART_SR & UART_SR_TXRDY);
-}
-
-
-
-
-
-
-
-/**
- * \brief   Enable interrupt
- * \param uart  Pointer to an UART peripheral.
- * \param mode  Interrupt mode.
- */
-void UART_EnableIt(Uart *uart,uint32_t mode)
-{
-	uart->UART_IER = mode;
-}
-
-/**
- * \brief   Disable interrupt
- * \param uart  Pointer to an UART peripheral.
- * \param mode  Interrupt mode.
- */
-void UART_DisableIt(Uart *uart,uint32_t mode)
-{
-	uart->UART_IDR = mode;
-}
-
+#if COMPILAR
 /**
  * \brief   Return interrupt mask
  * \param uart  Pointer to an UART peripheral.
@@ -736,19 +766,8 @@ uint32_t UART_GetItMask(Uart *uart)
 	return uart->UART_IMR;
 }
 
-
-
-void UART_ReceiveBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
-{
-	uint32_t Len =0;
-
-	for(Len =0; Len<BuffLen; Len++ ) {
-		*pBuffer = UART_GetChar(uart);
-		pBuffer++;
-	}
-}
-
 void UART_CompareConfig(Uart *uart, uint8_t Val1, uint8_t Val2)
 {
 	uart->UART_CMPR = (UART_CMPR_VAL1(Val1) | UART_CMPR_VAL2(Val2));
 }
+#endif
