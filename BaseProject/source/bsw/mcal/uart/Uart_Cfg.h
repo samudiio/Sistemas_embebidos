@@ -11,16 +11,13 @@
 /*-- Includes ----------------------------------------------------------------*/
 #include "Std_Types.h"
 
-#define UART_CFG_TXISREN        0x01
-#define UART_CFG_RXISREN        0x02
-
-#define CFG_INT_DISABLED        0
-#define CFG_INT_RXRDY           1
-#define CFG_INT_TXRDY           2
-#define CFG_INT_OVR_ERROR       32
-#define CFG_INT_FRAME_ERROR     64
-#define CFG_INT_PAR_ERROR       128
-#define CFG_INT_TXEMPTY         512
+#define UART_CFG_INT_DISABLED        0x00
+#define UART_CFG_INT_RXRDY           0x01
+#define UART_CFG_INT_TXRDY           0x02
+#define UART_CFG_INT_OVR_ERROR       0x20
+#define UART_CFG_INT_FRAME_ERROR     0x40
+#define UART_CFG_INT_PAR_ERROR       0x80
+#define UART_CFG_INT_TXEMPTY         0x200
 
 typedef enum
 {

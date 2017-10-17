@@ -58,6 +58,8 @@
 #define UART_CH4        4
 #define UART_MAX_CH     5
 
+#define DISABLEALL  0xFFFFFFFF
+
 #define COMPILAR    TRUE
 
 /*------------------------------------------------------------------------------
@@ -99,6 +101,7 @@ const Uart_StatusType *UartStatusPtr;
 const Uart *UartArray[UART_MAX_CH] = {UART0, UART1, UART2, UART3, UART4};
 const uint32_t UartPeriphId[UART_MAX_CH] = {ID_UART0, ID_UART1, ID_UART2, ID_UART3, ID_UART4};
 const Pin UartPinId[UART_MAX_CH] = {PINS_UART0, PINS_UART1, PINS_UART2, PINS_UART3, PINS_UART4};
+const IRQn_Type UartIRQn[UART_MAX_CH] = {UART0_IRQn, UART1_IRQn, UART2_IRQn, UART3_IRQn, UART4_IRQn};
 
 const Uart_ChStatusType ChStatus[] =
 {
@@ -121,36 +124,7 @@ const Uart_StatusType Uart_Status[] =
 /*----------------------------------------------------------------------------
  *        Local functions
  *----------------------------------------------------------------------------*/
-/*
- * Brief: Generic UART interrupt service routine
- * @Param in:
- *  Channel - UART Channel to be addressed
- * @Param out:
- *  None
- * @Return type
- *  void
- */
-void Uart_Isr(uint8_t Channel)
-{
-    uint8_t PhyChannel;
-    Uart *LocalUart;
-    UartMasks Status = 0;
 
-    PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
-    LocalUart = (Uart *)UartArray[PhyChannel];
-
-    Uart_GetStatus(Channel, &Status);
-
-    /*Check Overrun, Framing and Parity Error in status register*/
-    if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
-        /*Resets the status bits PARE, FRAME, CMP and OVRE in the UART_SR.*/
-        LocalUart->UART_CR = UART_CR_RSTSTA;
-        printf("Error \n\r");
-    }
-
-    /*Last Received Character*/
-    printf("%c", (char)LocalUart->UART_RHR);
-}
 
 /**
  * \brief   Return 1 if a character can be send to UART
@@ -179,6 +153,42 @@ uint32_t UART_IsTxReady(Uart *uart)
     return (uart->UART_SR & UART_SR_TXRDY);
 }
 
+/*
+ * Brief: Generic UART interrupt service routine
+ * @Param in:
+ *  Channel - UART Channel to be addressed
+ * @Param out:
+ *  None
+ * @Return type
+ *  void
+ */
+void Uart_Isr(uint8_t Channel)
+{
+    Uart *LocalUart;
+    UartMasks Status = 0;
+
+    LocalUart = (Uart *)UartArray[Channel];
+
+    Uart_GetStatus(Channel, &Status);
+
+    /*Check Overrun, Framing and Parity Error in status register*/
+   //if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
+        /*Resets the status bits PARE, FRAME, CMP and OVRE in the UART_SR.*/
+    //    LocalUart->UART_CR = UART_CR_RSTSTA;
+    //    printf("Error \n\r");
+    //}
+
+    if (Status & UART_SR_RXRDY)
+    {
+        /*Reset Receiver*/
+        //LocalUart->UART_CR = UART_CR_RSTRX;
+        printf("ISR Character received by uart = %c\n\r", LocalUart->UART_RHR);
+    }
+
+    /*Last Received Character*/
+    //printf("%c", (char)LocalUart->UART_RHR);
+}
+
 /*------------------------------------------------------------------------------
  *         Exported functions
  *----------------------------------------------------------------------------*/
@@ -196,9 +206,11 @@ void Uart_Init(const Uart_ConfigType *Config)
 {
     uint8_t Uart_Idx;
     uint8_t PhyChannel;
+    uint8_t IRQId;
     uint8_t Mdiv_Val;
-    uint8_t Isr_Val;
+    uint8_t TestMode;
     uint32_t Pck;
+    uint32_t IsrMode;
     Uart *LocalUart;
 
     UartConfigPtr = Config;
@@ -213,13 +225,11 @@ void Uart_Init(const Uart_ConfigType *Config)
     {
         PhyChannel = UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId;
         LocalUart = (Uart *)UartArray[PhyChannel];
+        IRQId = UartIRQn[PhyChannel];
 
         /* Reset and disable receiver & transmitter*/
         LocalUart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
             | UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
-
-        /*Configure TxRdy, RxRdy interrupts*/
-        LocalUart->UART_IDR = (0xFFFFFFFC | UartConfigPtr->PtrChannelConfig[Uart_Idx].InterruptEnable);
 
         /* Configure Parity type, Baud rate source clock and Channel mode*/
         LocalUart->UART_MR = (UartConfigPtr->PtrChannelConfig[Uart_Idx].TestMode << UART_MR_CHMODE_Pos) \
@@ -261,30 +271,48 @@ void Uart_Init(const Uart_ConfigType *Config)
         }
 
         /* Check interrupt configuration to enable/disable Tx or Rx */
-        Isr_Val = UartConfigPtr->PtrChannelConfig[Uart_Idx].InterruptEnable;
+        TestMode = UartConfigPtr->PtrChannelConfig[Uart_Idx].TestMode;
 
-        switch(Isr_Val)
+        switch(TestMode)
         {
-            case 1:
-                /*Enable Tx*/
+            case UartCfg_Mde_Normal:
+            case UartCfg_Mde_Local_Loopback:
+                /*Enable Tx, Rx*/
                 Uart_SetTxEnable(Uart_Idx, ENABLE);
-                /*Disable Rx*/
+                Uart_SetRxEnable(Uart_Idx, ENABLE);
+                break;
+            case UartCfg_Mde_Automatic_Echo:
+                /*Enable Rx, Disable Tx*/
+                Uart_SetRxEnable(Uart_Idx, ENABLE);
+                Uart_SetTxEnable(Uart_Idx, DISABLE);
+                break;
+            case UartCfg_Mde_Remote_Loopback:
+                /*Disable Tx, Rx*/
+                Uart_SetTxEnable(Uart_Idx, DISABLE);
                 Uart_SetRxEnable(Uart_Idx, DISABLE);
-                break;
-            case 2:
-                /*Enable Rx*/
-                Uart_SetRxEnable(Uart_Idx, TRUE);
-                /*Disable Tx*/
-                Uart_SetTxEnable(Uart_Idx, FALSE);
-                break;
-            case 3:
-                /*Enable Tx*/
-                Uart_SetTxEnable(Uart_Idx, TRUE);
-                /*Enable Rx*/
-                Uart_SetRxEnable(Uart_Idx, TRUE);
                 break;
             default:
                 break;
+        }
+
+        /*Configure TxRdy, RxRdy interrupts*/
+        IsrMode = UartConfigPtr->PtrChannelConfig[Uart_Idx].InterruptEnable;
+
+        if(IsrMode)
+        {
+            /* Clear pending IRQs and Set priority of IRQs */
+            NVIC_ClearPendingIRQ(IRQId);
+            NVIC_SetPriority(IRQId, 1);
+
+            Uart_EnableInt(Uart_Idx, IsrMode, ENABLE);
+
+            /* Enable interrupt  */
+            NVIC_EnableIRQ(IRQId);
+        }
+        else
+        {
+            /*Disable all interrupts*/
+            Uart_EnableInt(Uart_Idx, DISABLEALL, DISABLE);
         }
     }
 }

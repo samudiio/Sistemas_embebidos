@@ -37,7 +37,6 @@ TaskType Tasks[]={
   {      1,        TASK_100MS,     vfnTsk_100ms  }
 };
 
-uint8_t pTxBuffer[] = {"Test UART Tx Buffer... using putchar\n\r"};
 uint8_t pTxBuffer2[] = {"Please type a character:\n\r"};
 uint8_t pTxBufferTks[] = {"Thank you!\n\r"};
 
@@ -91,16 +90,12 @@ void vfnSerialCtrl_Configure( void )
  */
 extern int main( void )
 {
-    uint8_t *prt1;
-    uint8_t *prt2;
-    uint8_t *prt3;
-    uint8_t *prt4;
-    uint8_t *prt5;
-    uint8_t *pBuffer = &pTxBuffer[0];
     uint8_t *pBuffer2 = &pTxBuffer2[0];
     uint8_t *pBufferTks = &pTxBufferTks[0];
     uint8_t character = 0;
-    UartMasks status_ch0 = 0;
+
+    /* Disable watchdog */
+    WDT_Disable( WDT ) ;
 
     /*Clear HEAP*/
     Mem_Init();
@@ -108,53 +103,18 @@ extern int main( void )
     //vfnSerialCtrl_Configure();
     Uart_Init(Uart_Config);
 
-    while (*pBuffer != '\0')
-    {
-        //UART_PutChar(UART4, *pBuffer);
-        (void)Uart_SendByte(UART_LOGCH0, *pBuffer);
-        pBuffer++;
-    }
-    //UART_PutChar(UART4, *pBuffer);
-    (void)Uart_SendByte(UART_LOGCH0, *pBuffer);
-    //UART_SendBuffer(UART4, pBuffer2, sizeof(pTxBuffer2));
-    Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2));
-
-
-    // Allocate 1 byte of memory
-    //prt1 = (uint8_t*) Mem_Alloc(0x2800);
-    //printf("*ptr1 Address = %x\n\n\r", prt1);
-
-    // Allocate 2 bytes of memory
-    //prt2 = (uint8_t*) Mem_Alloc(0x02);
-    //printf("*ptr2 Address = %x\n\n\r", prt2);
-
-    // Allocate 3 bytes of memory
-    //prt3 = (uint8_t*) Mem_Alloc(0x03);
-    //printf("*ptr3 Address = %x\n\n\r", prt3);
-
-    // Allocate 5 bytes of memory
-    //prt4 = (uint8_t*) Mem_Alloc(0x05);
-    //printf("*ptr4 Address = %x\n\n\r", prt4);
-
-    // Allocate 7 bytes of memory
-    //prt5 = (uint8_t*) Mem_Alloc(0x07);
-    //printf("*ptr4 Address = %x\n\n\r", prt5);
-
-	/* Disable watchdog */
-	WDT_Disable( WDT ) ;
-
-	/* Output example information */
-	//printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	printf( "-- %s\n\r", BOARD_NAME ) ;
+   	/* Output example information */
+	//printf( "\n\r-- UART with interrupts example!!! %s --\n\r", SOFTPACK_VERSION ) ;
+	printf( "-- %s using UART\n\r", BOARD_NAME ) ;
 	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
-    //character = UART_GetChar(UART4);
-    Uart_GetByte(UART_LOGCH0, &character);
-    Uart_SendBuffer(UART_LOGCH0, pBufferTks, sizeof(pTxBufferTks));
-    printf("Character received by uart = %c\n\r", character);
+	//UART_SendBuffer(UART4, pBuffer2, sizeof(pTxBuffer2));
+	Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2)); //Please type a character
 
-    Uart_GetStatus(UART_LOGCH0, &status_ch0);
-    printf("Status of logical channel0 = 0x%x\n\r", status_ch0);
+    //character = UART_GetChar(UART4);
+    //Uart_GetByte(UART_LOGCH0, &character);
+    //Uart_SendBuffer(UART_LOGCH0, pBufferTks, sizeof(pTxBufferTks));
+    //printf("Character received by uart = %c\n\r", character);
 
 	/* Enable I and D cache */
 	SCB_EnableICache();

@@ -17,7 +17,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
     /*Logical Channel 0*/
     {
         UartCfg_PhyCh_4,
-        (UART_CFG_TXISREN | UART_CFG_RXISREN),
+        UART_CFG_INT_RXRDY,//(UART_CFG_INT_TXRDY | UART_CFG_INT_RXRDY),
         UartCfg_Mde_Normal,
         UartCfg_Clk_Peripheral,
         UartCfg_Par_NO,
@@ -31,7 +31,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
     /*Logical Channel 1*/
     {
         UartCfg_PhyCh_0,
-        UART_CFG_TXISREN,
+        UART_CFG_INT_DISABLED,
         UartCfg_Mde_Local_Loopback,
         UartCfg_Clk_PCK,
         UartCfg_Par_Even,
