@@ -7637,7 +7637,7 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_line    0x0000fcc9     0x139d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .debug_line    0x00011066      0xba6 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
 
-.debug_str      0x00000000    0x79c8b
+.debug_str      0x00000000    0x79c83
  .debug_str     0x00000000    0x76e8c C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
                               0x77459 (size before relaxing)
  .debug_str     0x00076e8c      0x20d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o
@@ -7650,31 +7650,31 @@ OUTPUT(BaseProject.elf elf32-littlearm)
                               0x73b61 (size before relaxing)
  .debug_str     0x000774bf      0x45d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pmc.o
                               0x73e5d (size before relaxing)
- .debug_str     0x0007791c      0x565 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\uart.o
-                              0x76e78 (size before relaxing)
- .debug_str     0x00077e81       0xe2 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\wdt.o
+ .debug_str     0x0007791c      0x55d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\uart.o
+                              0x76e70 (size before relaxing)
+ .debug_str     0x00077e79       0xe2 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\wdt.o
                               0x73a8a (size before relaxing)
- .debug_str     0x00077f63      0x49f C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o
+ .debug_str     0x00077f5b      0x49f C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o
                               0x7435e (size before relaxing)
- .debug_str     0x00078402       0x9f C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Uart_Cfg.o
-                               0x65e7 (size before relaxing)
- .debug_str     0x000784a1      0x5f6 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o
+ .debug_str     0x000783fa       0x9f C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Uart_Cfg.o
+                               0x65df (size before relaxing)
+ .debug_str     0x00078499      0x5f6 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o
                               0x76f4e (size before relaxing)
- .debug_str     0x00078a97      0x252 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\system_sam.o
+ .debug_str     0x00078a8f      0x252 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\system_sam.o
                               0x6e235 (size before relaxing)
- .debug_str     0x00078ce9      0x223 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
+ .debug_str     0x00078ce1      0x223 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
                               0x77195 (size before relaxing)
- .debug_str     0x00078f0c      0x385 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o
+ .debug_str     0x00078f04      0x385 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o
                               0x73d3a (size before relaxing)
- .debug_str     0x00079291       0xd1 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o
-                               0x652f (size before relaxing)
- .debug_str     0x00079362      0x174 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
+ .debug_str     0x00079289       0xd1 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o
+                               0x6527 (size before relaxing)
+ .debug_str     0x0007935a      0x174 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
                                0x6308 (size before relaxing)
- .debug_str     0x000794d6       0xbe C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
+ .debug_str     0x000794ce       0xbe C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
                               0x76c7f (size before relaxing)
- .debug_str     0x00079594       0xea C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
-                              0x77715 (size before relaxing)
- .debug_str     0x0007967e      0x60d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+ .debug_str     0x0007958c       0xea C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+                              0x7770d (size before relaxing)
+ .debug_str     0x00079676      0x60d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
                               0x6e5fa (size before relaxing)
 
 .comment        0x00000000       0x70

@@ -24,7 +24,7 @@
 #define CFG_INT_OVR_ERROR 32
 #define CFG_INT_FRAME_ERROR 64
 #define CFG_INT_PAR_ERROR 128
-#define CFG_INT_TXEMPTY (0x1u << 9)
+#define CFG_INT_TXEMPTY 512
 
 #define CNF_UART_TXISREN (0x1u << 0)
 #define CNF_UART_RXISREN (0x1u << 1)

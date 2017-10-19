@@ -23,7 +23,8 @@ void FnErrNotification(UartErrorType* Error){
 const Uart_ChannnelType UartChannelCfg[]={
     {
         CFG_PHYCH_UART4,
-        (CFG_INT_TXEMPTY | CFG_INT_TXRDY),
+        // (CFG_INT_TXEMPTY | CFG_INT_TXRDY),
+        0,
         (CNF_UART_MODE_NORMAL),
         CNF_PARITY_EVEN,
         115200,
