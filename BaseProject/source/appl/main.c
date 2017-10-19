@@ -19,7 +19,7 @@
 #define UART_IER_PARE (0x1u << 7) /**< \brief (UART_IER) Enable Parity Error Interrupt */
 
 #define UART_PINS           {PINS_UART4}
-#define COMPILAR 1
+#define COMPILAR 0
 /******************* End of testing macros ***************************/
 
 
@@ -109,7 +109,8 @@ extern int main( void )
 	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	//UART_SendBuffer(UART4, pBuffer2, sizeof(pTxBuffer2));
-  // Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2)); //Please type a character
+	Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2)); //Please type a character
+
 
     //character = UART_GetChar(UART4);
     //Uart_GetByte(UART_LOGCH0, &character);

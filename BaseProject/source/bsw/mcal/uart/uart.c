@@ -317,35 +317,6 @@ void Uart_Init(const Uart_ConfigType *Config)
     }
 }
 
-#if COMPILAR
-/**
- * \brief Configures an UART peripheral with the specified parameters.
- *
- *
- *  \param uart  Pointer to the UART peripheral to configure.
- *  \param mode  Desired value for the UART mode register (see the datasheet).
- *  \param baudrate  Baudrate at which the UART should operate (in Hz).
- *  \param masterClock  Frequency of the system master clock (in Hz).
- */
-void UART_Configure(Uart *uart, uint32_t mode, uint32_t baudrate, uint32_t masterClock)
-{
-    /* Reset and disable receiver & transmitter*/
-    uart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
-        | UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
-
-    uart->UART_IDR = 0xFFFFFFFF;
-
-    /* Configure mode*/
-    uart->UART_MR = mode;
-
-    /* Configure baudrate*/
-    uart->UART_BRGR = (masterClock / baudrate) / 16;
-
-    uart->UART_CR = UART_CR_TXEN | UART_CR_RXEN;
-
-}
-#endif
-
 
 /*
  * Brief: Sets the requested baudrate to the addressed UART channel
@@ -407,26 +378,6 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
     return RetVal;
 }
 
-#if COMPILAR
-/**
- * \brief Enables or disables the transmitter of an UART peripheral.
- *
- *
- * \param uart  Pointer to an UART peripheral
- * \param enabled  If true, the transmitter is enabled; otherwise it is
- *  disabled.
- */
-void UART_SetTransmitterEnabled(Uart *uart, uint8_t enabled)
-{
-    if (enabled) {
-        uart->UART_CR = UART_CR_TXEN;
-    } else {
-        uart->UART_CR = UART_CR_TXDIS;
-    }
-}
-#endif
-
-
 /*
  * Brief: Enables or disables the transmitter of the UART module
  * @Param in:
@@ -455,24 +406,6 @@ void Uart_SetTxEnable(uint8_t Channel, uint8_t Enable)
     }
 }
 
-#if COMPILAR
-/**
- * \brief Enables or disables the receiver of an UART peripheral
- *
- *
- * \param uart  Pointer to an UART peripheral
- * \param enabled  If true, the receiver is enabled; otherwise it is disabled.
- */
-void UART_SetReceiverEnabled(Uart *uart, uint8_t enabled)
-{
-    if (enabled) {
-        uart->UART_CR = UART_CR_RXEN;
-    } else {
-        uart->UART_CR = UART_CR_RXDIS;
-    }
-}
-#endif
-
 /*
  * Brief: Enables or disables the receiver of the UART module
  * @Param in:
@@ -500,28 +433,6 @@ void Uart_SetRxEnable(uint8_t Channel, uint8_t Enable)
         LocalUart->UART_CR = UART_CR_RXDIS;
     }
 }
-
-#if COMPILAR
-/**
- * \brief  Sends one packet of data through the specified UART peripheral. This
- * function operates synchronously, so it only returns when the data has been
- * actually sent.
- *
- * \param uart  Pointer to an UART peripheral.
- * \param c  Character to send
- */
-void UART_PutChar( Uart *uart, uint8_t c)
-{
-    /* Wait for the transmitter to be ready*/
-    while (!UART_IsRxReady(uart) && !UART_IsTxSent(uart));
-
-    /* Send character*/
-    uart->UART_THR = c;
-
-    /* Wait for the transfer to complete*/
-    while (!UART_IsTxSent(uart));
-}
-#endif
 
 /*
  * Brief: Sends one packet of data through the specified UART module
@@ -556,19 +467,6 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
     return RetVal;
 }
 
-#if COMPILAR
-void UART_SendBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
-{
-    uint8_t *pData = pBuffer;
-    uint32_t Len =0;
-
-    for(Len =0; Len<BuffLen; Len++ ) {
-        UART_PutChar(uart, *pData);
-        pData++;
-    }
-}
-#endif
-
 /*
  * Brief: Sends a packet of data through the specified UART channel
  * @Param in:
@@ -596,21 +494,6 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
     return RetVal;
 }
 
-#if COMPILAR
-/**
- * \brief  Reads and returns a character from the UART.
- *
- * \note This function is synchronous (i.e. uses polling).
- * \param uart  Pointer to an UART peripheral.
- * \return Character received.
- */
-uint8_t UART_GetChar(Uart *uart)
-{
-    while (!UART_IsRxReady(uart));
-    return uart->UART_RHR;
-}
-#endif
-
 /*
  * Brief: Reads and returns a character from the UART module
  * @Param in:
@@ -633,29 +516,6 @@ void Uart_GetByte(uint8_t Channel, uint8_t *Byte)
     *Byte = LocalUart->UART_RHR;
 }
 
-#if COMPILAR
-void UART_ReceiveBuffer(Uart *uart, uint8_t *pBuffer, uint32_t BuffLen)
-{
-    uint32_t Len =0;
-
-    for(Len =0; Len<BuffLen; Len++ ) {
-        *pBuffer = UART_GetChar(uart);
-        pBuffer++;
-    }
-}
-#endif
-
-
-#if COMPILAR
-/**
- * \brief   Get present status
- * \param uart  Pointer to an UART peripheral.
- */
-uint32_t UART_GetStatus(Uart *uart)
-{
-    return uart->UART_SR;
-}
-#endif
 
 /*
  * Brief: Reads and returns the current status of the addressed UART module
@@ -676,28 +536,6 @@ void Uart_GetStatus(uint8_t Channel, UartMasks *Status)
 
     *Status = LocalUart->UART_SR;
 }
-
-#if COMPILAR
-/**
- * \brief   Enable interrupt
- * \param uart  Pointer to an UART peripheral.
- * \param mode  Interrupt mode.
- */
-void UART_EnableIt(Uart *uart,uint32_t mode)
-{
-    uart->UART_IER = mode;
-}
-
-/**
- * \brief   Disable interrupt
- * \param uart  Pointer to an UART peripheral.
- * \param mode  Interrupt mode.
- */
-void UART_DisableIt(Uart *uart,uint32_t mode)
-{
-    uart->UART_IDR = mode;
-}
-#endif
 
 /*
  * Brief: Enable/disable the UART module interrupts according to the IntMode and Enable parameters
