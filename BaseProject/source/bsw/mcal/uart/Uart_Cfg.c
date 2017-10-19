@@ -5,9 +5,10 @@ Configuration of the UART (Uart driver) module
  */
 #include <Uart_Cfg.h>
 #include <uart.h>
+#include <stdio.h>
 
 void FnTxNotification(void){
-    Uart_SendByte(0,244);
+    printf("Enviado \n\r");
 }
 
 void FnRxNotification(void){
@@ -27,7 +28,7 @@ const Uart_ChannnelType UartChannelCfg[]={
         CNF_PARITY_EVEN,
         115200,
         {
-            FnTxNotification,
+            0,
             FnRxNotification,
             FnErrNotification
         }

@@ -8,6 +8,7 @@
 #include "Tasks.h"
 #include "led.h"
 #include <uart.h>
+#include <stdio.h>
 
 uint8_t u8100ms_Ctr=0;
 uint8_t u8100ms_Ctr2=0;
@@ -62,5 +63,6 @@ void vfnTsk_100ms(void)
 		u8100ms_Ctr2 = 0;
 	}
 	Std_ReturnType ret = Uart_SendByte(0,64);
+	//printf("E_ %u\n\r", ret);
 }
 

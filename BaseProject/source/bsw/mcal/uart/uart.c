@@ -170,7 +170,8 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte ){
     LocUart->UART_THR = Byte;
 
     /* Wait for the transfer to complete*/
-    // while (!UART_IsTxSent(LocUart));
+    while (!UART_IsTxReady(LocUart));
+    printf("RXREADY %u\n\r", UART_IsTxSent(LocUart));
     if(Uart_Chnn.Callbacks.TxNotification != 0){
         Uart_Chnn.Callbacks.TxNotification();
     }
