@@ -167,12 +167,11 @@ void vfnScheduler_Init(TaskType *TaskArray)
   u8_50ms_Counter = 0;
   u8_100ms_Counter = 0;
   gu8Scheduler_Status = TASK_SCHEDULER_INIT;
-
-  for (task_idx = 0; task_idx < (uint8_t)TASK_MAXNUM; task_idx++)
-  {
-      task_ctrl_array[task_idx].tskFcnPtr = TaskArray[task_idx].tskFcnPtr;
-      task_ctrl_array[task_idx].taskId = TaskArray[task_idx].taskId;
-  }
+	for (task_idx = 0; task_idx < (uint8_t)TASK_MAXNUM; task_idx++)
+	{
+		task_ctrl_array[task_idx].tskFcnPtr = TaskArray[task_idx].tskFcnPtr;
+		task_ctrl_array[task_idx].taskId = TaskArray[task_idx].taskId;
+	}
 }
 
 /*******************************************************************************/

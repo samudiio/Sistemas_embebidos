@@ -4,7 +4,10 @@
 
 #include "board.h"
 #include "app_scheduler.h"
-#include "Tasks.h"    
+#include "Tasks.h"
+#include "Mem_Alloc.h"
+#include "Uart.h"
+
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -21,6 +24,11 @@ TaskType Tasks[]={
   {      2,        TASK_50MS,      vfnTsk_50ms   },
   {      1,        TASK_100MS,     vfnTsk_100ms  }
 };
+
+
+Mem_ReturnType ptr_a,ptr_b,ptr_c,ptr_d,ptr_e;
+
+uint8_t TxBuffer[] = {" Prueba Funcion Buffer Tx ...\n\r"};
 
 /*----------------------------------------------------------------------------
  *        Local functions
@@ -47,57 +55,56 @@ static void _ConfigureLeds( void )
  */
 extern int main( void )
 {
-    uint8_t *prt1;
-    uint8_t *prt2;
-    uint8_t *prt3;
-    uint8_t *prt4;
-    uint8_t *prt5;
 
-    /*Clear HEAP*/
-    Mem_Init();
-
-    // Allocate 1 byte of memory
-    prt1 = (uint8_t*) Mem_Alloc(0x2800);
-    printf("*ptr1 Address = %x\n\n\r", prt1);
-
-    // Allocate 2 bytes of memory
-    prt2 = (uint8_t*) Mem_Alloc(0x02);
-    printf("*ptr2 Address = %x\n\n\r", prt2);
-
-    // Allocate 3 bytes of memory
-    prt3 = (uint8_t*) Mem_Alloc(0x03);
-    printf("*ptr3 Address = %x\n\n\r", prt3);
-
-    // Allocate 5 bytes of memory
-    prt4 = (uint8_t*) Mem_Alloc(0x05);
-    printf("*ptr4 Address = %x\n\n\r", prt4);
-
-    // Allocate 7 bytes of memory
-    prt5 = (uint8_t*) Mem_Alloc(0x07);
-    printf("*ptr4 Address = %x\n\n\r", prt5);
-
+  uint8_t aux,x;
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
 
 	/* Output example information */
-	//printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	//printf( "-- %s\n\r", BOARD_NAME ) ;
-	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
+	printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
+	printf( "-- %s\n\r", BOARD_NAME ) ;
+	printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
-    SCB_EnableDCache();
+  SCB_EnableDCache();
+  
+  Mem_Init();
+  Uart_Init(Uart_Config);
+  
+  Uart_SetTxEnable(0,1);
+  Uart_SetRxEnable(0,1);
+  Uart_SetBaudrate(0,112500);
+  
+  for(aux=0;aux<10;aux++){
+    x = Uart_SendByte(0, 'a');
+    printf("  Return Uart_SendByte() = %d ",x);
+   
+  }
+   Uart_SendBuffer(0, &TxBuffer[0],sizeof(TxBuffer));
+  
 
-	//printf( "Configure LED PIOs.\n\r" ) ;
+	printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
-	
-
-
+  
   	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
-    
+  
+  //printf( "size of uint8_t = %d.\n\r", sizeof(uint8_t));
+  
+  ptr_a = (Mem_ReturnType)Mem_Alloc(0x2800);  
+  ptr_b = (Mem_ReturnType)Mem_Alloc(0x2);  
+  ptr_c = (Mem_ReturnType)Mem_Alloc(0x3);
+  ptr_d = (Mem_ReturnType)Mem_Alloc(0x5);
+  ptr_e = (Mem_ReturnType)Mem_Alloc(0x7);
+  
+  
+  
+  
+  
+
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{

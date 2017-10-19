@@ -27,30 +27,31 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-INPUT (C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_memories.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\exceptions.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\mpu.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pmc.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\uart.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\wdt.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\supc.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\tc.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdma_hardware_interface.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdmac.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\system_sam.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\mem_alloc.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o)
+INPUT (C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\dbg_console.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\board_lowlevel.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\board_memories.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\exceptions.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\pio.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\mpu.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\pmc.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\wdt.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\pio_it.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\supc.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\tc.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\xdma_hardware_interface.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\xdmac.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\xdmad.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\Uart_Cfg.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\Uart.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\syscalls.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\system_sam.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\timetick.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\app_scheduler.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\Tasks.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\Mem_Alloc.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\led.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\main.o 
+C:\Users\uidq7909\Desktop\Especialidad_SE\Sistemas_Embebidos\Practica_3\BaseProject\workspace\Debug\startup_sam.o)
 
 /*------------------------------------------------------------------------------
  *      Linker script for running in internal FLASH on the ATSAMV71Q21
@@ -65,7 +66,7 @@ MEMORY
 {
   rom (rx)  :      ORIGIN = 0x00400000, LENGTH = 0x00200000
   ram (rwx) :      ORIGIN = 0x20400000, LENGTH = 0x00050000
-  ram_heap (rwx) : ORIGIN = 0x20450000, LENGTH = 0x00010000
+  HEAP (rwx) : ORIGIN = 0x20450000, LENGTH = 0x0010000
   sdram(rwx): ORIGIN = 0x70000000, LENGTH = 0x00200000
 }
 

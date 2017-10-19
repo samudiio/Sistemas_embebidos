@@ -118,23 +118,24 @@ SECTIONS
     /* heap section */
     .heap (NOLOAD):
     {
-        . = ALIGN(4);
-         MEM_HEAP_START = .;
+        . = ALIGN(8);
+         _sheap = .;
         . = . + HEAP_SIZE;
-        . = ALIGN(4);
-        MEM_HEAP_END = .;
-    } > ram_heap
-    
-    /* my heap section */
-    .my_heap (NOLOAD):
-    {
         . = ALIGN(8);
-         HEAP_LLD = .;
-         _smyheap = .;
-        . = . + MY_HEAP_SIZE;
-        . = ALIGN(8);
-        _emyheap = .;
+        _eheap = .;
     } > ram
+    
+    
+    . = ALIGN(4);
+    /* my heap section */
+    .HEAP (NOLOAD):
+    {
+       . = ALIGN(4);         
+         MEM_HEAP_START = .;
+        . = . + MY_HEAP_SIZE;
+        . = ALIGN(4);
+        MEM_HEAP_END = .;        
+    } > HEAP
     
     /* .ARM.exidx is sorted, so has to go in its own output section.  */
     PROVIDE_HIDDEN (__exidx_start = .);
