@@ -42,12 +42,13 @@ C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\tc.o
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdma_hardware_interface.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdmac.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Uart_Cfg.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\system_sam.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o 
-C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\mem_alloc.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o)
@@ -73,7 +74,7 @@ MEMORY
 STACK_SIZE = DEFINED(STACK_SIZE) ? STACK_SIZE : 0x2000;
 
 /* The heapsize used by the application. NOTE: you need to adjust according to your application. */
-HEAP_SIZE = DEFINED(HEAP_SIZE) ? HEAP_SIZE : 0x1000;
+HEAP_SIZE = DEFINED(HEAP_SIZE) ? HEAP_SIZE :  0x10000;
 
 MY_HEAP_SIZE = DEFINED(MY_HEAP_SIZE) ? MY_HEAP_SIZE : 0x10000;
 

@@ -7,6 +7,7 @@
 
 #include "Tasks.h"
 #include "led.h"
+#include "uart.h"
 
 uint8_t u8100ms_Ctr=0;
 uint8_t u8100ms_Ctr2=0;
@@ -60,5 +61,6 @@ void vfnTsk_100ms(void)
 	{
 		u8100ms_Ctr2 = 0;
 	}
+  Uart_SendByte(0, 64);
 }
 
