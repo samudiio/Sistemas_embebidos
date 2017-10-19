@@ -2,11 +2,19 @@
  *        Headers
  *----------------------------------------------------------------------------*/
 
-#include "board.h"
-#include "app_scheduler.h"
-#include "Tasks.h"    
+#include <board.h>
+#include <app_scheduler.h>
+#include <Tasks.h>    
 #include <stdbool.h>
 #include <stdio.h>
+#include <Uart_Cfg.h>
+#include <uart.h>
+
+/** Other modules */
+#include     "compiler.h"
+#include     "board.h"
+#include     "pmc.h"
+#include     "pio.h"
 
 /*----------------------------------------------------------------------------
  *        Local definitions
@@ -37,6 +45,24 @@ static void _ConfigureLeds( void )
 	LED_Configure( 1 ) ;
 }
 
+void Serial_Cnf(){
+	PMC_EnablePeripheral(ID_UART4);
+	const Pin my_pins[] = PINS_UART4;
+	PIO_Configure( my_pins, PIO_LISTSIZE( my_pins ) );
+	Uart_Init(&UART_Config);
+
+	/* Clear pending IRQs and Set priority of IRQs */
+	NVIC_ClearPendingIRQ(UART4_IRQn);
+	NVIC_SetPriority(UART4_IRQn, 1);
+
+	/* Enables the UART to transfer and receive data. */
+	Uart_SetTxEnable(0, 1);
+	Uart_SetRxEnable(0, 1);
+
+	/* Enable interrupt  */
+	NVIC_EnableIRQ(UART4_IRQn);
+}
+
 /*----------------------------------------------------------------------------
  *        Exported functions
  *----------------------------------------------------------------------------*/
@@ -47,52 +73,21 @@ static void _ConfigureLeds( void )
  */
 extern int main( void )
 {
-    uint8_t *prt1;
-    uint8_t *prt2;
-    uint8_t *prt3;
-    uint8_t *prt4;
-    uint8_t *prt5;
-
     /*Clear HEAP*/
     Mem_Init();
 
-    // Allocate 1 byte of memory
-    prt1 = (uint8_t*) Mem_Alloc(0x2800);
-    printf("*ptr1 Address = %x\n\n\r", prt1);
-
-    // Allocate 2 bytes of memory
-    prt2 = (uint8_t*) Mem_Alloc(0x02);
-    printf("*ptr2 Address = %x\n\n\r", prt2);
-
-    // Allocate 3 bytes of memory
-    prt3 = (uint8_t*) Mem_Alloc(0x03);
-    printf("*ptr3 Address = %x\n\n\r", prt3);
-
-    // Allocate 5 bytes of memory
-    prt4 = (uint8_t*) Mem_Alloc(0x05);
-    printf("*ptr4 Address = %x\n\n\r", prt4);
-
-    // Allocate 7 bytes of memory
-    prt5 = (uint8_t*) Mem_Alloc(0x07);
-    printf("*ptr4 Address = %x\n\n\r", prt5);
-
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
-
-	/* Output example information */
-	//printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	//printf( "-- %s\n\r", BOARD_NAME ) ;
-	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
     SCB_EnableDCache();
 
-	//printf( "Configure LED PIOs.\n\r" ) ;
+    /* Configure Leds */
 	_ConfigureLeds() ;
-	
 
-
+	/* Configure UART */
+	Serial_Cnf();
   	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
@@ -106,3 +101,5 @@ extern int main( void )
 	}
 
 }
+
+

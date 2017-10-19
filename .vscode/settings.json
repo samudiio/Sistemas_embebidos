@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "chip.h": "c",
+        "xdma_hardware_interface.h": "c"
+    }
+}

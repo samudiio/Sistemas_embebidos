@@ -5,7 +5,7 @@
    <VersionLow>1</VersionLow>
   </REG_HEADER>
   <REG_ROOT>
-   <RegVer>1279262720</RegVer>
+   <RegVer>1259470848</RegVer>
    <Project>
     <CompilerType>0</CompilerType>
     <GlobalOptions>
@@ -45,7 +45,7 @@
      <LinkerRelPath>$(CMPDIR)bin\arm-none-eabi-gcc.exe</LinkerRelPath>
      <LInpExtensions>o;a</LInpExtensions>
      <LnkAdditionalOutExt></LnkAdditionalOutExt>
-     <ParallelBuild>0</ParallelBuild>
+     <NewInvoke>1</NewInvoke>
      <PathSeparator>\</PathSeparator>
      <RootDir></RootDir>
      <RunAfterAsm></RunAfterAsm>
@@ -84,7 +84,7 @@
      </IncludePath.10>
      <IncludePath.11>
       <Path>$(IRFDIR)..\source\bsw\mcal\uart</Path>
-      <SubDir>0</SubDir>
+      <SubDir>1</SubDir>
      </IncludePath.11>
      <IncludePath.12>
       <Path>$(IRFDIR)..\source\bsw\mcal\supc</Path>
@@ -256,6 +256,13 @@
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
         </FileOptios>
        </File.11>
+       <File.12>
+        <FileName>$(IRFDIR)..\source\bsw\mcal\uart\Uart_Cfg.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.12>
        <File.2>
         <FileName>$(IRFDIR)..\source\bsw\mcal\mpu\mpu.c</FileName>
         <FileOptios>

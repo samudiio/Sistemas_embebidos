@@ -77,7 +77,7 @@
 #include "pmc.h"
 #include "tc.h"
 #include "usart.h"
-#include "uart.h"
+// #include "uart.h"
 #include "wdt.h"
 #include "trace.h"
 #include "xdma_hardware_interface.h"

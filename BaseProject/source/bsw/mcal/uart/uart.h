@@ -25,7 +25,7 @@
 //  Function Protypes
 
 // Initializes the UART module
- void Uart_Init(const Uart_ConfigType* Config);
+ void Uart_Init(const Uart_ConfigType *Config);
 
 //  Sets the requested baudrate to the addressed UART channel
  Std_ReturnType Uart_SetBaurate(uint8_t Channel, uint32_t Baudrate);
@@ -34,13 +34,13 @@
 void Uart_SetTxEnable(uint8_t Channel, uint32_t Enable);
 
 // Enables or disables the receiver of the UART module
-void Uart_SeRxEnable (uint8_t Channel, uint32_t Enable);
+void Uart_SetRxEnable (uint8_t Channel, uint32_t Enable);
 
 // Sends one packet of data through the specified UART module
 Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte );
 
 // Sends a packet of data through the specified UART channel
-Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16 Length);
+Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length);
 
 // Reads and returns a character from the UART module
 void Uart_GetByte (uint8_t Channel, uint8_t Byte);
