@@ -96,7 +96,7 @@ void vfnTxNotification(void);
 /*
  * Brief: Data reception notification
  */
-void vfnRxNotification(void);
+void vfnUARTRxNotification(void);
 
 /*
  * Brief: Error notification

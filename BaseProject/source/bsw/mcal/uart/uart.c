@@ -60,7 +60,7 @@
 
 #define DISABLEALL  0xFFFFFFFF
 
-#define COMPILAR    TRUE
+#define COMPILAR    FALSE
 
 /*------------------------------------------------------------------------------
  *         Types Definitions
@@ -96,6 +96,7 @@ typedef struct
  *         Global Variables
  *----------------------------------------------------------------------------*/
 
+volatile uint8_t UartReceivedData = '-';
 const Uart_ConfigType *UartConfigPtr;
 const Uart_StatusType *UartStatusPtr;
 const Uart *UartArray[UART_MAX_CH] = {UART0, UART1, UART2, UART3, UART4};
@@ -164,12 +165,35 @@ uint32_t UART_IsTxReady(Uart *uart)
  */
 void Uart_Isr(uint8_t Channel)
 {
+    uint8_t Uart_Idx;
+    uint8_t LogChannel;
     Uart *LocalUart;
     UartMasks Status = 0;
 
-    LocalUart = (Uart *)UartArray[Channel];
 
-    Uart_GetStatus(Channel, &Status);
+    LocalUart = (Uart *)UartArray[Channel];
+    for(Uart_Idx=0; Uart_Idx < UartConfigPtr->UartNoOfChannels; Uart_Idx++)
+    {
+        if(UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId == Channel)
+        {
+            LogChannel = Uart_Idx;
+        }
+    }
+
+    Uart_GetStatus(LogChannel, &Status);
+
+    if (Status & UART_SR_RXRDY)
+    {
+        UartReceivedData = LocalUart->UART_RHR;
+        if(UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions.RxNotification != NULL)
+        {
+            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions.RxNotification();
+        }
+    }
+
+
+    //printf("ISR Character received by uart = %c\n\r", LocalUart->UART_RHR);
+
 
     /*Check Overrun, Framing and Parity Error in status register*/
    //if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
@@ -178,12 +202,21 @@ void Uart_Isr(uint8_t Channel)
     //    printf("Error \n\r");
     //}
 
-    if (Status & UART_SR_RXRDY)
+
+#if COMPILAR
+    if ((Status & UART_SR_RXRDY) && (IsrMask & UART_IMR_RXRDY))
     {
-        /*Reset Receiver*/
-        //LocalUart->UART_CR = UART_CR_RSTRX;
         printf("ISR Character received by uart = %c\n\r", LocalUart->UART_RHR);
+        /*Reset Receiver*/
+        LocalUart->UART_CR = UART_CR_RSTRX;
     }
+
+    if (!(Status & UART_SR_TXRDY) && (IsrMask & UART_IMR_TXRDY))
+    {
+        LocalUart->UART_CR = UART_CR_RSTTX;
+        LocalUart->UART_THR = 'a';
+    }
+#endif
 
     /*Last Received Character*/
     //printf("%c", (char)LocalUart->UART_RHR);
@@ -508,12 +541,23 @@ void Uart_GetByte(uint8_t Channel, uint8_t *Byte)
 {
     uint8_t PhyChannel;
     Uart *LocalUart;
+    uint32_t IsrMask;
 
     PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
     LocalUart = (Uart *)UartArray[PhyChannel];
+    IsrMask = LocalUart->UART_IMR;
 
-    while (!UART_IsRxReady(LocalUart));
-    *Byte = LocalUart->UART_RHR;
+    /*Is RXRDY interrupt enabled*/
+    if(IsrMask & UART_IMR_RXRDY)
+    {
+        *Byte = UartReceivedData;
+    }
+    else
+    {
+        /*Read status register*/
+        while (!UART_IsRxReady(LocalUart));
+        *Byte = LocalUart->UART_RHR;
+    }
 }
 
 

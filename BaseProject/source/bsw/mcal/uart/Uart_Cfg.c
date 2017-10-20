@@ -8,7 +8,6 @@
 #include "Std_Types.h"
 #include "Uart_Cfg.h"
 
-
 /*
  * Uart Channel Configuration
  */
@@ -24,7 +23,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
         115200,
         {
             vfnTxNotification,
-            vfnRxNotification,
+            vfnUARTRxNotification,
             vfnErrorNotification
         }
     },
@@ -37,9 +36,9 @@ const Uart_ChannelConfigType ChannelConfig[] =
         UartCfg_Par_Even,
         19200,
         {
-            vfnTxNotification,
-            vfnRxNotification,
-            vfnErrorNotification
+            NULL,
+            NULL,
+            NULL
         }
     }
 };
@@ -66,16 +65,6 @@ void vfnTxNotification(void)
     /*do something*/
 }
 
-/*
- * Brief: Data reception notification
- * @Param in: None
- * @Param out: None
- * @Return type void
- */
-void vfnRxNotification(void)
-{
-    /*do something*/
-}
 
 /*
  * Brief: Error notification

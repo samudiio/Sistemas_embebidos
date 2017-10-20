@@ -109,13 +109,23 @@ extern int main( void )
 	//printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	//UART_SendBuffer(UART4, pBuffer2, sizeof(pTxBuffer2));
+
 	Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2)); //Please type a character
 
+	/*Uncomment this text to test without interrupts*/
 
-    //character = UART_GetChar(UART4);
-    //Uart_GetByte(UART_LOGCH0, &character);
-    //Uart_SendBuffer(UART_LOGCH0, pBufferTks, sizeof(pTxBufferTks));
-    //printf("Character received by uart = %c\n\r", character);
+    /*Uart_GetByte(UART_LOGCH0, &character);
+    printf("1Character received by uart = %c\n\r", character);
+
+    Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2));
+    Uart_GetByte(UART_LOGCH0, &character);
+    printf("2Character received by uart = %c\n\r", character);
+
+    Uart_SendBuffer(UART_LOGCH0, pBuffer2, sizeof(pTxBuffer2));
+    Uart_GetByte(UART_LOGCH0, &character);
+        //Uart_SendBuffer(UART_LOGCH0, pBufferTks, sizeof(pTxBufferTks));
+    printf("3Character received by uart = %c\n\r", character);
+    */
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
