@@ -15,6 +15,7 @@
 #include <Uart.h>
 #include <samv71q21.h>
 #include <board.h>
+#include <led.h>
 
 /*------------------------------------------------------------------------------
  *         Defines
@@ -34,17 +35,13 @@ static Uart *UartArray [UART_MAX_NUM_CH] = {UART0, UART1, UART2, UART3, UART4};
 
 void Uart_Isr(uint8_t Channel){
     Uart* LocUart;
-    Uart_ChannnelType Uart_Chnn;
-    uint8_t PhyChn;
-    /* Get Channel */
-    Uart_Chnn = UartConfig -> ChannelConfig[Channel];
-    /* Get Physical Channel */  
-    PhyChn = Uart_Chnn.ChannelId;
-    LocUart = UartArray[PhyChn];
+    LocUart = UartArray[Channel];
     uint32_t *status;
     Uart_GetStatus(Channel, status);
-    printf("ISRCH_%u ->IMR: %u\n\r", Channel, LocUart->UART_IMR);
+    // printf("ISRCH_%u ->IMR: %u\n\r", Channel, LocUart->UART_IMR);
     printf("ISRCH_%u ->SR: %u\n\r", Channel, status);
+    // LocUart->UART_IDR = UART_IDR_TXRDY;
+    LED_Toggle(1);
 }
 
 
@@ -195,7 +192,7 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte ){
     // if(Uart_Chnn.Callbacks.TxNotification != 0){
     //     Uart_Chnn.Callbacks.TxNotification();
     // }
-    printf("SendByteCH_%u ->IMR: %u\n\r", Channel, LocUart->UART_IMR);
+    //printf("SendByteCH_%u ->IMR: %u\n\r", Channel, LocUart->UART_IMR);
     return E_OK;
 }
 

@@ -123,23 +123,23 @@ extern void DBG_Configure( uint32_t baudrate, uint32_t masterClock)
 {
 
 	const Pin pPins[] = CONSOLE_PINS;
-#if defined CONSOLE_ON_UART
-	Uart *pUart = CONSOLE_UART;
-	/* Configure PIO */
-	PIO_Configure( pPins, PIO_LISTSIZE( pPins ) );
+// #if defined CONSOLE_ON_UART
+// 	Uart *pUart = CONSOLE_UART;
+// 	/* Configure PIO */
+// 	PIO_Configure( pPins, PIO_LISTSIZE( pPins ) );
 	
-	// Reset & disable receiver and transmitter, disable interrupts
-	pUart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX | UART_CR_RSTSTA;
-	pUart->UART_IDR = 0xFFFFFFFF;
-	PMC_EnablePeripheral(CONSOLE_ID);
-	pUart->UART_BRGR = (masterClock / baudrate) / 16;
-	// Configure mode register
-	pUart->UART_MR 
-			= (UART_MR_CHMODE_NORMAL | UART_MR_PAR_NO
-					| UART_MR_BRSRCCK_PERIPH_CLK);
-	// Enable receiver and transmitter
-	pUart->UART_CR = UART_CR_RXEN | UART_CR_TXEN;
-#endif
+// 	// Reset & disable receiver and transmitter, disable interrupts
+// 	pUart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX | UART_CR_RSTSTA;
+// 	pUart->UART_IDR = 0xFFFFFFFF;
+// 	PMC_EnablePeripheral(CONSOLE_ID);
+// 	pUart->UART_BRGR = (masterClock / baudrate) / 16;
+// 	// Configure mode register
+// 	pUart->UART_MR 
+// 			= (UART_MR_CHMODE_NORMAL | UART_MR_PAR_NO
+// 					| UART_MR_BRSRCCK_PERIPH_CLK);
+// 	// Enable receiver and transmitter
+// 	pUart->UART_CR = UART_CR_RXEN | UART_CR_TXEN;
+// #endif
 
 #if defined CONSOLE_ON_USART
 	Usart *pUsart = CONSOLE_Usart;
