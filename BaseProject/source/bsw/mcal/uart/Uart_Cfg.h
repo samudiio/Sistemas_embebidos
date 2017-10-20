@@ -37,6 +37,7 @@
 
 #define CNF_PARITY_EVEN (0x0u << 9)
 #define CNF_PARITY_ODD  (0x1u << 9)
+#define CNF_PARITY_NO  (0x4u << 9) 
 
 typedef struct{
     void (* TxNotification)(void);
@@ -48,7 +49,7 @@ typedef struct{
     uint8_t ChannelId;
     uint32_t IsrEn;
     uint8_t Mode;
-    uint8_t Parity;
+    uint32_t Parity;
     uint32_t Baudrate;
     CallbackFunctionsType Callbacks;
 }Uart_ChannnelType;
