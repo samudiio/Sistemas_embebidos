@@ -92,8 +92,7 @@ extern int main( void )
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
-	//printf("SAM V71 \n\r");
-	Uart_SendByte(0,64);
+	printf("SAM V71 \n\r");
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
