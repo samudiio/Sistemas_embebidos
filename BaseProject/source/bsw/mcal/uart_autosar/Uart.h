@@ -12,9 +12,9 @@ extern void Uart_SetTxEnable(uint8_t, uint32_t);
 extern void Uart_SetRxEnable(uint8_t, uint32_t); 
 extern Std_ReturnType Uart_SendByte(uint8_t, uint8_t);
 extern Std_ReturnType Uart_SendBuffer(uint8_t, uint8_t*, uint16_t);
-extern uint8_t Uart_GetByte(uint8_t, uint8_t); 
+extern void Uart_GetByte(uint8_t, uint8_t*); 
 extern void Uart_EnableInt(uint8_t, uint32_t, uint8_t);
-extern uint32_t Uart_GetStatus(uint8_t, uint32_t*);
+extern void Uart_GetStatus(uint8_t, uint32_t*);
 
 
 uint32_t UART_IsTxReady(uint8_t Channel);

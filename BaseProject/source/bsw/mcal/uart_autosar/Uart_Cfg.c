@@ -2,15 +2,15 @@
 #include <Uart_Cfg.h>
 
 void TxNotification(void){
-  printf( "Callback TxNotification\n\r" );
+  printf( "End of transmission notification\n\r" );
   
 }
 void RxNotification(void){
-  printf( "Callback RxNotification\n\r" );
+  printf( "Data reception notification\n\r" );
   
 }
 void ErrorNotification(uint8_t *UartErrorType){
-  printf( "Callback ErrorNotification\n\r" );
+  printf( "Error notification\n\r" );
 }
 
 
@@ -25,11 +25,11 @@ const UartChannelType UARTChannelCfg[] =
 		{TxNotification,NULL,NULL}		
 	},
 	{
-		CFG_PHYCH_UART0,
+		CFG_PHYCH_UART3,
 		CFG_INT_RXRDY,
 		CFG_MODE_NORMAL,
 		CFG_PARITY_NONE,
-		115200,
+		9600,
 		{NULL,NULL,NULL}	
 	}	
 };
