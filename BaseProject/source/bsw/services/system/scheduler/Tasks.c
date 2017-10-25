@@ -62,7 +62,7 @@ void vfnTsk_100ms(void)
 	{
 		u8100ms_Ctr2 = 0;
 	}
-	Std_ReturnType ret = Uart_SendByte(0,64);
+	Std_ReturnType ret = Uart_SendByte(0,164);
 	//printf("E_ %u\n\r", ret);
 }
 

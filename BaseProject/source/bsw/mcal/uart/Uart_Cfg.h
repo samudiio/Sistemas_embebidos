@@ -26,8 +26,8 @@
 #define CFG_INT_PAR_ERROR 128
 #define CFG_INT_TXEMPTY 512
 
-#define CNF_UART_TXISREN (0x1u << 0)
-#define CNF_UART_RXISREN (0x1u << 1)
+#define CNF_UART_TXISREN (0x1u << 1)
+#define CNF_UART_RXISREN (0x1u << 0)
 
 #define CNF_UART_MODE_NORMAL (0x0u << 14)
 #define CNF_UART_MODE_LOOPBACK  (0x2u << 14)
@@ -42,7 +42,7 @@
 typedef struct{
     void (* TxNotification)(void);
     void (* RxNotification)(void);
-    void (*ErrorNotification)(UartErrorType*);
+    void (*ErrorNotification)(UartErrorType error);
 }CallbackFunctionsType;
 
 typedef struct{

@@ -34,14 +34,47 @@ static Uart *UartArray [UART_MAX_NUM_CH] = {UART0, UART1, UART2, UART3, UART4};
 
 
 void Uart_Isr(uint8_t Channel){
+    uint8_t Uart_Idx;
+    uint8_t LogChannel;
     Uart* LocUart;
     LocUart = UartArray[Channel];
-    uint32_t *status;
-    Uart_GetStatus(Channel, status);
-    // printf("ISRCH_%u ->IMR: %u\n\r", Channel, LocUart->UART_IMR);
-    printf("ISRCH_%u ->SR: %u\n\r", Channel, status);
-    // LocUart->UART_IDR = UART_IDR_TXRDY;
-    LED_Toggle(1);
+    uint32_t status = LocUart->UART_SR;
+    
+    
+    LocUart = (Uart *)UartArray[Channel];
+    for(Uart_Idx=0; Uart_Idx < UartConfig->UartNumberOfChannels; Uart_Idx++)
+    {
+        if(UartConfig->ChannelConfig[Uart_Idx].ChannelId == Channel)
+        {
+            LogChannel = Uart_Idx;
+        }
+    }
+
+    if ((status & UART_MASK_RXRDY) == UART_MASK_RXRDY)
+    {
+        if(UartConfig->ChannelConfig[LogChannel].Callbacks.RxNotification != NULL)
+        {
+            UartConfig->ChannelConfig[LogChannel].Callbacks.RxNotification();
+        }
+    }
+    else if ((status & UART_MASK_TXRDY) == UART_MASK_TXRDY){
+        if(UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification != NULL)
+        {
+            UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification();
+        }
+    }
+    else if (UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification != NULL){
+        if((status & UART_MASK_OVRE) == UART_MASK_OVRE)
+        {
+            UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification(UART_ERROR_OVERRUN);
+        }
+        else if((status & UART_MASK_FRAME) == UART_MASK_FRAME){
+            UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification(UART_ERROR_FRAMING);
+        }
+        else if((status & UART_MASK_PARE) == UART_MASK_PARE){
+            UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification(UART_ERROR_PARITY);
+        }
+    }
 }
 
 
@@ -254,6 +287,21 @@ void Uart_GetStatus(uint8_t Channel, uint32_t *Status)
     LocUart = UartArray[PhyChn];
 
     *Status = LocUart->UART_SR;
+}
+
+void Uart_GetByte(uint8_t Channel, uint8_t *Byte){
+    Uart* LocUart;
+    Uart_ChannnelType Uart_Chnn;
+    uint8_t PhyChn;
+    /* Get Channel */
+    Uart_Chnn = UartConfig -> ChannelConfig[Channel];
+    /* Get Physical Channel */  
+    PhyChn = Uart_Chnn.ChannelId;
+    LocUart = UartArray[PhyChn];
+    if(!(Uart_Chnn.IsrEn & CNF_UART_RXISREN) & (Uart_Chnn.Callbacks.RxNotification == 0)){
+        while(!UART_IsRxReady(LocUart));
+    }
+    *Byte = LocUart->UART_RHR;
 }
 
 void UART0_Handler(){

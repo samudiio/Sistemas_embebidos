@@ -14,12 +14,12 @@
  #include <Uart_Types.h>
 
 //  Defines
- #define UART_MASK_RXRDY = 1
- #define UART_MASK_TXRDY = 2
- #define UART_MASK_OVRE = 32
- #define UART_MASK_FRAME = 64
- #define UART_MASK_PARE = 128
- #define UART_MASK_TXEMPTY = 512
+ #define UART_MASK_RXRDY 1
+ #define UART_MASK_TXRDY 2
+ #define UART_MASK_OVRE  32
+ #define UART_MASK_FRAME 64
+ #define UART_MASK_PARE 128
+ #define UART_MASK_TXEMPTY 512
 
 
 //  Function Protypes
@@ -43,13 +43,13 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte );
 Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length);
 
 // Reads and returns a character from the UART module
-void Uart_GetByte (uint8_t Channel, uint8_t Byte);
+void Uart_GetByte(uint8_t Channel, uint8_t *Byte);
 
 // Reads and returns the current status of the addressed UART module
-void Uart_GetStatus (uint8_t Channel, uint32_t *Status);
+void Uart_GetStatus(uint8_t Channel, uint32_t *Status);
 
 // Reads and returns the current status of the addressed UART module.
 // Enable/disable the UART module interrupts according to the IntMode and Enable parameters.
-void Uart_EnableInt (uint8_t Channel, uint32_t IntMode, uint8_t Enabl );
+void Uart_EnableInt(uint8_t Channel, uint32_t IntMode, uint8_t Enable);
 
  #endif /* Uart_H_ */

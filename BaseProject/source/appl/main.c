@@ -7,7 +7,6 @@
 #include <Tasks.h>    
 #include <stdbool.h>
 #include <stdio.h>
-#include <Uart_Cfg.h>
 #include <uart.h>
 
 /** Other modules */
@@ -99,7 +98,4 @@ extern int main( void )
 		/* Perform all scheduled tasks */
 		vfnTask_Scheduler();
 	}
-
 }
-
-
