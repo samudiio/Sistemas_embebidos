@@ -11,6 +11,9 @@
 /*-- Includes ----------------------------------------------------------------*/
 #include "Std_Types.h"
 
+#define CNF_UART_RXISREN    (0x1u << 0)
+#define CNF_UART_TXISREN    (0x1u << 1)
+
 #define UART_CFG_INT_DISABLED        0x00
 #define UART_CFG_INT_RXRDY           0x01
 #define UART_CFG_INT_TXRDY           0x02
@@ -29,6 +32,13 @@ typedef enum
 }Uart_Ch_Type;
 
 typedef uint32_t Uart_Interrupt_Type;
+
+typedef enum
+{
+    UART_ERROR_OVERRUN = 0,
+    UART_ERROR_FRAMING = 1,
+    UART_ERROR_PARITY = 2
+}UartErrorType;
 
 typedef enum
 {
@@ -68,13 +78,12 @@ typedef struct
  */
 typedef struct
 {
-    Uart_Ch_Type            ChannelId;            /*Physical Uart channel*/
-    Uart_Interrupt_Type     InterruptEnable;
-    Uart_ChMode_Type        TestMode;
-    Uart_BrSrcCk_Type       BrSourceClk;
-    Uart_Parity_Type        Parity;
-    Uart_BaudRateType       BaudRate;
-    CallbackFunctionsType   CallbackFunctions;
+    Uart_Ch_Type                    ChannelId;            /*Physical Uart channel*/
+    Uart_Interrupt_Type             InterruptEnable;
+    Uart_ChMode_Type                TestMode;
+    Uart_Parity_Type                Parity;
+    Uart_BaudRateType               BaudRate;
+    const CallbackFunctionsType     *CallbackFunctions;
 }Uart_ChannelConfigType;
 
 /*
@@ -83,25 +92,26 @@ typedef struct
  */
 typedef struct
 {
-    uint8_t UartNoOfChannels;
-    const Uart_ChannelConfigType *PtrChannelConfig;
+    uint8_t                         UartNoOfChannels;
+    Uart_BrSrcCk_Type               BrSourceClk;
+    const Uart_ChannelConfigType    *PtrChannelConfig;
 }Uart_ConfigType;
 
 
 /*
  * Brief: End of transmission notification
  */
-void vfnTxNotification(void);
+extern void vfnUART_TxComplete(void);
 
 /*
  * Brief: Data reception notification
  */
-void vfnUARTRxNotification(void);
+extern void vfnUART_RxComplete(void);
 
 /*
  * Brief: Error notification
  */
-void vfnErrorNotification(uint8_t Error_Type);
+extern void vfnErrorNotification(uint8_t Error_Type);
 
 
 extern const Uart_ConfigType Uart_Config[];

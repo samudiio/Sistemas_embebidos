@@ -77,7 +77,7 @@ void vfnTsk_100ms(void)
  * @Param out: None
  * @Return type void
  */
-void vfnUARTRxNotification(void)
+void vfnUART_RxComplete(void)
 {
     DataReceivedByUART= 1;
 }

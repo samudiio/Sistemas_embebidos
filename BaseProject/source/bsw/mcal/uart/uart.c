@@ -103,6 +103,7 @@ const Uart *UartArray[UART_MAX_CH] = {UART0, UART1, UART2, UART3, UART4};
 const uint32_t UartPeriphId[UART_MAX_CH] = {ID_UART0, ID_UART1, ID_UART2, ID_UART3, ID_UART4};
 const Pin UartPinId[UART_MAX_CH] = {PINS_UART0, PINS_UART1, PINS_UART2, PINS_UART3, PINS_UART4};
 const IRQn_Type UartIRQn[UART_MAX_CH] = {UART0_IRQn, UART1_IRQn, UART2_IRQn, UART3_IRQn, UART4_IRQn};
+uint8_t UartPhysicaltoLogicalCh[UART_MAX_CH];
 
 const Uart_ChStatusType ChStatus[] =
 {
@@ -165,34 +166,25 @@ uint32_t UART_IsTxReady(Uart *uart)
  */
 void Uart_Isr(uint8_t Channel)
 {
-    uint8_t Uart_Idx;
     uint8_t LogChannel;
     Uart *LocalUart;
     UartMasks Status = 0;
 
+    LogChannel = UartPhysicaltoLogicalCh[Channel];
 
     LocalUart = (Uart *)UartArray[Channel];
-    for(Uart_Idx=0; Uart_Idx < UartConfigPtr->UartNoOfChannels; Uart_Idx++)
-    {
-        if(UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId == Channel)
-        {
-            LogChannel = Uart_Idx;
-        }
-    }
 
     Uart_GetStatus(LogChannel, &Status);
-
+     
     if (Status & UART_SR_RXRDY)
     {
         UartReceivedData = LocalUart->UART_RHR;
-        if(UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions.RxNotification != NULL)
+        if(UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->RxNotification != NULL)
         {
-            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions.RxNotification();
+            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->RxNotification();
         }
     }
 
-
-    //printf("ISR Character received by uart = %c\n\r", LocalUart->UART_RHR);
 
 
     /*Check Overrun, Framing and Parity Error in status register*/
@@ -259,6 +251,7 @@ void Uart_Init(const Uart_ConfigType *Config)
         PhyChannel = UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId;
         LocalUart = (Uart *)UartArray[PhyChannel];
         IRQId = UartIRQn[PhyChannel];
+        UartPhysicaltoLogicalCh[PhyChannel] = Uart_Idx;
 
         /* Reset and disable receiver & transmitter*/
         LocalUart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
@@ -266,10 +259,10 @@ void Uart_Init(const Uart_ConfigType *Config)
 
         /* Configure Parity type, Baud rate source clock and Channel mode*/
         LocalUart->UART_MR = (UartConfigPtr->PtrChannelConfig[Uart_Idx].TestMode << UART_MR_CHMODE_Pos) \
-                           | (UartConfigPtr->PtrChannelConfig[Uart_Idx].BrSourceClk << UART_MR_BRSRCCK_Pos) \
+                           | (UartConfigPtr->BrSourceClk << UART_MR_BRSRCCK_Pos) \
                            | (UartConfigPtr->PtrChannelConfig[Uart_Idx].Parity << UART_MR_PAR_Pos);
 
-        if(UartConfigPtr->PtrChannelConfig[Uart_Idx].BrSourceClk == UartCfg_Clk_Peripheral)
+        if(UartConfigPtr->BrSourceClk == UartCfg_Clk_Peripheral)
         {
             /* Enable the peripheral clock in the PMC*/
             PMC_EnablePeripheral(UartPeriphId[PhyChannel]);
@@ -280,7 +273,7 @@ void Uart_Init(const Uart_ConfigType *Config)
             /* Configure baudrate (BRSRCCK = 0)*/
             LocalUart->UART_BRGR = (BOARD_MCK / UartConfigPtr->PtrChannelConfig[Uart_Idx].BaudRate) / 16;
         }
-        else if(UartConfigPtr->PtrChannelConfig[Uart_Idx].BrSourceClk == UartCfg_Clk_PCK)
+        else if(UartConfigPtr->BrSourceClk == UartCfg_Clk_PCK)
         {
             /*baud rate is independent of the processor/bus clock, processor clock can be changed while UART is enabled*/
 
@@ -375,7 +368,7 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
     LocalUart = (Uart *)UartArray[PhyChannel];
 
 
-    if(UartConfigPtr->PtrChannelConfig[Channel].BrSourceClk == UartCfg_Clk_Peripheral)
+    if(UartConfigPtr->BrSourceClk == UartCfg_Clk_Peripheral)
     {
         /* Enable the peripheral clock in the PMC*/
         PMC_EnablePeripheral(UartPeriphId[PhyChannel]);
@@ -383,7 +376,7 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
         /* Configure baudrate (BRSRCCK = 0)*/
         LocalUart->UART_BRGR = (BOARD_MCK / UartConfigPtr->PtrChannelConfig[Channel].BaudRate) / 16;
     }
-    else if(UartConfigPtr->PtrChannelConfig[Channel].BrSourceClk == UartCfg_Clk_PCK)
+    else if(UartConfigPtr->BrSourceClk == UartCfg_Clk_PCK)
     {
         /*baud rate is independent of the processor/bus clock, processor clock can be changed while UART is enabled*/
 
@@ -541,7 +534,7 @@ void Uart_GetByte(uint8_t Channel, uint8_t *Byte)
 {
     uint8_t PhyChannel;
     Uart *LocalUart;
-    uint32_t IsrMask;
+    uint16_t IsrMask;
 
     PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
     LocalUart = (Uart *)UartArray[PhyChannel];

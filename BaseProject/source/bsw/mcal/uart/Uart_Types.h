@@ -17,11 +17,6 @@
 #define UART_LOGCH4    4
 
 
-typedef enum
-{
-    UART_ERROR_OVERRUN = 0,
-    UART_ERROR_FRAMING = 1,
-    UART_ERROR_PARITY = 2
-}UartErrorType;
+
 
 #endif /* UART_TYPES_H */
