@@ -237,6 +237,7 @@ void Uart_Init(const Uart_ConfigType *Config)
     uint32_t Pck;
     uint32_t IsrMode;
     Uart *LocalUart;
+    Uart_ChannelConfigType Uart_LogChannel;
 
     UartConfigPtr = Config;
 
@@ -248,7 +249,10 @@ void Uart_Init(const Uart_ConfigType *Config)
 
     for(Uart_Idx=0; Uart_Idx < UartConfigPtr->UartNoOfChannels; Uart_Idx++)
     {
-        PhyChannel = UartConfigPtr->PtrChannelConfig[Uart_Idx].ChannelId;
+        /* Get Logical Channel */
+        Uart_LogChannel = UartConfigPtr->PtrChannelConfig[Uart_Idx];
+        /* Get Physical Channel */
+        PhyChannel = Uart_LogChannel.ChannelId;
         LocalUart = (Uart *)UartArray[PhyChannel];
         IRQId = UartIRQn[PhyChannel];
         UartPhysicaltoLogicalCh[PhyChannel] = Uart_Idx;
@@ -258,9 +262,9 @@ void Uart_Init(const Uart_ConfigType *Config)
             | UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
 
         /* Configure Parity type, Baud rate source clock and Channel mode*/
-        LocalUart->UART_MR = (UartConfigPtr->PtrChannelConfig[Uart_Idx].TestMode << UART_MR_CHMODE_Pos) \
+        LocalUart->UART_MR = (Uart_LogChannel.TestMode << UART_MR_CHMODE_Pos) \
                            | (UartConfigPtr->BrSourceClk << UART_MR_BRSRCCK_Pos) \
-                           | (UartConfigPtr->PtrChannelConfig[Uart_Idx].Parity << UART_MR_PAR_Pos);
+                           | (Uart_LogChannel.Parity << UART_MR_PAR_Pos);
 
         if(UartConfigPtr->BrSourceClk == UartCfg_Clk_Peripheral)
         {
@@ -271,7 +275,7 @@ void Uart_Init(const Uart_ConfigType *Config)
             PIO_Configure( &UartPinId[PhyChannel], PIO_LISTSIZE( UartPinId[PhyChannel] ) );
 
             /* Configure baudrate (BRSRCCK = 0)*/
-            LocalUart->UART_BRGR = (BOARD_MCK / UartConfigPtr->PtrChannelConfig[Uart_Idx].BaudRate) / 16;
+            LocalUart->UART_BRGR = (BOARD_MCK / Uart_LogChannel.BaudRate) / 16;
         }
         else if(UartConfigPtr->BrSourceClk == UartCfg_Clk_PCK)
         {
@@ -289,7 +293,7 @@ void Uart_Init(const Uart_ConfigType *Config)
             }
 
             /* Configure baudrate (BRSRCCK = 1)*/
-            LocalUart->UART_BRGR = (Pck / UartConfigPtr->PtrChannelConfig[Uart_Idx].BaudRate) / 16;
+            LocalUart->UART_BRGR = (Pck / Uart_LogChannel.BaudRate) / 16;
         }
         else
         {
@@ -297,7 +301,7 @@ void Uart_Init(const Uart_ConfigType *Config)
         }
 
         /* Check interrupt configuration to enable/disable Tx or Rx */
-        TestMode = UartConfigPtr->PtrChannelConfig[Uart_Idx].TestMode;
+        TestMode = Uart_LogChannel.TestMode;
 
         switch(TestMode)
         {
@@ -322,7 +326,7 @@ void Uart_Init(const Uart_ConfigType *Config)
         }
 
         /*Configure TxRdy, RxRdy interrupts*/
-        IsrMode = UartConfigPtr->PtrChannelConfig[Uart_Idx].InterruptEnable;
+        IsrMode = Uart_LogChannel.InterruptEnable;
 
         if(IsrMode)
         {
