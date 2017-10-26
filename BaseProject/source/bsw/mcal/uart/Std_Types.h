@@ -14,4 +14,12 @@ typedef enum{
     E_NOK
 }Std_ReturnType;
 
+#ifndef NULL
+#ifdef __cplusplus
+#define NULL    0
+#else
+#define NULL    ((void *)0)
+#endif
+#endif
+
 #endif

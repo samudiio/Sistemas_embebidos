@@ -9,7 +9,6 @@
 #define Uart_H_
 
 //  Includes 
- #include <Std_Types.h>
  #include <Uart_Cfg.h>
  #include <Uart_Types.h>
 

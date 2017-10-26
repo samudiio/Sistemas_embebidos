@@ -63,7 +63,14 @@
                 "${workspaceRoot}/BaseProject/source/bsw/mcal/mcan",
                 "${workspaceRoot}/BaseProject/source/bsw/mcal/pmc",
                 "${workspaceRoot}/BaseProject/source/bsw/services/system/scheduler",
-                "${workspaceRoot}/BaseProject/source/bsw/mcal/tc"
+                "${workspaceRoot}/BaseProject/source/bsw/mcal/tc",
+                "${workspaceRoot}/BaseProject/source/bsw/mcal/usart",
+                "${workspaceRoot}/BaseProject/source/bsw/mcal/wdt",
+                "${workspaceRoot}/BaseProject/source/bsw/services/system/trace",
+                "${workspaceRoot}/BaseProject/source/bsw/mcal/xdma",
+                "${workspaceRoot}/BaseProject/source/infrastructure/derivative/utils",
+                "${workspaceRoot}/BaseProject/source/infrastructure/bsp/libboard_samv7-ek/include",
+                "${workspaceRoot}/BaseProject/source/bsw/ecual"
             ],
             "defines": [
                 "_DEBUG",
