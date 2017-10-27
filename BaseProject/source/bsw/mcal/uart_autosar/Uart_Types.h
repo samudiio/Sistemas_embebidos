@@ -6,12 +6,6 @@
 
 #include "Std_Types.h"
 
-enum UartErrorType
-{
-	UART_ERROR_OVERRUN = 0,
-	UART_ERROR_FRAMING = 1,
-	UART_ERROR_PARITY  = 2
-};
 
 #define UART_MASK_RXRDY  1
 #define UART_MASK_TXRDY  2

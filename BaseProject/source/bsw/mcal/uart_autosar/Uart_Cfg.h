@@ -4,6 +4,8 @@
 #include "Std_Types.h"
 
 
+
+
 #define CFG_PHYCH_UART0 (0X00)
 #define CFG_PHYCH_UART1 (0X01)
 #define CFG_PHYCH_UART2 (0X02)
@@ -34,7 +36,7 @@ typedef struct
 {
 	void(*TxNotification)(void);
 	void(*RxNotification)(void);
-	void(*ErrorNotification)(uint8_t *UartErrorType);
+	void(*ErrorNotification)(void);
 }CallbackFunctionsType;
 
 typedef struct
@@ -44,7 +46,7 @@ typedef struct
 	uint8_t Mode;
 	uint8_t Parity;
 	uint32_t Baudrate;
-	CallbackFunctionsType Callbacks;	
+	const CallbackFunctionsType Callbacks;	
 }UartChannelType;
 
 typedef struct
@@ -52,25 +54,20 @@ typedef struct
 	uint8_t UartNumberOfChannels;
 	uint8_t ClkSrc;
 	const UartChannelType *ChannelConfig;	
+  
 }UartConfigType;
 
 
 extern const UartConfigType Uart_Config[];
 
-/*
- * Brief: End of transmission notification
- */
-void vfnTxNotification(void);
+enum UartErrorType
+{
+	UART_ERROR_OVERRUN = 0,
+	UART_ERROR_FRAMING = 1,
+	UART_ERROR_PARITY  = 2
+};
 
-/*
- * Brief: Data reception notification
- */
-void vfnRxNotification(void);
 
-/*
- * Brief: Error notification
- */
-void vfnErrorNotification(uint8_t Error_Type);
 
 
 

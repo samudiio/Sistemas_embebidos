@@ -19,8 +19,7 @@ extern void Uart_GetStatus(uint8_t, uint32_t*);
 
 uint32_t UART_IsTxReady(uint8_t Channel);
 uint32_t UART_IsRxReady(uint8_t Channel);
-
-
+        
 
 
 
