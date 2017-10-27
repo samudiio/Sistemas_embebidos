@@ -92,6 +92,10 @@ extern int main( void )
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
 	printf("SAM V71 \n\r");
+	// uint8_t pTxBuffer[] = {"Hello World!!\n\r"};
+	//Std_ReturnType ret = Uart_SendByte(0,164);
+	
+	// Std_ReturnType ret = Uart_SendBuffer(0,(uint8_t *)&pTxBuffer, sizeof(pTxBuffer));
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{

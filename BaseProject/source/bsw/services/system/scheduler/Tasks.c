@@ -62,8 +62,10 @@ void vfnTsk_100ms(void)
 	{
 		u8100ms_Ctr2 = 0;
 	}
-  Uart_EnableInt(0, 2, 1);
-	Std_ReturnType ret = Uart_SendByte(0,164);
+	Uart_EnableInt(0, 2, 1);
+	uint8_t pTxBuffer[] = {"Hello World!!\n\r"};
+	// Std_ReturnType ret = Uart_SendByte(0,164);
+	Std_ReturnType ret = Uart_SendBuffer(0,(uint8_t *)&pTxBuffer, sizeof(pTxBuffer));
 	//printf("E_ %u\n\r", ret);
 }
 
