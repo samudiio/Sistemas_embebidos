@@ -76,7 +76,7 @@ void Uart_Isr(uint8_t Channel){
         if(UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification != NULL)
         {
             if((*UartStatusPtr[Channel].TxBufferSize - *UartStatusPtr[Channel].SendedBytes) == 0){
-                printf("%c", *UartStatusPtr[Channel].ByteSended);
+                printf("%d", *UartStatusPtr[Channel].ByteSended);
                 UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification();
                 *UartStatusPtr[Channel].TxBufferSize = 0; 
                 *UartStatusPtr[Channel].SendedBytes = 0;
@@ -197,7 +197,7 @@ uint32_t UART_IsTxSent(Uart  *uart){
     LocUart->UART_MR = (Uart_Chnn.Mode | Uart_Chnn.Parity | UartConfig -> ClkSrc);
     /* Configure baudrate*/
     LocUart->UART_BRGR = (BOARD_MCK/Baudrate) / 16;
-    /* COnfigure Interruptions */
+    /* COnfgure Interruptions */
     Uart_EnableInt(Channel, Uart_Chnn.IsrEn, 1);
  }
 
@@ -279,6 +279,7 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
         Uart_SendByte(Channel, *pData);
         *UartStatusPtr[PhyChn].SendedBytes++;
         *UartStatusPtr[PhyChn].ByteSended = *pData;
+        printf("%d",*UartStatusPtr[PhyChn].ByteSended);
         pData++;
     }
 
