@@ -50,21 +50,13 @@ Uart_CtrStatusTypePtr UartStatusPtr[UART_MAX_NUM_CH];
  *----------------------------------------------------------------------------*/
 
 void Uart_Isr(uint8_t Channel){
-    uint8_t Uart_Idx;
     uint8_t LogChannel;
     Uart* LocUart;
-    LocUart = UartArray[Channel];  
     
-    LocUart = (Uart *)UartArray[Channel];
+    LocUart = (Uart *)UartArray[Channel];  
+    LogChannel = *UartStatusPtr[Channel].LogicalChannel;
     volatile uint32_t ISR_IMR = LocUart->UART_IMR;
     volatile uint32_t ISR_SR = LocUart->UART_SR;
-    for(Uart_Idx=0; Uart_Idx < UartConfig->UartNumberOfChannels; Uart_Idx++)
-    {
-        if(UartConfig->ChannelConfig[Uart_Idx].ChannelId == Channel)
-        {
-            LogChannel = Uart_Idx;
-        }
-    }
     if ((ISR_IMR & UART_MASK_RXRDY)&&(ISR_SR & UART_MASK_RXRDY))
     {
         if(UartConfig->ChannelConfig[LogChannel].Callbacks.RxNotification != NULL)
@@ -75,13 +67,19 @@ void Uart_Isr(uint8_t Channel){
     else if ((ISR_IMR & UART_MASK_TXRDY)&&(ISR_SR & UART_MASK_TXRDY)) {
         if(UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification != NULL)
         {
-            printf("%d", *UartStatusPtr[Channel].TxBufferSize);
-            printf("%d", *UartStatusPtr[Channel].SendedBytes);
-            if((*UartStatusPtr[Channel].TxBufferSize - *UartStatusPtr[Channel].SendedBytes) == 0 && (*UartStatusPtr[Channel].TxBufferSize !=0)){
-                UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification();
+          //printf("%d\n\r", (*UartStatusPtr[Channel].TxBufferSize - *UartStatusPtr[Channel].SendedBytes));
+            if((*UartStatusPtr[Channel].TxBufferSize - *UartStatusPtr[Channel].SendedBytes) == 0){
                 *UartStatusPtr[Channel].TxBufferSize = 0; 
                 *UartStatusPtr[Channel].SendedBytes = 0;
+                UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification();
+                Uart_EnableInt(LogChannel, CFG_INT_TXRDY, 0);
             }
+            else{
+                Uart_EnableInt(LogChannel, CFG_INT_TXRDY, 0);
+            }
+        }
+        else{
+            Uart_EnableInt(LogChannel, CFG_INT_TXRDY, 0);
         }
     }
     else if (UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification != NULL){
@@ -145,11 +143,6 @@ uint32_t UART_IsTxSent(Uart  *uart){
         UartStatusPtr[Uart_Devices].SendedBytes = (uint8_t*) Mem_Alloc(sizeof(uint8_t));
         UartStatusPtr[Uart_Devices].TxBufferSize = (uint8_t*) Mem_Alloc(sizeof(uint8_t));
         UartStatusPtr[Uart_Devices].TxBusy = (uint8_t*) Mem_Alloc(sizeof(uint8_t));
-        /* printf("ptrLogicalChannel =%u\n\r", &UartStatusPtr[Uart_Devices].LogicalChannel); 
-        printf("ptrRxBusy =%u\n\r", &UartStatusPtr[Uart_Devices].RxBusy);
-        printf("ptrSendedBytes =%u\n\r", &UartStatusPtr[Uart_Devices].SendedBytes); 
-        printf("ptrTxBufferSize =%u\n\r", &UartStatusPtr[Uart_Devices].TxBufferSize);
-        printf("ptrTxBusy =%u\n\r", &UartStatusPtr[Uart_Devices].TxBusy); */
     }
 
     for(Uart_idx= 0; Uart_idx < UartConfig ->UartNumberOfChannels; Uart_idx++){
@@ -173,7 +166,7 @@ uint32_t UART_IsTxSent(Uart  *uart){
         /* Configure baudrate*/
         LocUart->UART_BRGR = (BOARD_MCK/Uart_Chnn.Baudrate) / 16;
         /* Configure Interruptions */
-        Uart_EnableInt(Uart_idx, Uart_Chnn.IsrEn, 1);
+        //Uart_EnableInt(Uart_idx, Uart_Chnn.IsrEn, 1);
     }
  }
 
@@ -199,7 +192,7 @@ uint32_t UART_IsTxSent(Uart  *uart){
     /* Configure baudrate*/
     LocUart->UART_BRGR = (BOARD_MCK/Baudrate) / 16;
     /* COnfgure Interruptions */
-    Uart_EnableInt(Channel, Uart_Chnn.IsrEn, 1);
+    // Uart_EnableInt(Channel, Uart_Chnn.IsrEn, 1);
  }
 
 /*  The Uart_SetTxEnable function shall support runtime enable/disable of the Uart transmitter specified by the Enable parameter. */
@@ -257,6 +250,8 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte ){
 
     /* Send Byte */
     LocUart->UART_THR = Byte;
+    /* Enable Interruptions */
+    Uart_EnableInt(Channel, Uart_Chnn.IsrEn, 1);
     while(!UART_IsTxSent(LocUart));
     return E_OK;
 }
@@ -271,6 +266,9 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
     Uart_Chnn = UartConfig -> ChannelConfig[Channel];
     /* Get Physical Channel */ 
     PhyChn = Uart_Chnn.ChannelId;
+    if(*UartStatusPtr[PhyChn].TxBusy ==1){
+        return E_NOK;
+    }
     LocUart = UartArray[PhyChn]; 
     uint32_t Len =0;
     *UartStatusPtr[PhyChn].TxBusy = 1;
@@ -280,7 +278,6 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
         Uart_SendByte(Channel, *pData);
         *UartStatusPtr[PhyChn].SendedBytes++;
         *UartStatusPtr[PhyChn].ByteSended = *pData;
-        printf("%d",*UartStatusPtr[PhyChn].ByteSended);
         pData++;
     }
 

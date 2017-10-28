@@ -9,7 +9,7 @@ Configuration of the UART (Uart driver) module
 
 void FnTxNotification(void){
     printf("Enviado \n\r");
-    Uart_EnableInt(0, 2, 0);
+    //Uart_EnableInt(0, 2, 0);
 }
 
 void FnRxNotification(void){
