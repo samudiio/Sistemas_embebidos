@@ -56,8 +56,8 @@ void Uart_Isr(uint8_t Channel){
     LocUart = UartArray[Channel];  
     
     LocUart = (Uart *)UartArray[Channel];
-    uint32_t ISR_IMR = LocUart->UART_IMR;
-    uint32_t ISR_SR = LocUart->UART_SR;
+    volatile uint32_t ISR_IMR = LocUart->UART_IMR;
+    volatile uint32_t ISR_SR = LocUart->UART_SR;
     for(Uart_Idx=0; Uart_Idx < UartConfig->UartNumberOfChannels; Uart_Idx++)
     {
         if(UartConfig->ChannelConfig[Uart_Idx].ChannelId == Channel)
@@ -65,18 +65,19 @@ void Uart_Isr(uint8_t Channel){
             LogChannel = Uart_Idx;
         }
     }
-    if ((ISR_IMR & UART_MASK_RXRDY)&(ISR_SR & UART_MASK_RXRDY))
+    if ((ISR_IMR & UART_MASK_RXRDY)&&(ISR_SR & UART_MASK_RXRDY))
     {
         if(UartConfig->ChannelConfig[LogChannel].Callbacks.RxNotification != NULL)
         {
             UartConfig->ChannelConfig[LogChannel].Callbacks.RxNotification();
         }
     }
-    else if ((ISR_IMR & UART_MASK_TXRDY)&(ISR_SR & UART_MASK_TXRDY)) {
+    else if ((ISR_IMR & UART_MASK_TXRDY)&&(ISR_SR & UART_MASK_TXRDY)) {
         if(UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification != NULL)
         {
-            if((*UartStatusPtr[Channel].TxBufferSize - *UartStatusPtr[Channel].SendedBytes) == 0){
-                printf("%d", *UartStatusPtr[Channel].ByteSended);
+            printf("%d", *UartStatusPtr[Channel].TxBufferSize);
+            printf("%d", *UartStatusPtr[Channel].SendedBytes);
+            if((*UartStatusPtr[Channel].TxBufferSize - *UartStatusPtr[Channel].SendedBytes) == 0 && (*UartStatusPtr[Channel].TxBufferSize !=0)){
                 UartConfig->ChannelConfig[LogChannel].Callbacks.TxNotification();
                 *UartStatusPtr[Channel].TxBufferSize = 0; 
                 *UartStatusPtr[Channel].SendedBytes = 0;
@@ -84,14 +85,14 @@ void Uart_Isr(uint8_t Channel){
         }
     }
     else if (UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification != NULL){
-        if((ISR_IMR & UART_MASK_OVRE)&(ISR_SR & UART_MASK_OVRE))
+        if((ISR_IMR & UART_MASK_OVRE)&&(ISR_SR & UART_MASK_OVRE))
         {
             UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification(UART_ERROR_OVERRUN);
         }
-        else if((ISR_IMR & UART_MASK_FRAME)&(ISR_SR & UART_MASK_FRAME)){
+        else if((ISR_IMR & UART_MASK_FRAME)&&(ISR_SR & UART_MASK_FRAME)){
             UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification(UART_ERROR_FRAMING);
         }
-        else if((ISR_IMR & UART_MASK_PARE)&(ISR_SR & UART_MASK_PARE)){
+        else if((ISR_IMR & UART_MASK_PARE)&&(ISR_SR & UART_MASK_PARE)){
             UartConfig->ChannelConfig[LogChannel].Callbacks.ErrorNotification(UART_ERROR_PARITY);
         }
     }

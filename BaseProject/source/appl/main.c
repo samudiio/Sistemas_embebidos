@@ -85,17 +85,17 @@ extern int main( void )
     /* Configure Leds */
 	_ConfigureLeds() ;
 
-	/* Configure UART */
-	Serial_Cnf();
-  	/* Initialize Task Scheduler */
+	/* Initialize Task Scheduler */
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
+	/* Configure UART */
+	Serial_Cnf();
 	printf("SAM V71 \n\r");
 	uint8_t pTxBuffer[] = {"Hello World!!\n\r"};
-	//Std_ReturnType ret = Uart_SendByte(0,164);
+	Std_ReturnType ret = Uart_SendByte(0,164);
 	
-	Std_ReturnType ret = Uart_SendBuffer(0,(uint8_t *)&pTxBuffer, sizeof(pTxBuffer));
+	// Std_ReturnType ret = Uart_SendBuffer(0,(uint8_t *)&pTxBuffer, sizeof(pTxBuffer));
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
