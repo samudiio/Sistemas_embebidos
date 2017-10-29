@@ -191,10 +191,12 @@ uint32_t UART_IsTxSent(Uart  *uart){
     LocUart->UART_MR = (Uart_Chnn.Mode | Uart_Chnn.Parity | UartConfig -> ClkSrc);
     /* Configure baudrate*/
     LocUart->UART_BRGR = (BOARD_MCK/Baudrate) / 16;
-    /* COnfgure Interruptions */
-    // Uart_EnableInt(Channel, Uart_Chnn.IsrEn, 1);
+    
  }
 
+
+ /* COnfgure Interruptions */
+    // Uart_EnableInt(Channel, Uart_Chnn.IsrEn, 1);
 /*  The Uart_SetTxEnable function shall support runtime enable/disable of the Uart transmitter specified by the Enable parameter. */
 void Uart_SetTxEnable(uint8_t Channel, uint32_t Enable){
     Uart* LocUart;

@@ -6,10 +6,10 @@ Configuration of the UART (Uart driver) module
 #include <Uart_Cfg.h>
 #include <uart.h>
 #include <stdio.h>
+#include <serial_ctrl.h>
 
 void FnTxNotification(void){
     printf("Enviado \n\r");
-    //Uart_EnableInt(0, 2, 0);
 }
 
 void FnRxNotification(void){
@@ -24,11 +24,9 @@ void FnErrNotification(UartErrorType Error){
 
 // Configuracion
 const Uart_ChannnelType UartChannelCfg[]={
-    {
+    {    //0
         CFG_PHYCH_UART4,
-        //(CFG_INT_TXEMPTY | CFG_INT_TXRDY),
         (CFG_INT_RXRDY | CFG_INT_TXRDY),
-        // 0,
         (CNF_UART_MODE_NORMAL),
         CNF_PARITY_NO,
         115200,

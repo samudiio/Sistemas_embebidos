@@ -7,7 +7,7 @@
 #include <Tasks.h>    
 #include <stdbool.h>
 #include <stdio.h>
-#include <uart.h>
+#include <serial_ctrl.h>
 
 /** Other modules */
 #include     "compiler.h"
@@ -81,6 +81,8 @@ extern int main( void )
 	/* Enable I and D cache */
 	SCB_EnableICache();
     SCB_EnableDCache();
+    /* Configure UART */
+  
 
     /* Configure Leds */
 	_ConfigureLeds() ;
@@ -90,6 +92,7 @@ extern int main( void )
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
 	/* Configure UART */
+	//vfnSerialCtrl_Init();
 	Serial_Cnf();
 	printf("SAM V71 \n\r");
 	// uint8_t pTxBuffer[] = {"Hello World!!\n\r"};

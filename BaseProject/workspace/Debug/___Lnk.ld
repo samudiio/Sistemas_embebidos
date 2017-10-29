@@ -50,6 +50,7 @@ C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\serial_ctrl.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o)
 
