@@ -26,7 +26,7 @@ const Uart_ChannelConfigType ChannelConfig[] =
     /*Logical Channel 0*/
     {
         UartCfg_PhyCh_4,
-        CNF_UART_RXISREN,//(CNF_UART_TXISREN | CNF_UART_RXISREN),
+        (UART_CNF_TXISREN | UART_CNF_RXISREN),
         UartCfg_Mde_Normal,
         UartCfg_Par_NO,
         115200,
@@ -55,31 +55,3 @@ const Uart_ConfigType Uart_Config[] =
     }
 };
 
-/*
- * Brief: End of transmission notification
- * @Param in: None
- * @Param out: None
- * @Return type void
- */
-void vfnUART_TxComplete(void)
-{
-    /*do something*/
-}
-
-
-/*
- * Brief: Error notification
- */
-/*
- * Brief: Error notification
- * @Param in:
- *  None
- * @Param out:
- *  UartErrorType Error - Uart Error during transmission/reception
- * @Return type
- *  void
- */
-void vfnErrorNotification(uint8_t Error_Type)
-{
-    /*do something*/
-}

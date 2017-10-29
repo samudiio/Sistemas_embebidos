@@ -11,8 +11,8 @@
 /*-- Includes ----------------------------------------------------------------*/
 #include "Std_Types.h"
 
-#define CNF_UART_RXISREN    (0x1u << 0)
-#define CNF_UART_TXISREN    (0x1u << 1)
+#define UART_CNF_RXISREN        (0x1u << 0)
+#define UART_CNF_TXISREN        (0x1u << 1)
 
 #define UART_CFG_INT_DISABLED        0x00
 #define UART_CFG_INT_RXRDY           0x01

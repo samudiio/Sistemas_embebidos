@@ -95,8 +95,6 @@ typedef struct
 /*------------------------------------------------------------------------------
  *         Global Variables
  *----------------------------------------------------------------------------*/
-
-volatile uint8_t UartReceivedData = '-';
 const Uart_ConfigType *UartConfigPtr;
 const Uart_StatusType *UartStatusPtr;
 const Uart *UartArray[UART_MAX_CH] = {UART0, UART1, UART2, UART3, UART4};
@@ -169,49 +167,39 @@ void Uart_Isr(uint8_t Channel)
     uint8_t LogChannel;
     Uart *LocalUart;
     UartMasks Status = 0;
+    uint32_t IsrMask = 0;
 
     LogChannel = UartPhysicaltoLogicalCh[Channel];
 
     LocalUart = (Uart *)UartArray[Channel];
 
-    Uart_GetStatus(LogChannel, &Status);
-     
-    if (Status & UART_SR_RXRDY)
+    Status = LocalUart->UART_SR;
+    IsrMask = LocalUart->UART_IMR;
+
+    if ((Status & UART_MASK_RXRDY) && (IsrMask & UART_IMR_RXRDY))
     {
-        UartReceivedData = LocalUart->UART_RHR;
         if(UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->RxNotification != NULL)
         {
             UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->RxNotification();
         }
+    }else if ((Status & UART_MASK_TXRDY) && (IsrMask & UART_IMR_TXRDY)){
+        if(UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->TxNotification != NULL)
+        {
+            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->TxNotification();
+        }
+    }else if (UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->ErrorNotification != NULL){
+        if ((Status & UART_MASK_OVRE) && (IsrMask & UART_IMR_OVRE)){
+            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->ErrorNotification(UART_ERROR_OVERRUN);
+        }else if ((Status & UART_MASK_FRAME) && (IsrMask & UART_IMR_FRAME)){
+            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->ErrorNotification(UART_ERROR_FRAMING);
+        }else if ((Status & UART_MASK_PARE) && (IsrMask & UART_IMR_PARE)){
+            UartConfigPtr->PtrChannelConfig[LogChannel].CallbackFunctions->ErrorNotification(UART_ERROR_PARITY);
+        }
     }
-
-
-
-    /*Check Overrun, Framing and Parity Error in status register*/
-   //if (Status & (UART_SR_OVRE | UART_SR_FRAME | UART_SR_PARE)) {
-        /*Resets the status bits PARE, FRAME, CMP and OVRE in the UART_SR.*/
-    //    LocalUart->UART_CR = UART_CR_RSTSTA;
-    //    printf("Error \n\r");
-    //}
-
-
-#if COMPILAR
-    if ((Status & UART_SR_RXRDY) && (IsrMask & UART_IMR_RXRDY))
+    else
     {
-        printf("ISR Character received by uart = %c\n\r", LocalUart->UART_RHR);
-        /*Reset Receiver*/
-        LocalUart->UART_CR = UART_CR_RSTRX;
+        /*do nothing*/
     }
-
-    if (!(Status & UART_SR_TXRDY) && (IsrMask & UART_IMR_TXRDY))
-    {
-        LocalUart->UART_CR = UART_CR_RSTTX;
-        LocalUart->UART_THR = 'a';
-    }
-#endif
-
-    /*Last Received Character*/
-    //printf("%c", (char)LocalUart->UART_RHR);
 }
 
 /*------------------------------------------------------------------------------
@@ -266,13 +254,13 @@ void Uart_Init(const Uart_ConfigType *Config)
                            | (UartConfigPtr->BrSourceClk << UART_MR_BRSRCCK_Pos) \
                            | (Uart_LogChannel.Parity << UART_MR_PAR_Pos);
 
+        /* Configure Uart pins*/
+        PIO_Configure( &UartPinId[PhyChannel], PIO_LISTSIZE( UartPinId[PhyChannel] ) );
+
         if(UartConfigPtr->BrSourceClk == UartCfg_Clk_Peripheral)
         {
             /* Enable the peripheral clock in the PMC*/
             PMC_EnablePeripheral(UartPeriphId[PhyChannel]);
-
-            /* Configure Uart pins*/
-            PIO_Configure( &UartPinId[PhyChannel], PIO_LISTSIZE( UartPinId[PhyChannel] ) );
 
             /* Configure baudrate (BRSRCCK = 0)*/
             LocalUart->UART_BRGR = (BOARD_MCK / Uart_LogChannel.BaudRate) / 16;
@@ -291,9 +279,8 @@ void Uart_Init(const Uart_ConfigType *Config)
             } else {
               Pck = BOARD_MCK * (Mdiv_Val*2);
             }
-
             /* Configure baudrate (BRSRCCK = 1)*/
-            LocalUart->UART_BRGR = (Pck / Uart_LogChannel.BaudRate) / 16;
+            LocalUart->UART_BRGR = 81;//(Pck / Uart_LogChannel.BaudRate) / 16;
         }
         else
         {
@@ -360,17 +347,20 @@ void Uart_Init(const Uart_ConfigType *Config)
  */
 Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
 {
+    uint8_t TestMode;
     uint8_t PhyChannel;
     uint8_t Mdiv_Val;
     uint32_t Pck;
     Uart *LocalUart;
     Std_ReturnType RetVal = E_NOT_OK;
 
-    /*Stop UART transmision*/
-
     PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
     LocalUart = (Uart *)UartArray[PhyChannel];
 
+	/*Stop UART transmision*/
+    /* Reset and disable receiver & transmitter*/
+    LocalUart->UART_CR = UART_CR_RSTRX | UART_CR_RSTTX
+                       | UART_CR_RXDIS | UART_CR_TXDIS | UART_CR_RSTSTA;
 
     if(UartConfigPtr->BrSourceClk == UartCfg_Clk_Peripheral)
     {
@@ -404,6 +394,30 @@ Std_ReturnType Uart_SetBaudrate(uint8_t Channel, uint32_t Baudrate)
     }
 
     /*Restore UART transmision*/
+    /* Check interrupt configuration to enable/disable Tx or Rx */
+    TestMode = UartConfigPtr->PtrChannelConfig[Channel].TestMode;
+
+    switch(TestMode)
+    {
+        case UartCfg_Mde_Normal:
+        case UartCfg_Mde_Local_Loopback:
+            /*Enable Tx, Rx*/
+            Uart_SetTxEnable(Channel, ENABLE);
+            Uart_SetRxEnable(Channel, ENABLE);
+            break;
+        case UartCfg_Mde_Automatic_Echo:
+            /*Enable Rx, Disable Tx*/
+            Uart_SetRxEnable(Channel, ENABLE);
+            Uart_SetTxEnable(Channel, DISABLE);
+            break;
+        case UartCfg_Mde_Remote_Loopback:
+            /*Disable Tx, Rx*/
+            Uart_SetTxEnable(Channel, DISABLE);
+            Uart_SetRxEnable(Channel, DISABLE);
+            break;
+        default:
+            break;
+    }
 
     return RetVal;
 }
@@ -477,6 +491,8 @@ void Uart_SetRxEnable(uint8_t Channel, uint8_t Enable)
 Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
 {
     uint8_t PhyChannel;
+    uint8_t CharacterSent;
+    static uint8_t ByteSent = 0;
     Uart *LocalUart;
     Std_ReturnType RetVal = E_NOT_OK;
 
@@ -484,15 +500,15 @@ Std_ReturnType Uart_SendByte(uint8_t Channel, uint8_t Byte)
     LocalUart = (Uart *)UartArray[PhyChannel];
 
     /* Wait for the transmitter to be ready*/
-    while (!UART_IsRxReady(LocalUart) && !UART_IsTxSent(LocalUart));
+    while(!UART_IsTxReady(LocalUart) && !UART_IsTxSent(LocalUart));
 
     /* Send character*/
     LocalUart->UART_THR = Byte;
 
     /* Wait for the transfer to complete*/
     while (!UART_IsTxSent(LocalUart));
+    RetVal = E_OK;
 
-    //RetVal = E_OK;                                                    /*To do -   Check where to assign this variable*/
 
     return RetVal;
 }
@@ -515,11 +531,12 @@ Std_ReturnType Uart_SendBuffer(uint8_t Channel, uint8_t *Buffer, uint16_t Length
     Std_ReturnType RetVal = E_NOT_OK;
 
     for(Len =0; Len < Length; Len++ ) {
-        Uart_SendByte(Channel, *pData);
-        pData++;
+        RetVal = Uart_SendByte(Channel, *pData);
+        if(RetVal == E_OK)
+        {
+            pData++;
+        }
     }
-
-    //RetVal = E_OK;                                                    /*To do -   Check where to assign this variable*/
 
     return RetVal;
 }
@@ -538,25 +555,16 @@ void Uart_GetByte(uint8_t Channel, uint8_t *Byte)
 {
     uint8_t PhyChannel;
     Uart *LocalUart;
-    uint16_t IsrMask;
 
     PhyChannel = UartConfigPtr->PtrChannelConfig[Channel].ChannelId;
     LocalUart = (Uart *)UartArray[PhyChannel];
-    IsrMask = LocalUart->UART_IMR;
 
-    /*Is RXRDY interrupt enabled*/
-    if(IsrMask & UART_IMR_RXRDY)
+    if(!(UartConfigPtr->PtrChannelConfig[Channel].InterruptEnable & UART_CNF_RXISREN) && (UartConfigPtr->PtrChannelConfig[Channel].CallbackFunctions->RxNotification == NULL))
     {
-        *Byte = UartReceivedData;
+        while(!UART_IsRxReady(LocalUart));
     }
-    else
-    {
-        /*Read status register*/
-        while (!UART_IsRxReady(LocalUart));
-        *Byte = LocalUart->UART_RHR;
-    }
+    *Byte = LocalUart->UART_RHR;
 }
-
 
 /*
  * Brief: Reads and returns the current status of the addressed UART module
