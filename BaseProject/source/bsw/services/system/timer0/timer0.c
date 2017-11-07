@@ -1,11 +1,3 @@
-/*******************************************************************************/
-/**
-\file       timer0.c
-\author     Juan Campeche
-\version    0.1
-\date       11/09/2017
-*/
-
 /*-- Includes ----------------------------------------------------------------*/
 #include "timer0.h"
 #include "Afec_Ctrl.h"
@@ -24,7 +16,14 @@ void Timer0_Init(void)
     /** Configure TC for a 1Hz frequency and trigger on RC compare. */
     TC_FindMckDivisor(500, BOARD_MCK/2, &div, &tcclks, BOARD_MCK);
 
-    //Se configura para que TA active el ADC
+    //Se configura para que TIOA active el ADC
+	
+	/*
+	2<<13-->Wave mode selected
+	TC_CMR_ACPA_SET--> when Timer == RA => TIOA is set
+	TC_CMR_ACPC_CLEAR--> when Timer == RC => TIOA is Clear
+	*/
+	
     TC_Configure(TC0, 0, tcclks | TC_CMR_WAVE|2<<13|TC_CMR_ACPA_SET|TC_CMR_ACPC_CLEAR|TC_CMR_CPCTRG);//TC_CMR_WAVE - TC_CMR_CPCTRG
     TC0->TC_CHANNEL[0].TC_RC = (BOARD_MCK / div);
     TC0->TC_CHANNEL[0].TC_RA = (BOARD_MCK / div)-0xFF;
