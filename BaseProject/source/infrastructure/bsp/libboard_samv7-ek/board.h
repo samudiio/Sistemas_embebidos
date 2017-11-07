@@ -265,6 +265,8 @@
 /** LED #0 pin definition (YELLOW). */
 #define PIN_LED_1  {PIO_PC9, PIOC, ID_PIOC, PIO_OUTPUT_1, PIO_DEFAULT}
 
+
+
 /** List of all LEDs definitions. */
 #define PINS_LEDS  {PIN_LED_0, PIN_LED_1}
 
@@ -288,6 +290,9 @@
 #define PUSHBUTTON_BP0  0
 /** Push button #1 index. */
 #define PUSHBUTTON_BP1  1
+
+
+#define PIN_AFEC0_AD0  {PIO_PD30X1_AFE0_AD0, PIOD, ID_PIODA, PIO_INPUT,PIO_DEFAULT}   /******************************/
 
 /** PWMC PWM0 pin definition: Output High. */
 #define PIN_PWMC_PWMH0  {PIO_PD20A_PWMH0, PIOD, ID_PIOD, PIO_PERIPH_A, PIO_DEFAULT}
