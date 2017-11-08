@@ -92,7 +92,8 @@ extern int main( void )
 	for(;;)
 	{
 		__asm ( "nop" );
-		__asm volatile ("ldr r3,[pc, #int1]");
+		__asm volatile ("mov r0,r0");
+		//__asm volatile ("ldr r3,[pc, #int1]");
         // /* Float operations */
         // spf_result = spf_int1 - spf_int2;
         // spf_result1 = spf_int1 + spf_int2;

@@ -7328,8 +7328,8 @@ LOAD C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
  .data          0x20400000        0x4 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\system_sam.o
                 0x20400000                SystemCoreClock
  .data          0x20400004       0x38 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
-                0x20400004                spf_int1
-                0x20400008                spf_int2
+                0x20400004                int1
+                0x20400008                int2
                 0x2040000c                Tasks
  *fill*         0x2040003c        0x4 
  .data.impure_data
@@ -7736,7 +7736,7 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_str     0x00078e37       0xbe C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
                               0x76c87 (size before relaxing)
  .debug_str     0x00078ef5      0x14c C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
-                              0x76d3f (size before relaxing)
+                              0x76d49 (size before relaxing)
  .debug_str     0x00079041      0x60d C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
                               0x6e5fa (size before relaxing)
 
