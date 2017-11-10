@@ -9,6 +9,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#include "chip.h"
+
 /*----------------------------------------------------------------------------
  *        Local definitions
  *----------------------------------------------------------------------------*/
@@ -17,18 +19,19 @@
  *        Global variables
  *----------------------------------------------------------------------------*/
  
-float       spf_result;
-float       spf_result1;
-float       spf_result2;
-float       spf_int1 asm("int1") = 256;
-float       spf_int2 asm("int2") = 10;
-uint32_t    u32_result;
-uint32_t    u32_int1;
-uint32_t    u32_int2;
-int32_t     s32_result;
-int32_t     s32_int1;
-int32_t     s32_int2;
+float spf_result = 100;
+float spf_result1;
+float spf_result2;
+float spf_int1 = 256;
+float spf_int2 = 10;
+uint32_t u32_result;
+uint32_t u32_int1;
+uint32_t u32_int2;
+int32_t  s32_result;
+int32_t  s32_int1;
+int32_t  s32_int2;
 
+volatile uint32_t cyclesCount = 0;
 
 TaskType Tasks[]={
 /*  TaskPriority    TaskId   TaskFunctionPointer   */
@@ -53,6 +56,19 @@ static void _ConfigureLeds( void )
 {
 	LED_Configure( 0 ) ;
 	LED_Configure( 1 ) ;
+}
+
+static void _ResetCounter(void) { 
+	CoreDebug->DEMCR = CoreDebug_DEMCR_TRCENA_Msk;
+	__DSB(); 
+	DWT->LAR = 0xC5ACCE55; __DSB();
+	DWT->CTRL &= ~DWT_CTRL_CYCCNTENA_Msk;
+	DWT->CYCCNT = 0;
+	DWT->CTRL = DWT_CTRL_CYCCNTENA_Msk;
+}
+
+static uint32_t _GetCount(void){
+	return DWT->CYCCNT;
 }
 
 /*----------------------------------------------------------------------------
@@ -87,16 +103,44 @@ extern int main( void )
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
-
-	/*-- Loop through all the periodic tasks from Task Scheduler --*/
+  	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
+		/* Subtraction Operation */
+		//spf_result = spf_int1 - spf_int2;
+		
+		// _ResetCounter();
+		// cyclesCount = _GetCount();
 		__asm ( "nop" );
-		__asm volatile ("mov r0,r0");
-		//__asm volatile ("ldr r3,[pc, #int1]");
+		/* 29 Ticks */
+		// __asm volatile ("LDR  R3, =spf_int1");
+		// __asm volatile ("VLDR.32  s14, [R3]");
+		// __asm volatile ("LDR  R2, =spf_int2");
+		// __asm volatile ("VLDR.32  s15, [R2]");
+		// __asm volatile ("VSUB.F32  s15,s14,s15");
+    	// __asm volatile ("LDR  R4, =spf_result");
+		// __asm volatile ("VSTR.F32  s15,[R4]");
+
+
+		__asm volatile ("LDR  R2, =spf_int1");
+		__asm volatile ("LDR  R3, =spf_int2");
+    __asm volatile ("LDR  R4, =spf_result");
+		__asm volatile ("VLDMIA.F32 r0,{s2,s3}");
+		__asm volatile ("VSUB.F32  s15,s0,s1");
+		__asm volatile ("VSTR.F32  s15,[R4]");
+
+		// cyclesCount = _GetCount();
+		
+		printf("spf_int1 = %f\n\r", spf_int1);
+		printf("spf_int2 = %f\n\r", spf_int2);
+		printf("spf_result = %f\n\r", spf_result);
+		// _ResetCounter();
+		// cyclesCount = _GetCount();
+		// cyclesCount = _GetCount();
+		
+		
         // /* Float operations */
-        // spf_result = spf_int1 - spf_int2;
-        // spf_result1 = spf_int1 + spf_int2;
+        //spf_result1 = spf_int1 + spf_int2;
         // spf_result2  =   spf_result  * spf_result1;
         // spf_result = spf_int1 * spf_int2;
         // spf_result = spf_int1 / spf_int2;
@@ -118,11 +162,9 @@ extern int main( void )
 		// s32_result = s32_int1 + s32_int2;
 		// s32_result = s32_int1 * s32_int2;
 		// s32_result = s32_int1 / s32_int2;
-
-
-
+		
 		/* Perform all scheduled tasks */
 		vfnTask_Scheduler();
 	}
-
 }
+
