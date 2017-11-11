@@ -82,7 +82,7 @@ extern int main( void )
   //ptr_c = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
   //ptr_d = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
   
-  AFECDMA_Init(6,1);
+  AFECDMA_Init(6,1000000);
   //AFEC_Init();  
   //Timer0_Init();
   
