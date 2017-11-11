@@ -12,7 +12,7 @@
 #define TEST_CHANNEL 5
 #define CHANNEL_OFFSET 0x200
 
-void AFECDMA_Init(uint16_t Size,uint32_t SampPer);
+void SET_AFEC_SAMPLING(uint16_t Size,uint32_t SampPer,uint32_t *BuffAddr);
 
 void AFEC_Init(void);
 

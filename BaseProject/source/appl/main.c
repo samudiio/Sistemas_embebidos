@@ -14,6 +14,8 @@
  *        Local definitions
  *----------------------------------------------------------------------------*/
 
+
+
 TaskType Tasks[]={
 /*  TaskPriority    TaskId   TaskFunctionPointer   */
   {      5,        TASK_1MS,       vfnTsk_1ms    },
@@ -50,6 +52,10 @@ static void _ConfigureLeds( void )
  *
  *  \return Unused (ANSI-C compatibility).
  */
+uint32_t *BUFF_ADDR;
+uint16_t size = 6;
+uint32_t SAMP_PER = 1;
+
 extern int main( void )
 {
 
@@ -75,19 +81,9 @@ extern int main( void )
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
   
-  //printf( "size of uint8_t = %d.\n\r", sizeof(uint8_t));
+  BUFF_ADDR = (uint32_t *)Mem_Alloc(size*sizeof(uint32_t));
   
-  //ptr_a = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint8_t));  
-  //ptr_b = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint16_t));  
-  //ptr_c = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
-  //ptr_d = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
-  
-  AFECDMA_Init(6,1);
-  //AFEC_Init();  
-  //Timer0_Init();
-  
-  
-  
+  SET_AFEC_SAMPLING(size,SAMP_PER,BUFF_ADDR);      
 
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
