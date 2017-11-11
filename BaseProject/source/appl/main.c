@@ -14,6 +14,8 @@
  *        Local definitions
  *----------------------------------------------------------------------------*/
 
+
+
 TaskType Tasks[]={
 /*  TaskPriority    TaskId   TaskFunctionPointer   */
   {      5,        TASK_1MS,       vfnTsk_1ms    },
@@ -50,6 +52,10 @@ static void _ConfigureLeds( void )
  *
  *  \return Unused (ANSI-C compatibility).
  */
+uint32_t *BUFF_ADDR;
+uint16_t size = 6;
+uint32_t SAMP_PER = 1;
+
 extern int main( void )
 {
 
@@ -87,7 +93,9 @@ extern int main( void )
   //Timer0_Init();
   
   
+  BUFF_ADDR = (uint32_t *)Mem_Alloc(size*sizeof(uint32_t));
   
+  SET_AFEC_SAMPLING(size,SAMP_PER,BUFF_ADDR);      
 
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
