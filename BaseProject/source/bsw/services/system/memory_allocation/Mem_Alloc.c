@@ -37,7 +37,7 @@ Mem_ReturnType Mem_Alloc(Mem_SizeType ReqSize){
   my_MemHandler.freebytes = (my_memEnd - my_currAddr);
   printf( "\n\n\r");
   printf( "Free Bytes= %x.\n\r", my_MemHandler.freebytes );
-  printf( "Req Size= %x.\n\r", ReqSize );
+  printf( "Req Size= %d.\n\r", ReqSize );
   
   if( ReqSize < my_MemHandler.freebytes ){    
     my_MemHandler.oldAddr = my_MemHandler.currAddr;

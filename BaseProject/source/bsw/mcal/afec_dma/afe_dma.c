@@ -52,12 +52,15 @@
 
 #include "chip.h"
 #include "afe_dma.h"
+#include "afec.h"
 
 #include <stdint.h>
 #include <assert.h>
 
 /*  DMA driver instance */
 static uint32_t afeDmaRxChannel;
+LinkedListDescriporView2 lldv2_AFEC0;
+  
 
 /*----------------------------------------------------------------------------
  *        Local functions
@@ -131,43 +134,86 @@ static uint8_t _AfeConfigureDmaChannels( AfeDma* pAfed )
 static uint8_t _Afe_configureLinkList(Afec *pAfeHw, void *pXdmad, AfeCmd *pCommand)
 {
 	uint32_t xdmaCndc, xdmaInt;
-	sXdmadCfg xdmadRxCfg;
+	sXdmadCfg xdmadRxCfg;   //Estructura de la lista ligada sus elementos son casi los mismos elementos que el view3
 	uint32_t afeId;
+  uint8_t BLOCKSIZE = pCommand->RxSize;
+  
+  
 	if ((unsigned int)pAfeHw == (unsigned int)AFEC0 ) afeId = ID_AFEC0;
 	if ((unsigned int)pAfeHw == (unsigned int)AFEC1 ) afeId = ID_AFEC1;
-	/* Setup RX Link List */
-	xdmadRxCfg.mbr_ubc = XDMA_UBC_NVIEW_NDV0 |
-						 XDMA_UBC_NDE_FETCH_DIS|
+	
+/*Mio    */
+  
+  lldv2_AFEC0.mbr_ubc = 
+             XDMA_UBC_NVIEW_NDV2 | //Decide que descriptor view se va a usar
+						 XDMA_UBC_NDE_FETCH_EN |  //Se desactiva el siguiente descriptor _EN se activa el fetch al siguiente descriptor !!!
 						 XDMA_UBC_NDEN_UPDATED |
-						 pCommand->RxSize;
+             XDMA_UBC_NSEN_UPDATED |
+						 pCommand->RxSize;  //Number of data in the microblock -->>este valor si se cambia
 
-	xdmadRxCfg.mbr_da = (uint32_t)pCommand->pRxBuff;
-	xdmadRxCfg.mbr_sa = (uint32_t)&(pAfeHw->AFEC_LCDR);
-	xdmadRxCfg.mbr_cfg = XDMAC_CC_TYPE_PER_TRAN |
-						 XDMAC_CC_MBSIZE_SINGLE |
-						 XDMAC_CC_DSYNC_PER2MEM |
-						 XDMAC_CC_CSIZE_CHK_1 |
-						 XDMAC_CC_DWIDTH_WORD|
-						 XDMAC_CC_SIF_AHB_IF1 |
-						 XDMAC_CC_DIF_AHB_IF0 |
-						 XDMAC_CC_SAM_FIXED_AM |
-						 XDMAC_CC_DAM_INCREMENTED_AM |
+	lldv2_AFEC0.mbr_da = (uint32_t)pCommand->pRxBuff; //aqui se asigna la direccion del buffer
+	lldv2_AFEC0.mbr_sa = (uint32_t)&(pAfeHw->AFEC_LCDR); //Aqui la direccion del ultimo convertido
+	lldv2_AFEC0.mbr_cfg = 
+             XDMAC_CC_TYPE_PER_TRAN |            //Synchronized mode
+						 XDMAC_CC_MBSIZE_SINGLE |            //memory burst
+						 XDMAC_CC_DSYNC_PER2MEM |            //Peripheral-to-memory transfer
+						 XDMAC_CC_CSIZE_CHK_1 |              //Tamaño del chunk !!alta ver que es
+						 XDMAC_CC_DWIDTH_WORD|               //transferencia de 32bits 
+						 XDMAC_CC_SIF_AHB_IF1 |              //    data is read through
+						 XDMAC_CC_DIF_AHB_IF0 |              //    data is written through
+						 XDMAC_CC_SAM_FIXED_AM |             //SOURCE addresing mode --> EL SOURCE ADRESS NO CAMBIA
+						 XDMAC_CC_DAM_INCREMENTED_AM |       //XDMAC_CC_DAM_INCREMENTED_AMDESTINATION adressing mode -->> EL DESTINATION ADRESS SE VA A INCREMENTAR EN CADA TRANSFERENCIA
 						 XDMAC_CC_PERID(
-							XDMAIF_Get_ChannelNumber(  afeId, XDMAD_TRANSFER_RX ));
+						 XDMAIF_Get_ChannelNumber(  afeId, XDMAD_TRANSFER_RX )); //ID del periferico
+  
+  lldv2_AFEC0.mbr_nda = (uint32_t)&lldv2_AFEC0;
 
+  /* Setup RX Link List */
+	xdmadRxCfg.mbr_ubc = 
+             XDMA_UBC_NVIEW_NDV0 | //Decide que descriptor view se va a usar
+						 XDMA_UBC_NDE_FETCH_EN |  //Se desactiva el siguiente descriptor _EN se activa el fetch al siguiente descriptor !!!
+						 XDMA_UBC_NDEN_UPDATED |
+             XDMA_UBC_NSEN_UNCHANGED |
+						 pCommand->RxSize;  //Number of data in the microblock -->>este valor si se cambia
+
+	xdmadRxCfg.mbr_da = (uint32_t)pCommand->pRxBuff; //aqui se asigna la direccion del buffer
+	xdmadRxCfg.mbr_sa = (uint32_t)&(pAfeHw->AFEC_LCDR); //Aqui la direccion del ultimo convertido
+	
+  xdmadRxCfg.mbr_cfg = 
+             XDMAC_CC_TYPE_PER_TRAN |  //Synchronized mode
+						 XDMAC_CC_MBSIZE_SINGLE |            //memory burst
+						 XDMAC_CC_DSYNC_PER2MEM |            //Peripheral-to-memory transfer
+						 XDMAC_CC_CSIZE_CHK_1 |              //Tamaño del chunk !!alta ver que es
+						 XDMAC_CC_DWIDTH_WORD|               //transferencia de 32bits 
+						 XDMAC_CC_SIF_AHB_IF1 |               //    data is read through
+						 XDMAC_CC_DIF_AHB_IF0 |               //    data is written through
+						 XDMAC_CC_SAM_FIXED_AM |             //SOURCE addresing mode --> EL SOURCE ADRESS NO CAMBIA
+						 XDMAC_CC_DAM_INCREMENTED_AM |       //DESTINATION adressing mode -->> EL DESTINATION ADRESS SE VA A INCREMENTAR EN CADA TRANSFERENCIA
+						 XDMAC_CC_PERID(
+						 XDMAIF_Get_ChannelNumber(  afeId, XDMAD_TRANSFER_RX )); //ID del periferico
+           //Se esta usando un descriptor VIEW 2
 	xdmadRxCfg.mbr_bc = 0;
 	xdmadRxCfg.mbr_sus = 0;
 	xdmadRxCfg.mbr_dus =0;
 
-	xdmaInt =  (XDMAC_CIE_BIE   |
+	/*xdmaInt =  (XDMAC_CIE_BIE   |    //Este sirve para activar las interrupciones DE CANAL
 				XDMAC_CIE_DIE   |
 				XDMAC_CIE_FIE   |
 				XDMAC_CIE_RBIE  |
 				XDMAC_CIE_WBIE  |
 				XDMAC_CIE_ROIE);
-	xdmaCndc = 0;
+  */
+ // xdmaInt =  XDMAC_CIE_BIE  ;
+  xdmaInt = 0;
+  
+	xdmaCndc = XDMAC_CNDC_NDE_DSCR_FETCH_EN | 
+             XDMAC_CNDC_NDSUP_SRC_PARAMS_UPDATED | //XDMAC_CNDC_NDSUP_SRC_PARAMS_UNCHANGED 
+             XDMAC_CNDC_NDDUP_DST_PARAMS_UPDATED | 
+             XDMAC_CNDC_NDVIEW_NDV2  ;  //Tiene que describir perfectamente al siguiente descriptor
+  //xdmaCndc = 0;
+  
 	if (XDMAD_ConfigureTransfer( pXdmad, afeDmaRxChannel, 
-			&xdmadRxCfg, xdmaCndc, 0, xdmaInt))
+			&xdmadRxCfg, xdmaCndc, (uint32_t)&lldv2_AFEC0, xdmaInt))
 		return AFE_ERROR;
 	SCB_CleanInvalidateDCache();
 	return AFE_OK;
@@ -239,7 +285,7 @@ uint32_t Afe_SendData( AfeDma *pAfed, AfeCmd *pCommand)
 	if (_Afe_configureLinkList(pAfeHw, pAfed->pXdmad, pCommand))
 		return AFE_ERROR_LOCK;
 
-	AFEC_StartConversion(pAfeHw);
+	//AFEC_StartConversion(pAfeHw);
 	/* Start DMA 0(RX) */
 	SCB_CleanInvalidateDCache();
 	if (XDMAD_StartTransfer( pAfed->pXdmad, afeDmaRxChannel )) 

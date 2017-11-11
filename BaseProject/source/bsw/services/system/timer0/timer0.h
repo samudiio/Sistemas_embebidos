@@ -1,4 +1,10 @@
-
+/*******************************************************************************/
+/**
+\file       timer0.h
+\author     Juan Campeche
+\version    0.1
+\date       11/09/2017
+*/
 #ifndef _TIMER0_
 #define _TIMER0_
 
@@ -12,7 +18,7 @@
  *        Exported functions
  *----------------------------------------------------------------------------*/
 
-extern void Timer0_Init(void);
+extern void Timer0_Init(uint32_t);
 
 extern void Timer0_Start(void);
 
