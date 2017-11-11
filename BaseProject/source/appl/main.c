@@ -54,7 +54,7 @@ static void _ConfigureLeds( void )
  */
 uint32_t *BUFF_ADDR;
 uint16_t size = 6;
-uint32_t SAMP_PER = 1;
+uint32_t SAMP_PER = 1000000;
 
 extern int main( void )
 {
@@ -88,9 +88,7 @@ extern int main( void )
   //ptr_c = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
   //ptr_d = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
   
-  AFECDMA_Init(6,1000000);
-  //AFEC_Init();  
-  //Timer0_Init();
+ 	AFEC_Init();
   
   
   BUFF_ADDR = (uint32_t *)Mem_Alloc(size*sizeof(uint32_t));
