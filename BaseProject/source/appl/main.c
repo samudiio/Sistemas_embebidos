@@ -103,6 +103,7 @@ extern int main( void )
 	vfnScheduler_Init(&Tasks[0]);
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
+	printf( "SysTick_Value = %x\n\r", SysTick_GetVal() ) ;
   	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{

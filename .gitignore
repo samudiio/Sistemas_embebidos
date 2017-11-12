@@ -1,1 +1,4 @@
 *.o
+BaseProject/workspace/Progress.log
+BaseProject/workspace/Debug/BaseProject.map
+BaseProject/workspace/Debug/BaseProject.elf
