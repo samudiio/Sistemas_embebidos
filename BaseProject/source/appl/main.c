@@ -182,26 +182,26 @@ extern int main( void )
 		/* Float to int conversion operations */
 		__asm volatile ("LDR  R4, =spf_int1");
 		__asm volatile ("VLDR.32  s14, [R4]");
-		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("VCVTR.U32.F32  s13, S14");
 		__asm volatile ("LDR  R3, =u32_int1");
 		__asm volatile ("VSTR.F32  s13,[R3]");
 
 		__asm volatile ("LDR  R4, =spf_int2");
 		__asm volatile ("VLDR.32  s14, [R4]");
-		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("VCVTR.U32.F32  s13, S14");
 		__asm volatile ("LDR  R3, =u32_int2");
 		__asm volatile ("VSTR.F32  s13,[R3]");
 
 
 		__asm volatile ("LDR  R4, =spf_int1");
 		__asm volatile ("VLDR.32  s14, [R4]");
-		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("VCVTR.U32.F32  s13, S14");
 		__asm volatile ("LDR  R3, =s32_int1");
 		__asm volatile ("VSTR.F32  s13,[R3]");
 
 		__asm volatile ("LDR  R4, =spf_int2");
 		__asm volatile ("VLDR.32  s14, [R4]");
-		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("VCVTR.U32.F32  s13, S14");
 		__asm volatile ("LDR  R3, =s32_int2");
 		__asm volatile ("VSTR.F32  s13,[R3]");
 
