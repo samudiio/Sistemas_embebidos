@@ -8,6 +8,7 @@
 #include "fpu.h"   
 #include <stdbool.h>
 #include <stdio.h>
+#include "timetick.h"
 
 #include "chip.h"
 
@@ -19,7 +20,7 @@
  *        Global variables
  *----------------------------------------------------------------------------*/
  
-float spf_result = 100;
+float spf_result;
 float spf_result1;
 float spf_result2;
 float spf_int1 = 256;
@@ -92,10 +93,9 @@ extern int main( void )
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
-    SCB_EnableDCache();
+  SCB_EnableDCache();
     /* Enable Floating Point Unit */
-    vfnFpu_enable();
-	
+  vfnFpu_enable();
 	printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
   
@@ -106,53 +106,22 @@ extern int main( void )
   	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
-		/* Subtraction Operation */
-		//spf_result = spf_int1 - spf_int2;
-		
-		// _ResetCounter();
-		// cyclesCount = _GetCount();
 		__asm ( "nop" );
-		/* 29 Ticks */
-		// __asm volatile ("LDR  R3, =spf_int1");
-		// __asm volatile ("VLDR.32  s14, [R3]");
-		// __asm volatile ("LDR  R2, =spf_int2");
-		// __asm volatile ("VLDR.32  s15, [R2]");
-		// __asm volatile ("VSUB.F32  s15,s14,s15");
-    	// __asm volatile ("LDR  R4, =spf_result");
-		// __asm volatile ("VSTR.F32  s15,[R4]");
-
-
-		__asm volatile ("LDR  R2, =spf_int1");
-		__asm volatile ("LDR  R3, =spf_int2");
-    __asm volatile ("LDR  R4, =spf_result");
-		__asm volatile ("VLDMIA.F32 r0,{s2,s3}");
-		__asm volatile ("VSUB.F32  s15,s0,s1");
-		__asm volatile ("VSTR.F32  s15,[R4]");
-
-		// cyclesCount = _GetCount();
-		
-		printf("spf_int1 = %f\n\r", spf_int1);
-		printf("spf_int2 = %f\n\r", spf_int2);
-		printf("spf_result = %f\n\r", spf_result);
-		// _ResetCounter();
-		// cyclesCount = _GetCount();
-		// cyclesCount = _GetCount();
-		
-		
-        // /* Float operations */
-        //spf_result1 = spf_int1 + spf_int2;
-        // spf_result2  =   spf_result  * spf_result1;
-        // spf_result = spf_int1 * spf_int2;
-        // spf_result = spf_int1 / spf_int2;
-        // /* Float to int conversion operations */
-        // u32_int1 = spf_int1;
+		// /* Float operations */
+		// spf_result = spf_int1 - spf_int2;
+		// spf_result1 = spf_int1 + spf_int2;
+		// spf_result2  =   spf_result  * spf_result1;
+		// spf_result = spf_int1 * spf_int2;
+		// spf_result = spf_int1 / spf_int2;
+		// /* Float to int conversion operations */
+		// u32_int1 = spf_int1;
 		// u32_int2 = spf_int2;
-		
+
 		// s32_int1 = spf_int1;
 		// s32_int2 = spf_int2;
-        // /* Int to Float conversion operations */
-        // spf_result = u32_result;
-        // spf_result = s32_result;
+		// /* Int to Float conversion operations */
+		// spf_result = u32_result;
+		// spf_result = s32_result;
 		// /* Integer operations */
 		// u32_result = u32_int1 - u32_int2;
 		// u32_result = u32_int1 + u32_int2;
@@ -162,7 +131,93 @@ extern int main( void )
 		// s32_result = s32_int1 + s32_int2;
 		// s32_result = s32_int1 * s32_int2;
 		// s32_result = s32_int1 / s32_int2;
+
+
+		/* Subtraction Operation 55 */
+		__asm volatile ("LDR  R3, =spf_int1");
+		__asm volatile ("VLDR.32  s14, [R3]");
+		__asm volatile ("LDR  R2, =spf_int2");
+		__asm volatile ("VLDR.32  s15, [R2]");
+		__asm volatile ("VSUB.F32  s15,s14,s15");
+		__asm volatile ("LDR  R4, =spf_result");
+		__asm volatile ("VSTR.F32  s15,[R4]");
 		
+		/* Sum Operation */
+		__asm volatile ("LDR  R3, =spf_int1");
+		__asm volatile ("VLDR.32  s14, [R3]");
+		__asm volatile ("LDR  R2, =spf_int2");
+		__asm volatile ("VLDR.32  s15, [R2]");
+		__asm volatile ("VADD.F32  s15,s14,s15");
+		__asm volatile ("LDR  R4, =spf_result1");
+		__asm volatile ("VSTR.F32  s15,[R4]");
+    
+		/* Mult Operation */
+		__asm volatile ("LDR  R3, =spf_result");
+		__asm volatile ("VLDR.32  s14, [R3]");
+		__asm volatile ("LDR  R4, =spf_result1");
+		__asm volatile ("VLDR.32  s15, [R4]");
+		__asm volatile ("VMUL.F32  s15,s14,s15");
+		__asm volatile ("LDR  R2, =spf_result2");
+		__asm volatile ("VSTR.F32  s15,[R2]");
+
+		__asm volatile ("LDR  R3, =spf_int2");
+		__asm volatile ("VLDR.32  s14, [R3]");
+		__asm volatile ("LDR  R4, =spf_int1");
+		__asm volatile ("VLDR.32  s15, [R4]");
+		__asm volatile ("VMUL.F32  s15,s14,s15");
+		__asm volatile ("LDR  R2, =spf_result");
+		__asm volatile ("VSTR.F32  s15,[R2]");
+
+		/* Div Operation */
+		__asm volatile ("LDR  R3, =spf_int2");
+		__asm volatile ("VLDR.32  s14, [R3]");
+		__asm volatile ("LDR  R4, =spf_int1");
+		__asm volatile ("VLDR.32  s15, [R4]");
+		__asm volatile ("VDIV.F32  s15,s14,s15");
+		__asm volatile ("LDR  R2, =spf_result");
+		__asm volatile ("VSTR.F32  s15,[R2]");
+
+
+		/* Float to int conversion operations */
+		__asm volatile ("LDR  R4, =spf_int1");
+		__asm volatile ("VLDR.32  s14, [R4]");
+		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("LDR  R3, =u32_int1");
+		__asm volatile ("VSTR.F32  s13,[R3]");
+
+		__asm volatile ("LDR  R4, =spf_int2");
+		__asm volatile ("VLDR.32  s14, [R4]");
+		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("LDR  R3, =u32_int2");
+		__asm volatile ("VSTR.F32  s13,[R3]");
+
+
+		__asm volatile ("LDR  R4, =spf_int1");
+		__asm volatile ("VLDR.32  s14, [R4]");
+		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("LDR  R3, =s32_int1");
+		__asm volatile ("VSTR.F32  s13,[R3]");
+
+		__asm volatile ("LDR  R4, =spf_int2");
+		__asm volatile ("VLDR.32  s14, [R4]");
+		__asm volatile ("VCVTR.F32.S32  s13, S14");
+		__asm volatile ("LDR  R3, =s32_int2");
+		__asm volatile ("VSTR.F32  s13,[R3]");
+
+
+		// /* Int to Float conversion operations */
+		__asm volatile ("LDR  R4, =u32_result");
+		__asm volatile ("VLDR.32  s14, [R4]");
+		__asm volatile ("VCVT.F32.U32  s13, S14");
+		__asm volatile ("LDR  R3, =spf_result");
+		__asm volatile ("VSTR.F32  s13,[R3]");
+
+		__asm volatile ("LDR  R4, =u32_result");
+		__asm volatile ("VLDR.32  s14, [R4]");
+		__asm volatile ("VCVT.F32.S32 s13, S14");
+		__asm volatile ("LDR  R3, =spf_result");
+		__asm volatile ("VSTR.F32  s13,[R3]");
+
 		/* Perform all scheduled tasks */
 		vfnTask_Scheduler();
 	}
