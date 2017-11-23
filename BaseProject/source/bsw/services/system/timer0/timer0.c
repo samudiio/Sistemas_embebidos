@@ -28,7 +28,7 @@ void Timer0_Init(uint32_t SampPer)
     //Se configura para que TA active el ADC
     TC_Configure(TC0, 0, tcclks | TC_CMR_WAVE|2<<13|TC_CMR_ACPA_SET|TC_CMR_ACPC_CLEAR|TC_CMR_CPCTRG);//TC_CMR_WAVE - TC_CMR_CPCTRG
     TC0->TC_CHANNEL[0].TC_RC = (BOARD_MCK / div)/freq;
-    TC0->TC_CHANNEL[0].TC_RA = ((BOARD_MCK / div)/freq)-0xFF;
+    TC0->TC_CHANNEL[0].TC_RA = ((BOARD_MCK / div)/freq)-0x1;
 
     /* Configure and enable interrupt on RC compare */
     NVIC_ClearPendingIRQ(TC0_IRQn);

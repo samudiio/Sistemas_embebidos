@@ -8,7 +8,7 @@
 #include "afe_dma.h"
 
 
-#define AFE_CLK 2200000
+#define AFE_CLK 1150000000
 #define TEST_CHANNEL 5
 #define CHANNEL_OFFSET 0x200
 

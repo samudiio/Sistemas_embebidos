@@ -71,7 +71,7 @@ void AFEC_SoftwareConversion(void){ //Activacion por software
   while (!(AFEC_GetStatus(AFEC0) & AFEC_ISR_EOC5));
          
   voltage = ((AFEC_GetConvertedData(AFEC0,TEST_CHANNEL) & AFEC_LCDR_LDATA_Msk)) *3254/ 4096;
-  printf("CH 05 - Voltage = %04u (mV) \n\r" ,(unsigned int)voltage);
+  //printf("CH 05 - Voltage = %04u (mV) \n\r" ,(unsigned int)voltage);
     
 }
 
@@ -82,14 +82,14 @@ void AFEC0_Handler (void){
   uint32_t raw_voltage;
   raw_voltage = AFEC_GetConvertedData(AFEC0,TEST_CHANNEL);
   voltage = ((raw_voltage & AFEC_LCDR_LDATA_Msk)) *3254/ 4096;
-  printf("CH 05 - Voltage = %04u (mV) --> %#010x \n\r" ,(unsigned int)voltage,raw_voltage);  
+  //printf("CH 05 - Voltage = %04u (mV) --> %#010x \n\r" ,(unsigned int)voltage,raw_voltage);  
 }
 
 
 
 void XDMAC_Handler(void)
 {
-	          printf("Secuencia terminada");
+	          //printf("Secuencia terminada");
 }
 
 

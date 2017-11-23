@@ -53,8 +53,8 @@ static void _ConfigureLeds( void )
  *  \return Unused (ANSI-C compatibility).
  */
 uint32_t *BUFF_ADDR;
-uint16_t size = 6;
-uint32_t SAMP_PER = 1000000;
+uint16_t size = 2048;
+uint32_t SAMP_PER = 50;
 
 extern int main( void )
 {
