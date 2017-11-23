@@ -9,6 +9,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+/** Input Image */
+#include    "lena_image.h"
+
+
 /*----------------------------------------------------------------------------
  *        Local definitions
  *----------------------------------------------------------------------------*/
@@ -16,7 +20,26 @@
  /*----------------------------------------------------------------------------
  *        Global variables
  *----------------------------------------------------------------------------*/
- 
+
+/* Auxiliary variables */
+uint16_t i_index;
+uint16_t j_index;
+
+/* Averaging mask */
+float AvgMask2x2[2][2] =
+{
+    0.25, 0.25,
+    0.25, 0.25
+};
+
+/* Intermediate scaled up image - temporary pixel calculation */
+uint32_t Filtered2x2scaled; //__attribute__((section("four_byte_aligment")));
+/* Intermediate Mask in integer numbers to accelerate execution */
+uint32_t AvgMask2x2scaled[2][2];// __attribute__((section("four_byte_aligment")));
+/*Output filtered image */
+uint8_t Lena_Image_Filtered[IMAGE_ROWS][IMAGE_COLS];// __attribute__((section("four_byte_aligment")));
+
+
 float       spf_result;
 float       spf_result1;
 float       spf_result2;
@@ -88,36 +111,48 @@ extern int main( void )
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
 
+	/** Indication for measurement */
+	LED_Set(1);
+
+	/* Convert to integer and scale up correlation mask in order to avoid loosing resolution */
+    for (i_index = 0; i_index < 2; i_index++)
+    {
+        for (j_index = 0; j_index < 2; j_index++)
+        {     /* Mask to be scaled up by a factor of 2^16*/
+              AvgMask2x2scaled[i_index][j_index] = (uint32_t)(AvgMask2x2[i_index][j_index] * 0x00010000);
+        }
+    }
+    /* Perform correlation operation */
+    for (i_index = 0; i_index < IMAGE_ROWS-1; i_index++)
+    {
+        for (j_index = 0; j_index < IMAGE_COLS; j_index++)
+        {     /* For items on the first column */
+            if(j_index == 0)
+            {
+                Filtered2x2scaled =
+                    (uint32_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
+                    (uint32_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][1]);
+            }
+            else
+            {
+                Filtered2x2scaled =
+                    (uint32_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
+                    (uint32_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][0]) +
+                    (uint32_t)(Lena_Image[i_index+1][j_index-1] * AvgMask2x2scaled[1][1]) +
+                    (uint32_t)(Lena_Image[i_index][j_index-1] * AvgMask2x2scaled[0][1]);
+            }
+            /* Scale down result */
+            Lena_Image_Filtered[i_index][j_index] = (uint8_t)( Filtered2x2scaled >> 16);
+        }
+    }
+    /** End of indication for measurement */
+    LED_Clear(1);
+
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
-        __asm ( "nop" );
-        /* Float operations */
-        spf_result = spf_int1 - spf_int2;
-        spf_result1 = spf_int1 + spf_int2;
-        spf_result2  =   spf_result  * spf_result1;
-        spf_result = spf_int1 * spf_int2;
-        spf_result = spf_int1 / spf_int2;
-        /* Float to int conversion operations */
-        u32_int1 = spf_int1;
-		u32_int2 = spf_int2;
-		
-		s32_int1 = spf_int1;
-		s32_int2 = spf_int2;
-        /* Int to Float conversion operations */
-        spf_result = u32_result;
-        spf_result = s32_result;
-		/* Integer operations */
-		u32_result = u32_int1 - u32_int2;
-		u32_result = u32_int1 + u32_int2;
-		u32_result = u32_int1 * u32_int2;
-		u32_result = u32_int1 / u32_int2;
-		s32_result = s32_int1 - s32_int2;
-		s32_result = s32_int1 + s32_int2;
-		s32_result = s32_int1 * s32_int2;
-		s32_result = s32_int1 / s32_int2;
 		/* Perform all scheduled tasks */
-		vfnTask_Scheduler();
+		//vfnTask_Scheduler();
 	}
 
 }
