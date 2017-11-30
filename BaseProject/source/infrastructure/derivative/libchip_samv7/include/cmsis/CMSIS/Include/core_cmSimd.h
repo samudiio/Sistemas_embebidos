@@ -647,7 +647,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __SEL  (uint32_t op1
   return(result);
 }
 
-__attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __QADD(uint32_t op1, uint32_t op2)
+__attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __QADD(uint32_t op1, uint32_t op2) //used file
 {
   uint32_t result;
 

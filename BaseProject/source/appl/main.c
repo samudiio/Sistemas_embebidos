@@ -8,6 +8,7 @@
 #include "fpu.h"   
 #include <stdbool.h>
 #include <stdio.h>
+#include <arm_math.h>
 
 /** Input Image */
 #include    "lena_image.h"
@@ -32,13 +33,46 @@ float AvgMask2x2[2][2] =
     0.25, 0.25
 };
 
+/* Averaging mask */
+//const float32_t AvgMask2x2[4] =
+//{
+//  0.25,     0.25,
+//  0.25,     0.25,
+//};
+
+/* Averaging mask */
+float AvgMask2x2_original[2][2] =
+{
+    0.25, 0.25,
+    0.25, 0.25
+};
+
+
+/* Intermediate Mask in integer numbers to accelerate execution */
+float32_t AvgMask2x2scaled2[4];
+uint32_t Filtered2x2scaled2;
+
+/* Averaging mask */
+/*float AvgMask2x2[2][2] =
+{
+    0.25, 0.25,
+    0.25, 0.25
+};
+*/
+
+float a = 2;
+float b = 1;
+float c = 2;
+float d = 2;
+uint32_t e = 0;
+
 /* Intermediate scaled up image - temporary pixel calculation */
 uint32_t Filtered2x2scaled; //__attribute__((section("four_byte_aligment")));
 /* Intermediate Mask in integer numbers to accelerate execution */
 uint32_t AvgMask2x2scaled[2][2];// __attribute__((section("four_byte_aligment")));
 /*Output filtered image */
 uint8_t Lena_Image_Filtered[IMAGE_ROWS][IMAGE_COLS];// __attribute__((section("four_byte_aligment")));
-
+uint8_t Lena_Image_Filtered2[IMAGE_ROWS][IMAGE_COLS];
 
 float       spf_result;
 float       spf_result1;
@@ -88,14 +122,19 @@ static void _ConfigureLeds( void )
  */
 extern int main( void )
 {
+    uint8_t x = 5;
+    uint8_t y = 12;
+    uint8_t z;
+
+    volatile uint32_t ret;
+
+    arm_matrix_instance_f32 AvgMask;        /* AvgMask Matrix Instance */
+    arm_matrix_instance_f32 AvgMaskScaled;  /*AvgMaskScaled Matrix Instance */
+    uint32_t srcRows, srcColumns;  /* Temporary variables */
+    arm_status status;
 
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
-
-	/* Output example information */
-	printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	printf( "-- %s\n\r", BOARD_NAME ) ;
-	printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
 
 	/* Enable I and D cache */
 	SCB_EnableICache();
@@ -103,7 +142,6 @@ extern int main( void )
     /* Enable Floating Point Unit */
     vfnFpu_enable();
 	
-	printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
   
   	/* Initialize Task Scheduler */
@@ -111,17 +149,48 @@ extern int main( void )
 	/* Start execution of task scheduler */
 	vfnScheduler_Start();
 
+//	printf("AvgMask2x2 matrix: \n\r");
+//	printf("%0.02f  %0.02f \n\r", AvgMask2x2[0], AvgMask2x2[1]);
+//	printf("%0.02f  %0.02f \n\r", AvgMask2x2[2], AvgMask2x2[3]);
+
+	//z = x + y;
+	z = __SADD8(x, y);
+	printf("z = %d\n\r", z);
+
+	ret = __UQADD8(0x10111213, 0x01010101);
+    printf("ret = %d\n\r\n", ret);
+
+    /* Initialise A Matrix Instance with numRows, numCols and data array(A_f32) */
+//    srcRows = 2;
+//    srcColumns = 2;
+//    arm_mat_init_f32(&AvgMask, srcRows, srcColumns, (float32_t *)AvgMask2x2);
+//    arm_mat_init_f32(&AvgMaskScaled, srcRows, srcColumns, (float32_t *)AvgMask2x2scaled2);
+
+
+
 	/** Indication for measurement */
 	LED_Set(1);
 
-	/* Convert to integer and scale up correlation mask in order to avoid loosing resolution */
+    /* Scale up correlation mask in order to avoid loosing resolution */
+    /* Mask to be scaled up by a factor of 2^16*/
+//    status = arm_mat_scale_f32(&AvgMask, 0x00010000, &AvgMaskScaled);
+//
+//    printf("AvgMask2x2scaled2 matrix: \n\r");
+//    printf("%0.02f  %0.02f \n\r", AvgMask2x2scaled2[0], AvgMask2x2scaled2[1]);
+//    printf("%0.02f  %0.02f \n\r", AvgMask2x2scaled2[2], AvgMask2x2scaled2[3]);
+
+    /* Convert to integer and scale up correlation mask in order to avoid loosing resolution */
+	printf("AvgMask2x2scaled = \n\r");
     for (i_index = 0; i_index < 2; i_index++)
     {
         for (j_index = 0; j_index < 2; j_index++)
         {     /* Mask to be scaled up by a factor of 2^16*/
-              AvgMask2x2scaled[i_index][j_index] = (uint32_t)(AvgMask2x2[i_index][j_index] * 0x00010000);
+              //AvgMask2x2scaled[i_index][j_index] = (uint32_t)(AvgMask2x2[i_index][j_index] * 0x00010000);
+              AvgMask2x2scaled[i_index][j_index] = (int16_t)(AvgMask2x2[i_index][j_index] * 0xFFFF);
         }
     }
+    printf("%d  %d \n\r%d  %d", AvgMask2x2scaled[0][0], AvgMask2x2scaled[0][1], AvgMask2x2scaled[1][0], AvgMask2x2scaled[1][1]);
+
     /* Perform correlation operation */
     for (i_index = 0; i_index < IMAGE_ROWS-1; i_index++)
     {
@@ -130,21 +199,39 @@ extern int main( void )
             if(j_index == 0)
             {
                 Filtered2x2scaled =
-                    (uint32_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
-                    (uint32_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][1]);
+                    (int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
+                    (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][1]);
+
+//                Filtered2x2scaled2 =
+//                    (uint32_t)(Lena_Image[i_index][j_index] * (uint32_t)AvgMask2x2scaled2[0]) +
+//                    (uint32_t)(Lena_Image[i_index+1][j_index] * (uint32_t)AvgMask2x2scaled2[3]);
+
+
             }
             else
             {
                 Filtered2x2scaled =
-                    (uint32_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
-                    (uint32_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][0]) +
-                    (uint32_t)(Lena_Image[i_index+1][j_index-1] * AvgMask2x2scaled[1][1]) +
-                    (uint32_t)(Lena_Image[i_index][j_index-1] * AvgMask2x2scaled[0][1]);
+                    (int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
+                    (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][0]) +
+                    (int16_t)(Lena_Image[i_index+1][j_index-1] * AvgMask2x2scaled[1][1]) +
+                    (int16_t)(Lena_Image[i_index][j_index-1] * AvgMask2x2scaled[0][1]);
+
+//                Filtered2x2scaled2 =
+//                    (uint32_t)(Lena_Image[i_index][j_index] * (uint32_t)AvgMask2x2scaled2[0]) +
+//                    (uint32_t)(Lena_Image[i_index+1][j_index] * (uint32_t)AvgMask2x2scaled2[2]) +
+//                    (uint32_t)(Lena_Image[i_index+1][j_index-1] * (uint32_t)AvgMask2x2scaled2[3]) +
+//                    (uint32_t)(Lena_Image[i_index][j_index-1] * (uint32_t)AvgMask2x2scaled2[1]);
             }
             /* Scale down result */
             Lena_Image_Filtered[i_index][j_index] = (uint8_t)( Filtered2x2scaled >> 16);
+
+            //Lena_Image_Filtered2[i_index][j_index] = (uint8_t)( Filtered2x2scaled2 >> 16);
         }
     }
+
+
+
+
     /** End of indication for measurement */
     LED_Clear(1);
 

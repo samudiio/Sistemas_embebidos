@@ -283,7 +283,9 @@
 
 #define __CMSIS_GENERIC         /* disable NVIC and Systick functions */
 
-#if defined (ARM_MATH_CM4)
+#if defined(ARM_MATH_CM7)
+  #include "core_cm7.h"
+#elif defined (ARM_MATH_CM4)
 #include "core_cm4.h"
 #elif defined (ARM_MATH_CM3)
 #include "core_cm3.h"
@@ -294,8 +296,8 @@
 #include "core_cm0plus.h"
 #define ARM_MATH_CM0_FAMILY
 #else
-#include "ARMCM4.h"
-#warning "Define either ARM_MATH_CM4 OR ARM_MATH_CM3...By Default building on ARM_MATH_CM4....."
+  #include "core_cm7.h"
+  //#error "Define according the used Cortex core ARM_MATH_CM7, ARM_MATH_CM4, ARM_MATH_CM3, ARM_MATH_CM0PLUS or ARM_MATH_CM0"
 #endif
 
 #undef  __CMSIS_GENERIC         /* enable NVIC and Systick functions */
@@ -5942,7 +5944,7 @@ void arm_rfft_fast_f32(
 #if (__FPU_USED == 1) && defined ( __CC_ARM   )
       *pOut = __sqrtf(in);
 #else
-      *pOut = sqrtf(in);
+      //*pOut = sqrtf(in);
 #endif
 
       return (ARM_MATH_SUCCESS);
