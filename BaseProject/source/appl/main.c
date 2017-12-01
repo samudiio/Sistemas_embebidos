@@ -221,10 +221,11 @@ extern int main( void )
         {     /* For items on the first column */
             if(j_index == 0)
             {
-                /*Filtered2x2scaled =
+             /*   Filtered2x2scaled =
                     (int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]) +
                     (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][1]);
 */
+
               /*  A = ((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index]));
                 B = ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)(AvgMask2x2scaled[1][1]));
 
@@ -232,7 +233,6 @@ extern int main( void )
                 */
 
                 Filtered2x2scaled = __SMUAD(((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index])), ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)(AvgMask2x2scaled[1][1])));
-
 
                 //Filtered2x2scaled = __UADD16((int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]), (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][1]));
 
@@ -268,24 +268,27 @@ extern int main( void )
                     (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][0]) +
                     (int16_t)(Lena_Image[i_index+1][j_index-1] * AvgMask2x2scaled[1][1]) +
                     (int16_t)(Lena_Image[i_index][j_index-1] * AvgMask2x2scaled[0][1]);
-                */
+*/
                /* C = ((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index]));
                 D = ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)AvgMask2x2scaled[1][0]);
                 FilteredTemp1 = __SMUAD(C , D);
                 */
-           //    FilteredTemp1 = __SMUAD(((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index])) , ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)AvgMask2x2scaled[1][0]));
+               //FilteredTemp1 = __SMUAD(((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index])) , ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)AvgMask2x2scaled[1][0]));
 
                /* E = ((Lena_Image[i_index+1][j_index-1]) << 16 | (Lena_Image[i_index][j_index-1]));
                 F = ((uint16_t)(AvgMask2x2scaled[1][1]) << 16 | (uint16_t)(AvgMask2x2scaled[0][1]));
                 FilteredTemp2 = __SMUAD(E , F);
                 */
 
-           //     FilteredTemp2 = __SMUAD(((Lena_Image[i_index+1][j_index-1]) << 16 | (Lena_Image[i_index][j_index-1])) , ((uint16_t)(AvgMask2x2scaled[1][1]) << 16 | (uint16_t)(AvgMask2x2scaled[0][1])));
+            //    FilteredTemp2 = __SMUAD(((Lena_Image[i_index+1][j_index-1]) << 16 | (Lena_Image[i_index][j_index-1])) , ((uint16_t)(AvgMask2x2scaled[1][1]) << 16 | (uint16_t)(AvgMask2x2scaled[0][1])));
 
                 //Filtered2x2scaled = FilteredTemp1 + FilteredTemp2;
                 //Filtered2x2scaled = __UADD16(FilteredTemp1, FilteredTemp2);
-                Filtered2x2scaled = __UADD16(__SMUAD(((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index])) , ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)AvgMask2x2scaled[1][0])), \
+               /* Filtered2x2scaled = __UADD16(__SMUAD(((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index])) , ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)AvgMask2x2scaled[1][0])), \
                                              __SMUAD(((Lena_Image[i_index+1][j_index-1]) << 16 | (Lena_Image[i_index][j_index-1])) , ((uint16_t)(AvgMask2x2scaled[1][1]) << 16 | (uint16_t)(AvgMask2x2scaled[0][1]))) );
+*/
+                Filtered2x2scaled = __SMUAD(((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index])) , ((uint16_t)(AvgMask2x2scaled[0][0]) << 16 | (uint16_t)AvgMask2x2scaled[1][0]));
+                Filtered2x2scaled = __SMLAD(((Lena_Image[i_index+1][j_index-1]) << 16 | (Lena_Image[i_index][j_index-1])) , ((uint16_t)(AvgMask2x2scaled[1][1]) << 16 | (uint16_t)(AvgMask2x2scaled[0][1])) , Filtered2x2scaled);
 
 //                Filtered2x2scaled_t1 = __UADD16((int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[0][0]), (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[1][0]));
 //                Filtered2x2scaled_t2 = __UADD16((int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[1][1]), (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[0][1]));
