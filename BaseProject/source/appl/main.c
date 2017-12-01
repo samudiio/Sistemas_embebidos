@@ -185,7 +185,7 @@ extern int main( void )
 
 
 	/** Indication for measurement */
-	LED_Set(0);
+	LED_Set(1);
 
 	/* Initialise A Matrix Instance with numRows, numCols and data array(A_f32) */
     srcRows = 2;
@@ -198,9 +198,9 @@ extern int main( void )
     status = arm_mat_scale_f32(&AvgMask, 0x00000100, &AvgMaskScaled);
 
 
-    printf("AvgMask2x2scaled2 matrix: \n\r");
-    printf("%0.02f  %0.02f \n\r", AvgMask2x2scaled2[0], AvgMask2x2scaled2[1]);
-    printf("%0.02f  %0.02f \n\r", AvgMask2x2scaled2[2], AvgMask2x2scaled2[3]);
+//    printf("AvgMask2x2scaled2 matrix: \n\r");
+//    printf("%0.02f  %0.02f \n\r", AvgMask2x2scaled2[0], AvgMask2x2scaled2[1]);
+//    printf("%0.02f  %0.02f \n\r", AvgMask2x2scaled2[2], AvgMask2x2scaled2[3]);
 
     /* Convert to integer and scale up correlation mask in order to avoid loosing resolution */
 ////	printf("AvgMask2x2scaled = \n\r");
@@ -231,13 +231,13 @@ extern int main( void )
               /*  Filtered2x2scaled2 =
                     (uint16_t)(Lena_Image[i_index][j_index] * (uint16_t)AvgMask2x2scaled2[0]) +
                     (uint16_t)(Lena_Image[i_index+1][j_index] * (uint16_t)AvgMask2x2scaled2[3]);
-*/
-                A = ((Lena_Image[i_index][j_index]) << 16 | (uint16_t)(AvgMask2x2scaled2[0]));
-                B = ((Lena_Image[i_index+1][j_index]) << 16 | (uint16_t)(AvgMask2x2scaled2[3]));
-                Filtered2x2scaled2 = __SMUAD(A , B);
+                */
+                A = ((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index]));
+                B = ((uint16_t)(AvgMask2x2scaled2[0]) << 16 | (uint16_t)(AvgMask2x2scaled2[3]));
+                
+                Filtered2x2scaled2 = __SMUAD(A, B);
 
-
-/*            if(centi == 1)
+           /* if(centi == 1)
               {
                 centi = 5;
                 printf("A = %d\n\r", Lena_Image[i_index][j_index]);
@@ -246,8 +246,10 @@ extern int main( void )
                 printf("B = %0.02f\n\r", AvgMask2x2scaled2[3]);
 
                 printf("A or = %d\n\r", A);
+                printf("B or = %d\n\r", B);
+                printf("Filtered2x2scaled2 or = %d\n\r", Filtered2x2scaled2);
               }
-              */
+             */
             }
             else
             {
@@ -262,23 +264,21 @@ extern int main( void )
 //                Filtered2x2scaled_t2 = __UADD16((int16_t)(Lena_Image[i_index][j_index] * AvgMask2x2scaled[1][1]), (int16_t)(Lena_Image[i_index+1][j_index] * AvgMask2x2scaled[0][1]));
 //                Filtered2x2scaled = __UADD16(Filtered2x2scaled_t1, Filtered2x2scaled_t2);
 
-             /*   Filtered2x2scaled2 =
+/*                Filtered2x2scaled2 =
                     (uint16_t)(Lena_Image[i_index][j_index] * (uint16_t)AvgMask2x2scaled2[0]) +
                     (uint16_t)(Lena_Image[i_index+1][j_index] * (uint16_t)AvgMask2x2scaled2[2]) +
                     (uint16_t)(Lena_Image[i_index+1][j_index-1] * (uint16_t)AvgMask2x2scaled2[3]) +
                     (uint16_t)(Lena_Image[i_index][j_index-1] * (uint16_t)AvgMask2x2scaled2[1]);
 */
-
-                C = ((Lena_Image[i_index][j_index]) << 16 | (uint16_t)(AvgMask2x2scaled2[0]));
-                D = ((Lena_Image[i_index+1][j_index]) << 16 | (uint16_t)(AvgMask2x2scaled2[2]));
+                C = ((Lena_Image[i_index][j_index]) << 16 | (Lena_Image[i_index+1][j_index]));
+                D = ((uint16_t)(AvgMask2x2scaled2[0]) << 16 | (uint16_t)AvgMask2x2scaled2[2]);
                 FilteredTemp1 = __SMUAD(C , D);
 
-                E = ((Lena_Image[i_index+1][j_index-1]) << 16 | (uint16_t)(AvgMask2x2scaled2[3]));
-                F = ((Lena_Image[i_index][j_index-1]) << 16 | (uint16_t)(AvgMask2x2scaled2[1]));
+                E = ((Lena_Image[i_index+1][j_index-1]) << 16 | (Lena_Image[i_index][j_index-1]));
+                F = ((uint16_t)(AvgMask2x2scaled2[3]) << 16 | (uint16_t)(AvgMask2x2scaled2[1]));
                 FilteredTemp2 = __SMUAD(E , F);
 
                 Filtered2x2scaled2 = FilteredTemp1 + FilteredTemp2;
-
             }
             /* Scale down result */
             //Lena_Image_Filtered[i_index][j_index] = (uint8_t)( Filtered2x2scaled >> 8);
@@ -291,7 +291,7 @@ extern int main( void )
 
 
     /** End of indication for measurement */
-    LED_Clear(0);
+    LED_Clear(1);
 
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
