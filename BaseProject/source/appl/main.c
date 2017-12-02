@@ -10,8 +10,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 /**  Fast fourier transform */
-#include    "fft.h"
-#include    "ecg_data.h"
+#include "fft.h"
+#include "ecg_data.h"
 
 /*----------------------------------------------------------------------------
  *        Local definitions
