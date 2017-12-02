@@ -55,10 +55,9 @@
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>23</C>
-       <L>249</L>
+       <L>333</L>
        <P>..\source\appl\main.c</P>
-       <VL>233</VL>
+       <VL>207</VL>
       </PI.1>
       <PI.10>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -853,10 +852,10 @@
       </EditorHistoryFile.3>
      </Documents.0>
      <Progress>
-      <b>738</b>
-      <l>626</l>
-      <r>1294</r>
-      <t>291</t>
+      <b>873</b>
+      <l>3266</l>
+      <r>3934</r>
+      <t>426</t>
      </Progress>
      <Watches>
       <ActiveWatchPane>0</ActiveWatchPane>
@@ -1082,7 +1081,7 @@
          <TypeOfWnd>-1</TypeOfWnd>
          <DockRect.0>
           <AreHorz>1</AreHorz>
-          <Percent>448</Percent>
+          <Percent>1102</Percent>
           <Type>1</Type>
           <TypeOfWnd>-2</TypeOfWnd>
          </DockRect.0>
@@ -1094,7 +1093,7 @@
          </DockRect.1>
          <DockRect.2>
           <AreHorz>1</AreHorz>
-          <Percent>260</Percent>
+          <Percent>900</Percent>
           <Type>0</Type>
           <TypeOfWnd>-1</TypeOfWnd>
           <DockRect.0>
@@ -1136,19 +1135,19 @@
              <Width>0</Width>
             </Columns.0>
             <Columns.1>
-             <Pos type="D">38.8557806912991670</Pos>
+             <Pos type="D">27.8086763070077860</Pos>
              <Width>0</Width>
             </Columns.1>
             <Columns.2>
-             <Pos type="D">66.9845053635280150</Pos>
+             <Pos type="D">66.7408231368186900</Pos>
              <Width>0</Width>
             </Columns.2>
             <Columns.3>
-             <Pos type="D">71.2753277711561420</Pos>
+             <Pos type="D">71.0789766407119000</Pos>
              <Width>0</Width>
             </Columns.3>
             <Columns.4>
-             <Pos type="D">80.4529201430274130</Pos>
+             <Pos type="D">80.2002224694104630</Pos>
              <Width>0</Width>
             </Columns.4>
            </Data>
@@ -1257,36 +1256,10 @@
          <Condition></Condition>
          <Condition_Count>0</Condition_Count>
          <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::143</Name>
+         <Name>&quot;..\source\appl\main.c&quot;::311</Name>
         </__>
        </BP.0>
        <BP.1>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::227</Name>
-        </__>
-       </BP.1>
-       <BP.10>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::294</Name>
-        </__>
-       </BP.10>
-       <BP.11>
         <__>
          <ActionEnabled>False</ActionEnabled>
          <ActionScript></ActionScript>
@@ -1296,113 +1269,9 @@
          <Condition></Condition>
          <Condition_Count>0</Condition_Count>
          <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::299</Name>
+         <Name>&quot;..\source\appl\main.c&quot;::334</Name>
         </__>
-       </BP.11>
-       <BP.2>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::240</Name>
-        </__>
-       </BP.2>
-       <BP.3>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::238</Name>
-        </__>
-       </BP.3>
-       <BP.4>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::239</Name>
-        </__>
-       </BP.4>
-       <BP.5>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::243</Name>
-        </__>
-       </BP.5>
-       <BP.6>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::246</Name>
-        </__>
-       </BP.6>
-       <BP.7>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::254</Name>
-        </__>
-       </BP.7>
-       <BP.8>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::264</Name>
-        </__>
-       </BP.8>
-       <BP.9>
-        <__>
-         <ActionEnabled>False</ActionEnabled>
-         <ActionScript></ActionScript>
-         <ActionScriptParams></ActionScriptParams>
-         <ActionShow>False</ActionShow>
-         <Active>False</Active>
-         <Condition></Condition>
-         <Condition_Count>0</Condition_Count>
-         <ConditionEnabled>False</ConditionEnabled>
-         <Name>&quot;..\source\appl\main.c&quot;::293</Name>
-        </__>
-       </BP.9>
+       </BP.1>
       </Fetch>
      </Breakpoints>
      <CASETool>
@@ -1633,7 +1502,7 @@
       </Update>
       <WatchExport>
        <Expression>0</Expression>
-       <FileName>C:\Users\Samuel\Desktop\array result\otro.txt</FileName>
+       <FileName>C:\Users\Samuel\Desktop\array result\prueba_optim.txt</FileName>
        <Location>0</Location>
        <Type>0</Type>
        <Value>1</Value>
@@ -2179,6 +2048,12 @@
                 <Options>4</Options>
                </__>
               </Items.0>
+              <Items.1>
+               <__>
+                <Name>SYST_RVR SysTick Reload Value</Name>
+                <Options>0</Options>
+               </__>
+              </Items.1>
              </__>
             </Items.2>
            </__>
