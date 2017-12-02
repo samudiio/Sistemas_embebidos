@@ -68,7 +68,7 @@ float       fft_maxPower;
  *  \return Unused (ANSI-C compatibility).
  */
 uint32_t *BUFF_ADDR;
-uint16_t size = 2048;
+uint16_t size = 512;
 uint32_t SAMP_PER = 50;
 
 extern int main( void )
@@ -124,8 +124,8 @@ extern int main( void )
         /** Perform FFT on the input signal */
         fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
         
-        /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
-		printf("%5d  %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
+        // /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
+		// printf("%5d  %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
 		
 		/* Perform all scheduled tasks */    
 		vfnTask_Scheduler();
