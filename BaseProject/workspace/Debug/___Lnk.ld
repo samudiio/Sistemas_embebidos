@@ -30,6 +30,16 @@
 INPUT (C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\board_memories.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\arm_rfft_fast_f32.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\exceptions.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\pio.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\mpu.o 
@@ -54,6 +64,8 @@ C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\timer0.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\led.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o 
+C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\fpu.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\main.o 
 C:\WinOpen\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o)
 
