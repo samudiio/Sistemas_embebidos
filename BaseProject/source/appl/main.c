@@ -68,8 +68,9 @@ static void _ConfigureLeds( void )
  *  \return Unused (ANSI-C compatibility).
  */
 uint32_t *BUFF_ADDR;
-uint16_t size = 6;
-uint32_t SAMP_PER = 1000000;
+uint16_t size = 512;
+uint32_t SAMP_PER = 100;
+float ecg_resampled2[512];
 
 extern int main( void )
 {
@@ -112,6 +113,27 @@ extern int main( void )
   
   SET_AFEC_SAMPLING(size,SAMP_PER,BUFF_ADDR);      
 
+  uint16_t indx;
+  uint32_t *BuffAdd;
+  float factor;
+  float temp;
+  uint32_t *fft_SP_result = (uint32_t*) fft_signalPower;
+  float temp_res1;
+  float temp_res2;
+  float temp_res3;
+  float temp_res4;
+
+  uint8_t coef[4] = {5, 7, 4, 6};
+
+  BuffAdd = BUFF_ADDR;
+
+  for(indx = 0; indx < 512; indx++)
+  {
+      factor = 3.3/1024;
+      temp = *(BuffAdd + indx*4);
+      ecg_resampled2[indx] = temp*factor;
+  }
+
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
@@ -124,6 +146,21 @@ extern int main( void )
         /** Perform FFT on the input signal */
         fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
         
+
+        for(indx = 30; indx < 255; indx++)
+        {
+            temp_res1 = fft_signalPower[indx];
+            temp_res2 = fft_signalPower[indx-1];
+            temp_res3 = fft_signalPower[indx-2];
+            temp_res4 = fft_signalPower[indx-3];
+            temp_res2*=coef[indx];
+            temp_res3*=coef[indx+1];
+            temp_res4*=coef[indx+2];
+
+        }
+
+
+
         /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
 		printf("%5d  %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
 		

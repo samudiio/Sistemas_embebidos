@@ -56,11 +56,11 @@ void AFEC_Init(void){
   AFEC_SetAnalogOffset(AFEC0, TEST_CHANNEL, CHANNEL_OFFSET); 
   AFEC_SetExtModeReg(AFEC0,0| AFEC_EMR_RES(256)| AFEC_EMR_TAG |AFEC_EMR_STM );
                                   
-  NVIC_ClearPendingIRQ(AFEC0_IRQn);
+ /* NVIC_ClearPendingIRQ(AFEC0_IRQn);
   NVIC_EnableIRQ(AFEC0_IRQn);
   NVIC_SetPriority(AFEC0_IRQn ,3);                   
   AFEC_EnableIt(AFEC0,AFEC_IER_EOC5);
-
+   */
 }
 
 void AFEC_SoftwareConversion(void){ //Activacion por software
@@ -78,11 +78,12 @@ void AFEC_SoftwareConversion(void){ //Activacion por software
 
 
 void AFEC0_Handler (void){
-  uint32_t voltage;
+  /*uint32_t voltage;
   uint32_t raw_voltage;
   raw_voltage = AFEC_GetConvertedData(AFEC0,TEST_CHANNEL);
   voltage = ((raw_voltage & AFEC_LCDR_LDATA_Msk)) *3254/ 4096;
-  printf("CH 05 - Voltage = %04u (mV) --> %#010x \n\r" ,(unsigned int)voltage,raw_voltage);  
+  printf("CH 05 - Voltage = %04u (mV) --> %#010x \n\r" ,(unsigned int)voltage,raw_voltage);
+*/
 }
 
 

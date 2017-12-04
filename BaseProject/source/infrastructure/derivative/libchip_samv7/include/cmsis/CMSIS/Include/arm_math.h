@@ -5750,17 +5750,18 @@ void arm_rfft_fast_f32(
     if(in >= 0.0f)
     {
 
-//#if   (__FPU_USED == 1) && defined ( __CC_ARM   )
-//      *pOut = __sqrtf(in);
-//#elif (__FPU_USED == 1) && (defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
-//      *pOut = __builtin_sqrtf(in);
-//#elif (__FPU_USED == 1) && defined(__GNUC__)
-//      *pOut = __builtin_sqrtf(in);
-//#elif (__FPU_USED == 1) && defined ( __ICCARM__ ) && (__VER__ >= 6040000)
-//      __ASM("VSQRT.F32 %0,%1" : "=t"(*pOut) : "t"(in));
-//#else
-//      *pOut = sqrtf(in);
-//#endif
+#if   (__FPU_USED == 1) && defined ( __CC_ARM   )
+      *pOut = __sqrtf(in);
+#elif (__FPU_USED == 1) && (defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
+      *pOut = __builtin_sqrtf(in);
+#elif (__FPU_USED == 1) && defined(__GNUC__)
+      //*pOut = __builtin_sqrtf(in);
+      __ASM("VSQRT.F32 %0,%1" : "=t"(*pOut) : "t"(in));
+#elif (__FPU_USED == 1) && defined ( __ICCARM__ ) && (__VER__ >= 6040000)
+      __ASM("VSQRT.F32 %0,%1" : "=t"(*pOut) : "t"(in));
+#else
+      *pOut = sqrtf(in);
+#endif
 
       return (ARM_MATH_SUCCESS);
     }

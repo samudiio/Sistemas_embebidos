@@ -112,7 +112,9 @@
 /** __FPU_USED indicates whether an FPU is used or not.
     For this, __FPU_PRESENT has to be checked prior to making use of FPU specific registers and functions.
 */
+
 #if defined ( __CC_ARM )
+
   #if defined __TARGET_FPU_VFP
     #if (__FPU_PRESENT == 1)
       #define __FPU_USED       1
@@ -123,19 +125,24 @@
   #else
     #define __FPU_USED         0
   #endif
-
 #elif defined ( __GNUC__ )
   #if defined (__VFP_FP__) && !defined(__SOFTFP__)
     #if (__FPU_PRESENT == 1)
       #define __FPU_USED       1
     #else
-      #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
-      #define __FPU_USED       0
-    #endif
+      #define __FPU_PRESENT 1
+      #define __FPU_USED       1
+      //#warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)"
+      //#define __FPU_USED       0
+#endif
   #else
+#error "ALGO RARO 6"
     #define __FPU_USED         0
-  #endif
 
+  #endif
+#endif
+
+#if 0 //NO COMOILAR
 #elif defined ( __ICCARM__ )
   #if defined __ARMVFP__
     #if (__FPU_PRESENT == 1)
@@ -183,7 +190,8 @@
   #else
     #define __FPU_USED         0
   #endif
-#endif
+//#endif
+#endif //NOCOMPILAR
 
 #include <stdint.h>                      /* standard types definitions                      */
 #include <core_cmInstr.h>                /* Core Instruction Access                         */
@@ -205,7 +213,7 @@
   #endif
 
   #ifndef __FPU_PRESENT
-    #define __FPU_PRESENT             0
+    #define __FPU_PRESENT             1
     #warning "__FPU_PRESENT not defined in device header file; using default!"
   #endif
 
