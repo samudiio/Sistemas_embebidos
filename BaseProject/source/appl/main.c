@@ -41,6 +41,7 @@ TaskType Tasks[]={
   {      1,        TASK_100MS,     vfnTsk_100ms  }
 };
 
+extern float ecg_resampled[2048];
 
 Mem_ReturnType ptr_a,ptr_b,ptr_c,ptr_d;
 
@@ -145,7 +146,7 @@ extern int main( void )
         }
         /** Perform FFT on the input signal */
         fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
-        
+
 
         for(indx = 30; indx < 255; indx++)
         {
