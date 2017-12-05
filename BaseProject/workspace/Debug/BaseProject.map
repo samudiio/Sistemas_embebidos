@@ -8079,7 +8079,11 @@ Discarded input sections
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
- .bss           0x00000000        0x5 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .bss           0x00000000     0x1008 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .debug_macro   0x00000000      0x86e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .debug_macro   0x00000000       0x22 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .debug_macro   0x00000000       0x44 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
@@ -8232,6 +8236,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x1c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .debug_macro   0x00000000       0x16 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .debug_macro   0x00000000       0x52 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_macro   0x00000000       0x16 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
@@ -8471,6 +8476,7 @@ Discarded input sections
  .data          0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .bss           0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .debug_macro   0x00000000      0x86e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_macro   0x00000000       0x12 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .debug_macro   0x00000000       0x22 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .debug_macro   0x00000000       0x44 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .debug_macro   0x00000000       0xe3 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
@@ -8488,6 +8494,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x180 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .debug_macro   0x00000000      0x29d D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .debug_macro   0x00000000       0x35 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_macro   0x00000000       0xd6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_macro   0x00000000       0x7c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
@@ -8760,13 +8768,7 @@ Discarded input sections
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .text          0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .data          0x00000000     0x2000 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .bss           0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .debug_info    0x00000000       0xa2 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .debug_abbrev  0x00000000       0x4a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .debug_aranges
-                0x00000000       0x18 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .debug_macro   0x00000000      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .debug_macro   0x00000000      0x86e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .debug_macro   0x00000000       0x12 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .debug_macro   0x00000000       0x42 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
@@ -8789,11 +8791,6 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .debug_macro   0x00000000       0x35 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .debug_macro   0x00000000       0xd6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .debug_line    0x00000000      0x3d9 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .debug_str     0x00000000     0x60a9 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
- .ARM.attributes
-                0x00000000       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
  .group         0x00000000        0x8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
@@ -9258,7 +9255,7 @@ LOAD D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
                 0x00001000                HEAP_SIZE = DEFINED (HEAP_SIZE)?HEAP_SIZE:0x1000
                 0x00010000                MY_HEAP_SIZE = DEFINED (MY_HEAP_SIZE)?MY_HEAP_SIZE:0x10000
 
-.text           0x00400000    0x440f0
+.text           0x00400000    0x44020
                 0x00400000                . = ALIGN (0x4)
                 0x00400000                _sfixed = .
  *(.vectors .vectors.*)
@@ -9481,546 +9478,546 @@ LOAD D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
                 0x00405114                AFEC_SoftwareConversion
                 0x0040515c                AFEC0_Handler
                 0x00405168                XDMAC_Handler
- .text          0x00405178      0x2f4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .text          0x00405178      0x25c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
                 0x00405268                main
- .text          0x0040546c       0xe0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
-                0x004054ac                Reset_Handler
-                0x00405544                DebugMon_Handler
-                0x00405544                UART3_Handler
-                0x00405544                UART2_Handler
-                0x00405544                TRNG_Handler
-                0x00405544                TC2_Handler
-                0x00405544                AFEC1_Handler
-                0x00405544                PendSV_Handler
-                0x00405544                TC7_Handler
-                0x00405544                QSPI_Handler
-                0x00405544                ISI_Handler
-                0x00405544                TC9_Handler
-                0x00405544                RSWDT_Handler
-                0x00405544                MCAN1_Handler
-                0x00405544                USART0_Handler
-                0x00405544                RTT_Handler
-                0x00405544                USBHS_Handler
-                0x00405544                CCF_Handler
-                0x00405544                RTC_Handler
-                0x00405544                TC6_Handler
-                0x00405544                WDT_Handler
-                0x00405544                TC4_Handler
-                0x00405544                TC1_Handler
-                0x00405544                HSMCI_Handler
-                0x00405544                UART1_Handler
-                0x00405544                DACC_Handler
-                0x00405544                TC3_Handler
-                0x00405544                Dummy_Handler
-                0x00405544                TWIHS1_Handler
-                0x00405544                UART4_Handler
-                0x00405544                PWM1_Handler
-                0x00405544                USART1_Handler
-                0x00405544                PWM0_Handler
-                0x00405544                CCW_Handler
-                0x00405544                TC11_Handler
-                0x00405544                SSC_Handler
-                0x00405544                ACC_Handler
-                0x00405544                PMC_Handler
-                0x00405544                GMAC_Handler
-                0x00405544                SUPC_Handler
-                0x00405544                SVC_Handler
-                0x00405544                TC8_Handler
-                0x00405544                GMACQ2_Handler
-                0x00405544                EFC_Handler
-                0x00405544                USART2_Handler
-                0x00405544                SDRAMC_Handler
-                0x00405544                SPI1_Handler
-                0x00405544                MCAN0_Handler
-                0x00405544                TC10_Handler
-                0x00405544                TWIHS2_Handler
-                0x00405544                MLB_Handler
-                0x00405544                UART0_Handler
-                0x00405544                GMACQ1_Handler
-                0x00405544                MCAN1_Line1_Handler
-                0x00405544                FPU_Handler
-                0x00405544                RSTC_Handler
-                0x00405544                MCAN0_Line1_Handler
-                0x00405544                TC5_Handler
-                0x00405544                AES_Handler
-                0x00405544                ICM_Handler
-                0x00405544                TWIHS0_Handler
-                0x00405544                SPI0_Handler
- .text          0x0040554c     0x1008 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
-                0x0040554c                arm_radix8_butterfly_f32
- .text          0x00406554     0x11a0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
-                0x00406554                arm_cfft_radix8by2_f32
-                0x00406944                arm_cfft_radix8by4_f32
-                0x004075a8                arm_cfft_f32
- .text          0x004076f4      0x1c4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
-                0x00407738                arm_cmplx_mag_f32
- .text          0x004078b8      0x12c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
-                0x004078b8                arm_max_f32
- .text          0x004079e4       0xe0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
-                0x004079e4                fft
- .text          0x00407ac4       0xc0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
-                0x00407ac4                arm_bitreversal_32
-                0x00407b2e                arm_bitreversal_16
+ .text          0x004053d4       0xe0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+                0x00405414                Reset_Handler
+                0x004054ac                DebugMon_Handler
+                0x004054ac                UART3_Handler
+                0x004054ac                UART2_Handler
+                0x004054ac                TRNG_Handler
+                0x004054ac                TC2_Handler
+                0x004054ac                AFEC1_Handler
+                0x004054ac                PendSV_Handler
+                0x004054ac                TC7_Handler
+                0x004054ac                QSPI_Handler
+                0x004054ac                ISI_Handler
+                0x004054ac                TC9_Handler
+                0x004054ac                RSWDT_Handler
+                0x004054ac                MCAN1_Handler
+                0x004054ac                USART0_Handler
+                0x004054ac                RTT_Handler
+                0x004054ac                USBHS_Handler
+                0x004054ac                CCF_Handler
+                0x004054ac                RTC_Handler
+                0x004054ac                TC6_Handler
+                0x004054ac                WDT_Handler
+                0x004054ac                TC4_Handler
+                0x004054ac                TC1_Handler
+                0x004054ac                HSMCI_Handler
+                0x004054ac                UART1_Handler
+                0x004054ac                DACC_Handler
+                0x004054ac                TC3_Handler
+                0x004054ac                Dummy_Handler
+                0x004054ac                TWIHS1_Handler
+                0x004054ac                UART4_Handler
+                0x004054ac                PWM1_Handler
+                0x004054ac                USART1_Handler
+                0x004054ac                PWM0_Handler
+                0x004054ac                CCW_Handler
+                0x004054ac                TC11_Handler
+                0x004054ac                SSC_Handler
+                0x004054ac                ACC_Handler
+                0x004054ac                PMC_Handler
+                0x004054ac                GMAC_Handler
+                0x004054ac                SUPC_Handler
+                0x004054ac                SVC_Handler
+                0x004054ac                TC8_Handler
+                0x004054ac                GMACQ2_Handler
+                0x004054ac                EFC_Handler
+                0x004054ac                USART2_Handler
+                0x004054ac                SDRAMC_Handler
+                0x004054ac                SPI1_Handler
+                0x004054ac                MCAN0_Handler
+                0x004054ac                TC10_Handler
+                0x004054ac                TWIHS2_Handler
+                0x004054ac                MLB_Handler
+                0x004054ac                UART0_Handler
+                0x004054ac                GMACQ1_Handler
+                0x004054ac                MCAN1_Line1_Handler
+                0x004054ac                FPU_Handler
+                0x004054ac                RSTC_Handler
+                0x004054ac                MCAN0_Line1_Handler
+                0x004054ac                TC5_Handler
+                0x004054ac                AES_Handler
+                0x004054ac                ICM_Handler
+                0x004054ac                TWIHS0_Handler
+                0x004054ac                SPI0_Handler
+ .text          0x004054b4     0x1008 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
+                0x004054b4                arm_radix8_butterfly_f32
+ .text          0x004064bc     0x11a0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
+                0x004064bc                arm_cfft_radix8by2_f32
+                0x004068ac                arm_cfft_radix8by4_f32
+                0x00407510                arm_cfft_f32
+ .text          0x0040765c      0x1c4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+                0x004076a0                arm_cmplx_mag_f32
+ .text          0x00407820      0x12c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+                0x00407820                arm_max_f32
+ .text          0x0040794c       0xa8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+                0x0040794c                fft
+ .text          0x004079f4       0xc0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
+                0x004079f4                arm_bitreversal_32
+                0x00407a5e                arm_bitreversal_16
  .text.__assert_func
-                0x00407b84       0x3c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-assert.o)
-                0x00407b84                __assert_func
+                0x00407ab4       0x3c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-assert.o)
+                0x00407ab4                __assert_func
  .text.fiprintf
-                0x00407bc0       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fiprintf.o)
-                0x00407bc0                fiprintf
- .text.malloc   0x00407be8       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-malloc.o)
-                0x00407be8                malloc
+                0x00407af0       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fiprintf.o)
+                0x00407af0                fiprintf
+ .text.malloc   0x00407b18       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-malloc.o)
+                0x00407b18                malloc
  .text._malloc_r
-                0x00407bf8      0x558 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x00407bf8                _malloc_r
- .text          0x00408150      0x134 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memcpy.o)
-                0x00408150                memcpy
+                0x00407b28      0x558 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x00407b28                _malloc_r
+ .text          0x00408080      0x134 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memcpy.o)
+                0x00408080                memcpy
  .text.__malloc_lock
-                0x00408284        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mlock.o)
-                0x00408284                __malloc_lock
+                0x004081b4        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mlock.o)
+                0x004081b4                __malloc_lock
  .text.__malloc_unlock
-                0x00408288        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mlock.o)
-                0x00408288                __malloc_unlock
- .text.printf   0x0040828c       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-printf.o)
-                0x0040828c                printf
- .text.putchar  0x004082b4       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putchar.o)
-                0x004082b4                putchar
- .text._sbrk_r  0x004082c4       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-sbrkr.o)
-                0x004082c4                _sbrk_r
- .text.setvbuf  0x004082e8       0xfc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-setvbuf.o)
-                0x004082e8                setvbuf
+                0x004081b8        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mlock.o)
+                0x004081b8                __malloc_unlock
+ .text.printf   0x004081bc       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-printf.o)
+                0x004081bc                printf
+ .text.putchar  0x004081e4       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putchar.o)
+                0x004081e4                putchar
+ .text._sbrk_r  0x004081f4       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-sbrkr.o)
+                0x004081f4                _sbrk_r
+ .text.setvbuf  0x00408218       0xfc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-setvbuf.o)
+                0x00408218                setvbuf
  .text.__sprint_r.part.0
-                0x004083e4       0x78 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x00408314       0x78 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
  .text.__sprint_r
-                0x0040845c       0x18 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
-                0x0040845c                __sprint_r
+                0x0040838c       0x18 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x0040838c                __sprint_r
  .text._vfiprintf_r
-                0x00408474      0xbf4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
-                0x00408474                _vfiprintf_r
+                0x004083a4      0xbf4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x004083a4                _vfiprintf_r
  .text.__sbprintf
-                0x00409068       0x80 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x00408f98       0x80 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
  .text._vfprintf_r
-                0x004090e8     0x1554 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
-                0x004090e8                _vfprintf_r
+                0x00409018     0x1554 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
+                0x00409018                _vfprintf_r
  .text.__sbprintf
-                0x0040a63c       0x80 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
+                0x0040a56c       0x80 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
  .text.__swsetup_r
-                0x0040a6bc       0xc4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wsetup.o)
-                0x0040a6bc                __swsetup_r
- .text.abort    0x0040a780       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-abort.o)
-                0x0040a780                abort
- .text.quorem   0x0040a790      0x140 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
- .text._dtoa_r  0x0040a8d0      0xee8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
-                0x0040a8d0                _dtoa_r
+                0x0040a5ec       0xc4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wsetup.o)
+                0x0040a5ec                __swsetup_r
+ .text.abort    0x0040a6b0       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-abort.o)
+                0x0040a6b0                abort
+ .text.quorem   0x0040a6c0      0x140 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x0040a800      0xee8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
+                0x0040a800                _dtoa_r
  .text.__sflush_r
-                0x0040b7b8      0x148 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fflush.o)
-                0x0040b7b8                __sflush_r
+                0x0040b6e8      0x148 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fflush.o)
+                0x0040b6e8                __sflush_r
  .text._fflush_r
-                0x0040b900       0x2c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fflush.o)
-                0x0040b900                _fflush_r
+                0x0040b830       0x2c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fflush.o)
+                0x0040b830                _fflush_r
  .text._cleanup_r
-                0x0040b92c        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
-                0x0040b92c                _cleanup_r
+                0x0040b85c        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
+                0x0040b85c                _cleanup_r
  .text.__sinit.part.1
-                0x0040b938       0xfc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
- .text.__sinit  0x0040ba34        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
-                0x0040ba34                __sinit
+                0x0040b868       0xfc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
+ .text.__sinit  0x0040b964        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
+                0x0040b964                __sinit
  .text.__sfp_lock_acquire
-                0x0040ba40        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
-                0x0040ba40                __sfp_lock_acquire
+                0x0040b970        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
+                0x0040b970                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x0040ba44        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
-                0x0040ba44                __sfp_lock_release
+                0x0040b974        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
+                0x0040b974                __sfp_lock_release
  .text.__fputwc
-                0x0040ba48       0xb0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fputwc.o)
-                0x0040ba48                __fputwc
+                0x0040b978       0xb0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fputwc.o)
+                0x0040b978                __fputwc
  .text._fputwc_r
-                0x0040baf8       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fputwc.o)
-                0x0040baf8                _fputwc_r
+                0x0040ba28       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fputwc.o)
+                0x0040ba28                _fputwc_r
  .text._malloc_trim_r
-                0x0040bb1c       0x9c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-freer.o)
-                0x0040bb1c                _malloc_trim_r
- .text._free_r  0x0040bbb8      0x1b0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-freer.o)
-                0x0040bbb8                _free_r
+                0x0040ba4c       0x9c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-freer.o)
+                0x0040ba4c                _malloc_trim_r
+ .text._free_r  0x0040bae8      0x1b0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-freer.o)
+                0x0040bae8                _free_r
  .text.__sfvwrite_r
-                0x0040bd68      0x324 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fvwrite.o)
-                0x0040bd68                __sfvwrite_r
+                0x0040bc98      0x324 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fvwrite.o)
+                0x0040bc98                __sfvwrite_r
  .text._fwalk_reent
-                0x0040c08c       0x50 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fwalk.o)
-                0x0040c08c                _fwalk_reent
+                0x0040bfbc       0x50 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fwalk.o)
+                0x0040bfbc                _fwalk_reent
  .text.__locale_charset
-                0x0040c0dc        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
-                0x0040c0dc                __locale_charset
+                0x0040c00c        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x0040c00c                __locale_charset
  .text.__locale_mb_cur_max
-                0x0040c0e4        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
-                0x0040c0e4                __locale_mb_cur_max
+                0x0040c014        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x0040c014                __locale_mb_cur_max
  .text._localeconv_r
-                0x0040c0f0        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
-                0x0040c0f0                _localeconv_r
+                0x0040c020        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x0040c020                _localeconv_r
  .text.__smakebuf_r
-                0x0040c0f8       0xe4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-makebuf.o)
-                0x0040c0f8                __smakebuf_r
- .text.memchr   0x0040c1dc       0x90 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memchr.o)
-                0x0040c1dc                memchr
- .text.memmove  0x0040c26c       0xc4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memmove.o)
-                0x0040c26c                memmove
- .text.memset   0x0040c330       0xa0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memset.o)
-                0x0040c330                memset
- .text._Balloc  0x0040c3d0       0x50 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c3d0                _Balloc
- .text._Bfree   0x0040c420       0x14 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c420                _Bfree
+                0x0040c028       0xe4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-makebuf.o)
+                0x0040c028                __smakebuf_r
+ .text.memchr   0x0040c10c       0x90 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memchr.o)
+                0x0040c10c                memchr
+ .text.memmove  0x0040c19c       0xc4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memmove.o)
+                0x0040c19c                memmove
+ .text.memset   0x0040c260       0xa0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memset.o)
+                0x0040c260                memset
+ .text._Balloc  0x0040c300       0x50 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c300                _Balloc
+ .text._Bfree   0x0040c350       0x14 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c350                _Bfree
  .text.__multadd
-                0x0040c434       0x84 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c434                __multadd
+                0x0040c364       0x84 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c364                __multadd
  .text.__hi0bits
-                0x0040c4b8       0x44 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c4b8                __hi0bits
+                0x0040c3e8       0x44 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c3e8                __hi0bits
  .text.__lo0bits
-                0x0040c4fc       0x64 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c4fc                __lo0bits
- .text.__i2b    0x0040c560       0x14 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c560                __i2b
+                0x0040c42c       0x64 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c42c                __lo0bits
+ .text.__i2b    0x0040c490       0x14 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c490                __i2b
  .text.__multiply
-                0x0040c574      0x144 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c574                __multiply
+                0x0040c4a4      0x144 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c4a4                __multiply
  .text.__pow5mult
-                0x0040c6b8       0xa0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c6b8                __pow5mult
+                0x0040c5e8       0xa0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c5e8                __pow5mult
  .text.__lshift
-                0x0040c758       0xb4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c758                __lshift
- .text.__mcmp   0x0040c80c       0x48 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c80c                __mcmp
- .text.__mdiff  0x0040c854       0xe4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c854                __mdiff
- .text.__d2b    0x0040c938       0xb0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x0040c938                __d2b
- .text._putc_r  0x0040c9e8       0x58 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putc.o)
-                0x0040c9e8                _putc_r
+                0x0040c688       0xb4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c688                __lshift
+ .text.__mcmp   0x0040c73c       0x48 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c73c                __mcmp
+ .text.__mdiff  0x0040c784       0xe4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c784                __mdiff
+ .text.__d2b    0x0040c868       0xb0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x0040c868                __d2b
+ .text._putc_r  0x0040c918       0x58 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putc.o)
+                0x0040c918                _putc_r
  .text._realloc_r
-                0x0040ca40      0x3f0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reallocr.o)
-                0x0040ca40                _realloc_r
+                0x0040c970      0x3f0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reallocr.o)
+                0x0040c970                _realloc_r
  .text.__fpclassifyd
-                0x0040ce30       0x44 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-s_fpclassify.o)
-                0x0040ce30                __fpclassifyd
+                0x0040cd60       0x44 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-s_fpclassify.o)
+                0x0040cd60                __fpclassifyd
  .text._raise_r
-                0x0040ce74       0x58 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signal.o)
-                0x0040ce74                _raise_r
- .text.raise    0x0040cecc       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signal.o)
-                0x0040cecc                raise
- .text._kill_r  0x0040cedc       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signalr.o)
-                0x0040cedc                _kill_r
+                0x0040cda4       0x58 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signal.o)
+                0x0040cda4                _raise_r
+ .text.raise    0x0040cdfc       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signal.o)
+                0x0040cdfc                raise
+ .text._kill_r  0x0040ce0c       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signalr.o)
+                0x0040ce0c                _kill_r
  .text._getpid_r
-                0x0040cf04        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signalr.o)
-                0x0040cf04                _getpid_r
- .text.__sread  0x0040cf08       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
-                0x0040cf08                __sread
+                0x0040ce34        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signalr.o)
+                0x0040ce34                _getpid_r
+ .text.__sread  0x0040ce38       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
+                0x0040ce38                __sread
  .text.__swrite
-                0x0040cf2c       0x38 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
-                0x0040cf2c                __swrite
- .text.__sseek  0x0040cf64       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
-                0x0040cf64                __sseek
+                0x0040ce5c       0x38 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
+                0x0040ce5c                __swrite
+ .text.__sseek  0x0040ce94       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
+                0x0040ce94                __sseek
  .text.__sclose
-                0x0040cf88        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
-                0x0040cf88                __sclose
- .text.strlen   0x0040cf90       0x5c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-strlen.o)
-                0x0040cf90                strlen
+                0x0040ceb8        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
+                0x0040ceb8                __sclose
+ .text.strlen   0x0040cec0       0x5c d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-strlen.o)
+                0x0040cec0                strlen
  .text.__swbuf_r
-                0x0040cfec       0xa8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wbuf.o)
-                0x0040cfec                __swbuf_r
+                0x0040cf1c       0xa8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wbuf.o)
+                0x0040cf1c                __swbuf_r
  .text._wcrtomb_r
-                0x0040d094       0x54 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wcrtomb.o)
-                0x0040d094                _wcrtomb_r
+                0x0040cfc4       0x54 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wcrtomb.o)
+                0x0040cfc4                _wcrtomb_r
  .text.__ascii_wctomb
-                0x0040d0e8       0x18 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wctomb_r.o)
-                0x0040d0e8                __ascii_wctomb
+                0x0040d018       0x18 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wctomb_r.o)
+                0x0040d018                __ascii_wctomb
  .text._write_r
-                0x0040d100       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-writer.o)
-                0x0040d100                _write_r
+                0x0040d030       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-writer.o)
+                0x0040d030                _write_r
  .text._calloc_r
-                0x0040d128       0x60 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-callocr.o)
-                0x0040d128                _calloc_r
+                0x0040d058       0x60 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-callocr.o)
+                0x0040d058                _calloc_r
  .text._close_r
-                0x0040d188       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-closer.o)
-                0x0040d188                _close_r
+                0x0040d0b8       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-closer.o)
+                0x0040d0b8                _close_r
  .text._fclose_r
-                0x0040d1ac       0x84 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fclose.o)
-                0x0040d1ac                _fclose_r
+                0x0040d0dc       0x84 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fclose.o)
+                0x0040d0dc                _fclose_r
  .text._fstat_r
-                0x0040d230       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fstatr.o)
-                0x0040d230                _fstat_r
+                0x0040d160       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fstatr.o)
+                0x0040d160                _fstat_r
  .text._isatty_r
-                0x0040d258       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-isattyr.o)
-                0x0040d258                _isatty_r
+                0x0040d188       0x24 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-isattyr.o)
+                0x0040d188                _isatty_r
  .text._lseek_r
-                0x0040d27c       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-lseekr.o)
-                0x0040d27c                _lseek_r
- .text._read_r  0x0040d2a4       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-readr.o)
-                0x0040d2a4                _read_r
- .text          0x0040d2cc      0x370 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_addsubdf3.o)
-                0x0040d2cc                __aeabi_drsub
-                0x0040d2d4                __aeabi_dsub
-                0x0040d2d4                __subdf3
-                0x0040d2d8                __aeabi_dadd
-                0x0040d2d8                __adddf3
-                0x0040d550                __floatunsidf
-                0x0040d550                __aeabi_ui2d
-                0x0040d570                __floatsidf
-                0x0040d570                __aeabi_i2d
-                0x0040d594                __aeabi_f2d
-                0x0040d594                __extendsfdf2
-                0x0040d5d0                __floatundidf
-                0x0040d5d0                __aeabi_ul2d
-                0x0040d5e0                __floatdidf
-                0x0040d5e0                __aeabi_l2d
- .text          0x0040d63c      0x424 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_muldivdf3.o)
-                0x0040d63c                __aeabi_dmul
-                0x0040d63c                __muldf3
-                0x0040d890                __divdf3
-                0x0040d890                __aeabi_ddiv
- .text          0x0040da60      0x110 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_cmpdf2.o)
-                0x0040da60                __gtdf2
-                0x0040da60                __gedf2
-                0x0040da68                __ltdf2
-                0x0040da68                __ledf2
-                0x0040da70                __nedf2
-                0x0040da70                __eqdf2
-                0x0040da70                __cmpdf2
-                0x0040daec                __aeabi_cdrcmple
-                0x0040dafc                __aeabi_cdcmpeq
-                0x0040dafc                __aeabi_cdcmple
-                0x0040db0c                __aeabi_dcmpeq
-                0x0040db20                __aeabi_dcmplt
-                0x0040db34                __aeabi_dcmple
-                0x0040db48                __aeabi_dcmpge
-                0x0040db5c                __aeabi_dcmpgt
- .text          0x0040db70       0x50 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_fixdfsi.o)
-                0x0040db70                __aeabi_d2iz
-                0x0040db70                __fixdfsi
- .text          0x0040dbc0       0x30 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_aeabi_uldivmod.o)
-                0x0040dbc0                __aeabi_uldivmod
- .text          0x0040dbf0       0x60 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(bpabi.o)
-                0x0040dbf0                __gnu_ldivmod_helper
-                0x0040dc20                __gnu_uldivmod_helper
- .text          0x0040dc50        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_dvmd_tls.o)
-                0x0040dc50                __aeabi_idiv0
-                0x0040dc50                __aeabi_ldiv0
- .text          0x0040dc54      0x284 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_divdi3.o)
-                0x0040dc54                __divdi3
- .text          0x0040ded8      0x248 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_udivdi3.o)
-                0x0040ded8                __udivdi3
+                0x0040d1ac       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-lseekr.o)
+                0x0040d1ac                _lseek_r
+ .text._read_r  0x0040d1d4       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-readr.o)
+                0x0040d1d4                _read_r
+ .text          0x0040d1fc      0x370 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_addsubdf3.o)
+                0x0040d1fc                __aeabi_drsub
+                0x0040d204                __aeabi_dsub
+                0x0040d204                __subdf3
+                0x0040d208                __aeabi_dadd
+                0x0040d208                __adddf3
+                0x0040d480                __floatunsidf
+                0x0040d480                __aeabi_ui2d
+                0x0040d4a0                __floatsidf
+                0x0040d4a0                __aeabi_i2d
+                0x0040d4c4                __aeabi_f2d
+                0x0040d4c4                __extendsfdf2
+                0x0040d500                __floatundidf
+                0x0040d500                __aeabi_ul2d
+                0x0040d510                __floatdidf
+                0x0040d510                __aeabi_l2d
+ .text          0x0040d56c      0x424 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_muldivdf3.o)
+                0x0040d56c                __aeabi_dmul
+                0x0040d56c                __muldf3
+                0x0040d7c0                __divdf3
+                0x0040d7c0                __aeabi_ddiv
+ .text          0x0040d990      0x110 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_cmpdf2.o)
+                0x0040d990                __gtdf2
+                0x0040d990                __gedf2
+                0x0040d998                __ltdf2
+                0x0040d998                __ledf2
+                0x0040d9a0                __nedf2
+                0x0040d9a0                __eqdf2
+                0x0040d9a0                __cmpdf2
+                0x0040da1c                __aeabi_cdrcmple
+                0x0040da2c                __aeabi_cdcmpeq
+                0x0040da2c                __aeabi_cdcmple
+                0x0040da3c                __aeabi_dcmpeq
+                0x0040da50                __aeabi_dcmplt
+                0x0040da64                __aeabi_dcmple
+                0x0040da78                __aeabi_dcmpge
+                0x0040da8c                __aeabi_dcmpgt
+ .text          0x0040daa0       0x50 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_fixdfsi.o)
+                0x0040daa0                __aeabi_d2iz
+                0x0040daa0                __fixdfsi
+ .text          0x0040daf0       0x30 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_aeabi_uldivmod.o)
+                0x0040daf0                __aeabi_uldivmod
+ .text          0x0040db20       0x60 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(bpabi.o)
+                0x0040db20                __gnu_ldivmod_helper
+                0x0040db50                __gnu_uldivmod_helper
+ .text          0x0040db80        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_dvmd_tls.o)
+                0x0040db80                __aeabi_idiv0
+                0x0040db80                __aeabi_ldiv0
+ .text          0x0040db84      0x284 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_divdi3.o)
+                0x0040db84                __divdi3
+ .text          0x0040de08      0x248 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_udivdi3.o)
+                0x0040de08                __udivdi3
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x0040e120       0xf7 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
- *fill*         0x0040e217        0x1 
- .rodata        0x0040e218       0xa8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\pmc.o
- .rodata        0x0040e2c0       0xea D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o
- *fill*         0x0040e3aa        0x2 
- .rodata        0x0040e3ac       0xc0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\tc.o
- .rodata        0x0040e46c      0x21c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdma_hardware_interface.o
- .rodata        0x0040e688      0x3ff D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdmac.o
- *fill*         0x0040ea87        0x1 
- .rodata        0x0040ea88      0x1d7 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o
- *fill*         0x0040ec5f        0x1 
- .rodata        0x0040ec60       0xa9 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afec.o
- *fill*         0x0040ed09        0x3 
- .rodata        0x0040ed0c       0x19 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o
- *fill*         0x0040ed25        0x3 
- .rodata        0x0040ed28       0xba D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
- *fill*         0x0040ede2        0x2 
- .rodata        0x0040ede4       0x41 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
- *fill*         0x0040ee25        0x3 
- .rodata        0x0040ee28       0x1c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
- .rodata        0x0040ee44       0x33 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
- *fill*         0x0040ee77        0x1 
- .rodata        0x0040ee78       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
- .rodata        0x0040ee8c      0x1b0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
-                0x0040ee8c                arm_cfft_sR_f32_len16
-                0x0040ee9c                arm_cfft_sR_f32_len32
-                0x0040eeac                arm_cfft_sR_f32_len64
-                0x0040eebc                arm_cfft_sR_f32_len128
-                0x0040eecc                arm_cfft_sR_f32_len256
-                0x0040eedc                arm_cfft_sR_f32_len512
-                0x0040eeec                arm_cfft_sR_f32_len1024
-                0x0040eefc                arm_cfft_sR_f32_len2048
-                0x0040ef0c                arm_cfft_sR_f32_len4096
-                0x0040ef1c                arm_cfft_sR_q31_len16
-                0x0040ef2c                arm_cfft_sR_q31_len32
-                0x0040ef3c                arm_cfft_sR_q31_len64
-                0x0040ef4c                arm_cfft_sR_q31_len128
-                0x0040ef5c                arm_cfft_sR_q31_len256
-                0x0040ef6c                arm_cfft_sR_q31_len512
-                0x0040ef7c                arm_cfft_sR_q31_len1024
-                0x0040ef8c                arm_cfft_sR_q31_len2048
-                0x0040ef9c                arm_cfft_sR_q31_len4096
-                0x0040efac                arm_cfft_sR_q15_len16
-                0x0040efbc                arm_cfft_sR_q15_len32
-                0x0040efcc                arm_cfft_sR_q15_len64
-                0x0040efdc                arm_cfft_sR_q15_len128
-                0x0040efec                arm_cfft_sR_q15_len256
-                0x0040effc                arm_cfft_sR_q15_len512
-                0x0040f00c                arm_cfft_sR_q15_len1024
-                0x0040f01c                arm_cfft_sR_q15_len2048
-                0x0040f02c                arm_cfft_sR_q15_len4096
- .rodata        0x0040f03c    0x34eca D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
-                0x0040f03c                armBitRevTable
-                0x0040f83c                twiddleCoef_16
-                0x0040f8bc                twiddleCoef_32
-                0x0040f9bc                twiddleCoef_64
-                0x0040fbbc                twiddleCoef_128
-                0x0040ffbc                twiddleCoef_256
-                0x004107bc                twiddleCoef_512
-                0x004117bc                twiddleCoef_1024
-                0x004137bc                twiddleCoef_2048
-                0x004177bc                twiddleCoef_4096
-                0x0041f7bc                twiddleCoef_16_q31
-                0x0041f81c                twiddleCoef_32_q31
-                0x0041f8dc                twiddleCoef_64_q31
-                0x0041fa5c                twiddleCoef_128_q31
-                0x0041fd5c                twiddleCoef_256_q31
-                0x0042035c                twiddleCoef_512_q31
-                0x00420f5c                twiddleCoef_1024_q31
-                0x0042275c                twiddleCoef_2048_q31
-                0x0042575c                twiddleCoef_4096_q31
-                0x0042b75c                twiddleCoef_16_q15
-                0x0042b78c                twiddleCoef_32_q15
-                0x0042b7ec                twiddleCoef_64_q15
-                0x0042b8ac                twiddleCoef_128_q15
-                0x0042ba2c                twiddleCoef_256_q15
-                0x0042bd2c                twiddleCoef_512_q15
-                0x0042c32c                twiddleCoef_1024_q15
-                0x0042cf2c                twiddleCoef_2048_q15
-                0x0042e72c                twiddleCoef_4096_q15
-                0x0043172c                armRecipTableQ15
-                0x004317ac                armRecipTableQ31
-                0x004318ac                armBitRevIndexTable16
-                0x004318d4                armBitRevIndexTable32
-                0x00431934                armBitRevIndexTable64
-                0x004319a4                armBitRevIndexTable128
-                0x00431b44                armBitRevIndexTable256
-                0x00431eb4                armBitRevIndexTable512
-                0x00432234                armBitRevIndexTable1024
-                0x00433044                armBitRevIndexTable2048
-                0x00434e04                armBitRevIndexTable4096
-                0x00436d84                armBitRevIndexTable_fixed_16
-                0x00436d9c                armBitRevIndexTable_fixed_32
-                0x00436dcc                armBitRevIndexTable_fixed_64
-                0x00436e3c                armBitRevIndexTable_fixed_128
-                0x00436f1c                armBitRevIndexTable_fixed_256
-                0x004370fc                armBitRevIndexTable_fixed_512
-                0x004374bc                armBitRevIndexTable_fixed_1024
-                0x00437c7c                armBitRevIndexTable_fixed_2048
-                0x00438bfc                armBitRevIndexTable_fixed_4096
-                0x0043ab7c                twiddleCoef_rfft_32
-                0x0043abfc                twiddleCoef_rfft_64
-                0x0043acfc                twiddleCoef_rfft_128
-                0x0043aefc                twiddleCoef_rfft_256
-                0x0043b2fc                twiddleCoef_rfft_512
-                0x0043bafc                twiddleCoef_rfft_1024
-                0x0043cafc                twiddleCoef_rfft_2048
-                0x0043eafc                twiddleCoef_rfft_4096
-                0x00442afc                sinTable_f32
-                0x00443300                sinTable_q31
-                0x00443b04                sinTable_q15
- *fill*         0x00443f06        0x2 
+ .rodata        0x0040e050       0xf7 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
+ *fill*         0x0040e147        0x1 
+ .rodata        0x0040e148       0xa8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\pmc.o
+ .rodata        0x0040e1f0       0xea D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o
+ *fill*         0x0040e2da        0x2 
+ .rodata        0x0040e2dc       0xc0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\tc.o
+ .rodata        0x0040e39c      0x21c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdma_hardware_interface.o
+ .rodata        0x0040e5b8      0x3ff D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdmac.o
+ *fill*         0x0040e9b7        0x1 
+ .rodata        0x0040e9b8      0x1d7 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o
+ *fill*         0x0040eb8f        0x1 
+ .rodata        0x0040eb90       0xa9 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afec.o
+ *fill*         0x0040ec39        0x3 
+ .rodata        0x0040ec3c       0x19 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o
+ *fill*         0x0040ec55        0x3 
+ .rodata        0x0040ec58       0xba D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
+ *fill*         0x0040ed12        0x2 
+ .rodata        0x0040ed14       0x41 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
+ *fill*         0x0040ed55        0x3 
+ .rodata        0x0040ed58       0x1c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
+ .rodata        0x0040ed74       0x33 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
+ *fill*         0x0040eda7        0x1 
+ .rodata        0x0040eda8       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .rodata        0x0040edbc      0x1b0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+                0x0040edbc                arm_cfft_sR_f32_len16
+                0x0040edcc                arm_cfft_sR_f32_len32
+                0x0040eddc                arm_cfft_sR_f32_len64
+                0x0040edec                arm_cfft_sR_f32_len128
+                0x0040edfc                arm_cfft_sR_f32_len256
+                0x0040ee0c                arm_cfft_sR_f32_len512
+                0x0040ee1c                arm_cfft_sR_f32_len1024
+                0x0040ee2c                arm_cfft_sR_f32_len2048
+                0x0040ee3c                arm_cfft_sR_f32_len4096
+                0x0040ee4c                arm_cfft_sR_q31_len16
+                0x0040ee5c                arm_cfft_sR_q31_len32
+                0x0040ee6c                arm_cfft_sR_q31_len64
+                0x0040ee7c                arm_cfft_sR_q31_len128
+                0x0040ee8c                arm_cfft_sR_q31_len256
+                0x0040ee9c                arm_cfft_sR_q31_len512
+                0x0040eeac                arm_cfft_sR_q31_len1024
+                0x0040eebc                arm_cfft_sR_q31_len2048
+                0x0040eecc                arm_cfft_sR_q31_len4096
+                0x0040eedc                arm_cfft_sR_q15_len16
+                0x0040eeec                arm_cfft_sR_q15_len32
+                0x0040eefc                arm_cfft_sR_q15_len64
+                0x0040ef0c                arm_cfft_sR_q15_len128
+                0x0040ef1c                arm_cfft_sR_q15_len256
+                0x0040ef2c                arm_cfft_sR_q15_len512
+                0x0040ef3c                arm_cfft_sR_q15_len1024
+                0x0040ef4c                arm_cfft_sR_q15_len2048
+                0x0040ef5c                arm_cfft_sR_q15_len4096
+ .rodata        0x0040ef6c    0x34eca D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
+                0x0040ef6c                armBitRevTable
+                0x0040f76c                twiddleCoef_16
+                0x0040f7ec                twiddleCoef_32
+                0x0040f8ec                twiddleCoef_64
+                0x0040faec                twiddleCoef_128
+                0x0040feec                twiddleCoef_256
+                0x004106ec                twiddleCoef_512
+                0x004116ec                twiddleCoef_1024
+                0x004136ec                twiddleCoef_2048
+                0x004176ec                twiddleCoef_4096
+                0x0041f6ec                twiddleCoef_16_q31
+                0x0041f74c                twiddleCoef_32_q31
+                0x0041f80c                twiddleCoef_64_q31
+                0x0041f98c                twiddleCoef_128_q31
+                0x0041fc8c                twiddleCoef_256_q31
+                0x0042028c                twiddleCoef_512_q31
+                0x00420e8c                twiddleCoef_1024_q31
+                0x0042268c                twiddleCoef_2048_q31
+                0x0042568c                twiddleCoef_4096_q31
+                0x0042b68c                twiddleCoef_16_q15
+                0x0042b6bc                twiddleCoef_32_q15
+                0x0042b71c                twiddleCoef_64_q15
+                0x0042b7dc                twiddleCoef_128_q15
+                0x0042b95c                twiddleCoef_256_q15
+                0x0042bc5c                twiddleCoef_512_q15
+                0x0042c25c                twiddleCoef_1024_q15
+                0x0042ce5c                twiddleCoef_2048_q15
+                0x0042e65c                twiddleCoef_4096_q15
+                0x0043165c                armRecipTableQ15
+                0x004316dc                armRecipTableQ31
+                0x004317dc                armBitRevIndexTable16
+                0x00431804                armBitRevIndexTable32
+                0x00431864                armBitRevIndexTable64
+                0x004318d4                armBitRevIndexTable128
+                0x00431a74                armBitRevIndexTable256
+                0x00431de4                armBitRevIndexTable512
+                0x00432164                armBitRevIndexTable1024
+                0x00432f74                armBitRevIndexTable2048
+                0x00434d34                armBitRevIndexTable4096
+                0x00436cb4                armBitRevIndexTable_fixed_16
+                0x00436ccc                armBitRevIndexTable_fixed_32
+                0x00436cfc                armBitRevIndexTable_fixed_64
+                0x00436d6c                armBitRevIndexTable_fixed_128
+                0x00436e4c                armBitRevIndexTable_fixed_256
+                0x0043702c                armBitRevIndexTable_fixed_512
+                0x004373ec                armBitRevIndexTable_fixed_1024
+                0x00437bac                armBitRevIndexTable_fixed_2048
+                0x00438b2c                armBitRevIndexTable_fixed_4096
+                0x0043aaac                twiddleCoef_rfft_32
+                0x0043ab2c                twiddleCoef_rfft_64
+                0x0043ac2c                twiddleCoef_rfft_128
+                0x0043ae2c                twiddleCoef_rfft_256
+                0x0043b22c                twiddleCoef_rfft_512
+                0x0043ba2c                twiddleCoef_rfft_1024
+                0x0043ca2c                twiddleCoef_rfft_2048
+                0x0043ea2c                twiddleCoef_rfft_4096
+                0x00442a2c                sinTable_f32
+                0x00443230                sinTable_q31
+                0x00443a34                sinTable_q15
+ *fill*         0x00443e36        0x2 
  .rodata.str1.4
-                0x00443f08       0x3f d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-assert.o)
+                0x00443e38       0x3f d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-assert.o)
                                  0x43 (size before relaxing)
- *fill*         0x00443f47        0x1 
+ *fill*         0x00443e77        0x1 
  .rodata.str1.4
-                0x00443f48        0x2 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
- *fill*         0x00443f4a        0x2 
+                0x00443e78        0x2 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
+ *fill*         0x00443e7a        0x2 
  .rodata.zeroes.6869
-                0x00443f4c       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x00443e7c       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
  .rodata.str1.4
-                0x00443f5c       0x2f d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
- *fill*         0x00443f8b        0x1 
+                0x00443e8c       0x2f d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+ *fill*         0x00443ebb        0x1 
  .rodata.blanks.6868
-                0x00443f8c       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x00443ebc       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
  .rodata.zeroes.6926
-                0x00443f9c       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
+                0x00443ecc       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
  .rodata.str1.4
-                0x00443fac       0x12 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
+                0x00443edc       0x12 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
                                  0x42 (size before relaxing)
- *fill*         0x00443fbe        0x2 
+ *fill*         0x00443eee        0x2 
  .rodata.blanks.6925
-                0x00443fc0       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
+                0x00443ef0       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
  .rodata.str1.4
-                0x00443fd0       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
+                0x00443f00       0x10 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
                                  0x12 (size before relaxing)
  .rodata.str1.4
-                0x00443fe0        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x00443f10        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
                                  0x12 (size before relaxing)
- *fill*         0x00443fec        0x4 
+ *fill*         0x00443f1c        0x4 
  .rodata.__mprec_tens
-                0x00443ff0       0xc8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x00443ff0                __mprec_tens
+                0x00443f20       0xc8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x00443f20                __mprec_tens
  .rodata.p05.5302
-                0x004440b8        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
- *fill*         0x004440c4        0x4 
+                0x00443fe8        0xc d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+ *fill*         0x00443ff4        0x4 
  .rodata.__mprec_bigtens
-                0x004440c8       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
-                0x004440c8                __mprec_bigtens
+                0x00443ff8       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x00443ff8                __mprec_bigtens
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x004440f0                . = ALIGN (0x4)
+                0x00444020                . = ALIGN (0x4)
  *(.init)
-                0x004440f0                . = ALIGN (0x4)
-                0x004440f0                __preinit_array_start = .
+                0x00444020                . = ALIGN (0x4)
+                0x00444020                __preinit_array_start = .
  *(.preinit_array)
-                0x004440f0                __preinit_array_end = .
-                0x004440f0                . = ALIGN (0x4)
-                0x004440f0                __init_array_start = .
+                0x00444020                __preinit_array_end = .
+                0x00444020                . = ALIGN (0x4)
+                0x00444020                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
-                0x004440f0                __init_array_end = .
-                0x004440f0                . = ALIGN (0x4)
+                0x00444020                __init_array_end = .
+                0x00444020                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x004440f0                . = ALIGN (0x4)
+                0x00444020                . = ALIGN (0x4)
  *(.fini)
-                0x004440f0                . = ALIGN (0x4)
-                0x004440f0                __fini_array_start = .
+                0x00444020                . = ALIGN (0x4)
+                0x00444020                __fini_array_start = .
  *(.fini_array)
  *(SORT(.fini_array.*))
-                0x004440f0                __fini_array_end = .
+                0x00444020                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x004440f0                . = ALIGN (0x4)
-                0x004440f0                _efixed = .
-                0x004440f0                PROVIDE (__exidx_start, .)
+                0x00444020                . = ALIGN (0x4)
+                0x00444020                _efixed = .
+                0x00444020                PROVIDE (__exidx_start, .)
 
-.vfp11_veneer   0x004440f0        0x0
+.vfp11_veneer   0x00444020        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x004440f0        0x0
+.v4_bx          0x00444020        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x004440f0        0x0
+.iplt           0x00444020        0x0
  .iplt          0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
 
-.igot.plt       0x004440f0        0x0
+.igot.plt       0x00444020        0x0
  .igot.plt      0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
 
-.ARM.exidx      0x004440f0        0x8
+.ARM.exidx      0x00444020        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x004440f0        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_divdi3.o)
- .ARM.exidx     0x004440f8        0x0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x00444020        0x8 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x00444028        0x0 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x004440f8                PROVIDE (__exidx_end, .)
+                0x00444028                PROVIDE (__exidx_end, .)
 
-.rel.dyn        0x004440f8        0x0
+.rel.dyn        0x00444028        0x0
  .rel.iplt      0x00000000        0x0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
-                0x004440f8                . = ALIGN (0x4)
-                0x004440f8                _etext = .
+                0x00444028                . = ALIGN (0x4)
+                0x00444028                _etext = .
 
-.relocate       0x20400000     0x28dc load address 0x004440f8
+.relocate       0x20400000     0x48dc load address 0x00444028
                 0x20400000                . = ALIGN (0x4)
                 0x20400000                _srelocate = .
  *(.ramfunc .ramfunc.*)
@@ -10033,131 +10030,133 @@ LOAD D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
                 0x20402004                Tasks
                 0x20402034                size
                 0x20402038                SAMP_PER
- .data          0x2040203c        0x4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
-                0x2040203c                doBitReverse
+ .data          0x2040203c     0x2000 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
+                0x2040203c                testInput_f32_10khz
+ .data          0x2040403c        0x4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+                0x2040403c                doBitReverse
  .data.impure_data
-                0x20402040      0x428 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
+                0x20404040      0x428 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
  .data._impure_ptr
-                0x20402468        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
-                0x20402468                _impure_ptr
+                0x20404468        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
+                0x20404468                _impure_ptr
  .data.__malloc_av_
-                0x2040246c      0x408 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x2040246c                __malloc_av_
+                0x2040446c      0x408 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x2040446c                __malloc_av_
  .data.__malloc_trim_threshold
-                0x20402874        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x20402874                __malloc_trim_threshold
+                0x20404874        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x20404874                __malloc_trim_threshold
  .data.__malloc_sbrk_base
-                0x20402878        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x20402878                __malloc_sbrk_base
- .data.lconv    0x2040287c       0x38 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x20404878        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x20404878                __malloc_sbrk_base
+ .data.lconv    0x2040487c       0x38 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
  .data.lc_ctype_charset
-                0x204028b4       0x20 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x204048b4       0x20 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
  .data.__mb_cur_max
-                0x204028d4        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
-                0x204028d4                __mb_cur_max
+                0x204048d4        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x204048d4                __mb_cur_max
  .data.__wctomb
-                0x204028d8        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wctomb_r.o)
-                0x204028d8                __wctomb
-                0x204028dc                . = ALIGN (0x4)
-                0x204028dc                _erelocate = .
+                0x204048d8        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wctomb_r.o)
+                0x204048d8                __wctomb
+                0x204048dc                . = ALIGN (0x4)
+                0x204048dc                _erelocate = .
 
-.bss            0x204028dc     0x3b20 load address 0x004469d4
-                0x204028dc                . = ALIGN (0x4)
-                0x204028dc                _sbss = .
-                0x204028dc                _szero = .
+.bss            0x204048dc     0x3b20 load address 0x00448904
+                0x204048dc                . = ALIGN (0x4)
+                0x204048dc                _sbss = .
+                0x204048dc                _szero = .
  *(.bss .bss.*)
- .bss           0x204028dc        0x6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
- *fill*         0x204028e2        0x2 
- .bss           0x204028e4       0x44 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o
- .bss           0x20402928        0x6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o
- *fill*         0x2040292e        0x2 
- .bss           0x20402930        0xc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afec.o
- .bss           0x2040293c        0xc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afe_dma.o
- .bss           0x20402948        0xc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o
- .bss           0x20402954       0x18 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
- .bss           0x2040296c        0x3 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o
-                0x2040296c                u8100ms_Ctr
-                0x2040296d                u8100ms_Ctr2
- *fill*         0x2040296f        0x1 
- .bss           0x20402970        0x4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
-                0x20402970                ifftFlag
+ .bss           0x204048dc        0x6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
+ *fill*         0x204048e2        0x2 
+ .bss           0x204048e4       0x44 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\pio_it.o
+ .bss           0x20404928        0x6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\xdmad.o
+ *fill*         0x2040492e        0x2 
+ .bss           0x20404930        0xc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afec.o
+ .bss           0x2040493c        0xc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afe_dma.o
+ .bss           0x20404948        0xc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\syscalls.o
+ .bss           0x20404954       0x18 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
+ .bss           0x2040496c        0x3 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Tasks.o
+                0x2040496c                u8100ms_Ctr
+                0x2040496d                u8100ms_Ctr2
+ *fill*         0x2040496f        0x1 
+ .bss           0x20404970        0x4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+                0x20404970                ifftFlag
  .bss.__malloc_max_total_mem
-                0x20402974        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x20402974                __malloc_max_total_mem
+                0x20404974        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x20404974                __malloc_max_total_mem
  .bss.__malloc_max_sbrked_mem
-                0x20402978        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x20402978                __malloc_max_sbrked_mem
+                0x20404978        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x20404978                __malloc_max_sbrked_mem
  .bss.__malloc_top_pad
-                0x2040297c        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x2040297c                __malloc_top_pad
+                0x2040497c        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x2040497c                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x20402980       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
-                0x20402980                __malloc_current_mallinfo
+                0x20404980       0x28 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x20404980                __malloc_current_mallinfo
  *(COMMON)
- COMMON         0x204029a8       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afe_dma.o
-                0x204029a8                lldv2_AFEC0
- COMMON         0x204029bc       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
-                0x204029bc                gfunc_ptr
-                0x204029c0                DelayTimer
- COMMON         0x204029d0       0x3a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o
-                0x204029d0                u8_50ms_Counter
-                0x204029d4                task_ctrl_array
-                0x20402a04                gu8Scheduler_Status
-                0x20402a05                gu8Scheduler_Thread_ID_Backup
-                0x20402a06                u8_10ms_Counter
-                0x20402a07                u8_100ms_Counter
-                0x20402a08                gu8Scheduler_Counter
-                0x20402a09                gu8Scheduler_Thread_ID
- *fill*         0x20402a0a        0x2 
- COMMON         0x20402a0c       0x1c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
-                0x20402a0c                my_memEnd
-                0x20402a10                my_currAddr
-                0x20402a14                my_MemHandler
- COMMON         0x20402a28      0x1ae D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
-                0x20402a28                LOC_BUFF_ADDR
-                0x20402a2c                my_argument
-                0x20402a30                AfeDmaCfg
-                0x20402a40                MyAfec
-                0x20402a44                LOC_SAMP_PER
-                0x20402a48                my_sXdmad
-                0x20402bd4                LOC_SIZE
- *fill*         0x20402bd6        0x2 
- COMMON         0x20402bd8     0x381c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
-                0x20402bd8                ptr_c
-                0x20402bdc                fft_signalPower
-                0x20403bdc                ecg_resampled2
-                0x204043dc                u32fft_maxPowerIndex
-                0x204043e0                ptr_d
-                0x204043e4                ptr_b
-                0x204043e8                fft_inputData
-                0x204063e8                ptr_a
-                0x204063ec                fft_maxPower
-                0x204063f0                BUFF_ADDR
- COMMON         0x204063f4        0x4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
-                0x204063f4                scale_factor
- COMMON         0x204063f8        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reent.o)
-                0x204063f8                errno
-                0x204063fc                . = ALIGN (0x4)
-                0x204063fc                _ebss = .
-                0x204063fc                _ezero = .
+ COMMON         0x204049a8       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\afe_dma.o
+                0x204049a8                lldv2_AFEC0
+ COMMON         0x204049bc       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timetick.o
+                0x204049bc                gfunc_ptr
+                0x204049c0                DelayTimer
+ COMMON         0x204049d0       0x3a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\app_scheduler.o
+                0x204049d0                u8_50ms_Counter
+                0x204049d4                task_ctrl_array
+                0x20404a04                gu8Scheduler_Status
+                0x20404a05                gu8Scheduler_Thread_ID_Backup
+                0x20404a06                u8_10ms_Counter
+                0x20404a07                u8_100ms_Counter
+                0x20404a08                gu8Scheduler_Counter
+                0x20404a09                gu8Scheduler_Thread_ID
+ *fill*         0x20404a0a        0x2 
+ COMMON         0x20404a0c       0x1c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Mem_Alloc.o
+                0x20404a0c                my_memEnd
+                0x20404a10                my_currAddr
+                0x20404a14                my_MemHandler
+ COMMON         0x20404a28      0x1ae D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
+                0x20404a28                LOC_BUFF_ADDR
+                0x20404a2c                my_argument
+                0x20404a30                AfeDmaCfg
+                0x20404a40                MyAfec
+                0x20404a44                LOC_SAMP_PER
+                0x20404a48                my_sXdmad
+                0x20404bd4                LOC_SIZE
+ *fill*         0x20404bd6        0x2 
+ COMMON         0x20404bd8     0x381c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+                0x20404bd8                ptr_c
+                0x20404bdc                fft_signalPower
+                0x20405bdc                ecg_resampled2
+                0x204063dc                u32fft_maxPowerIndex
+                0x204063e0                ptr_d
+                0x204063e4                ptr_b
+                0x204063e8                fft_inputData
+                0x204083e8                ptr_a
+                0x204083ec                fft_maxPower
+                0x204083f0                BUFF_ADDR
+ COMMON         0x204083f4        0x4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+                0x204083f4                scale_factor
+ COMMON         0x204083f8        0x4 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reent.o)
+                0x204083f8                errno
+                0x204083fc                . = ALIGN (0x4)
+                0x204083fc                _ebss = .
+                0x204083fc                _ezero = .
 
-.stack          0x204063fc     0x2004 load address 0x0044a4f4
-                0x20406400                . = ALIGN (0x8)
- *fill*         0x204063fc        0x4 
-                0x20406400                _sstack = .
-                0x20408400                . = (. + STACK_SIZE)
- *fill*         0x20406400     0x2000 
+.stack          0x204083fc     0x2004 load address 0x0044c424
                 0x20408400                . = ALIGN (0x8)
-                0x20408400                _estack = .
+ *fill*         0x204083fc        0x4 
+                0x20408400                _sstack = .
+                0x2040a400                . = (. + STACK_SIZE)
+ *fill*         0x20408400     0x2000 
+                0x2040a400                . = ALIGN (0x8)
+                0x2040a400                _estack = .
 
-.heap           0x20408400     0x1000 load address 0x0044c4f8
-                0x20408400                . = ALIGN (0x8)
-                0x20408400                _sheap = .
-                0x20409400                . = (. + HEAP_SIZE)
- *fill*         0x20408400     0x1000 
-                0x20409400                . = ALIGN (0x8)
-                0x20409400                _eheap = .
-                0x20409400                . = ALIGN (0x4)
+.heap           0x2040a400     0x1000 load address 0x0044e428
+                0x2040a400                . = ALIGN (0x8)
+                0x2040a400                _sheap = .
+                0x2040b400                . = (. + HEAP_SIZE)
+ *fill*         0x2040a400     0x1000 
+                0x2040b400                . = ALIGN (0x8)
+                0x2040b400                _eheap = .
+                0x2040b400                . = ALIGN (0x4)
 
 .my_HEAP        0x20450000    0x10000
                 0x20450000                . = ALIGN (0x4)
@@ -10178,7 +10177,7 @@ LOAD d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/
 LOAD d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libm.a
 OUTPUT(BaseProject.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xf8b8
+.debug_info     0x00000000     0xf9b1
  .debug_info    0x00000000     0x14dc D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
  .debug_info    0x000014dc      0x4f5 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o
  .debug_info    0x000019d1      0x59c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\exceptions.o
@@ -10204,18 +10203,19 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_info    0x0000aa0a      0x9da D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timer0.o
  .debug_info    0x0000b3e4      0x6f3 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
  .debug_info    0x0000bad7      0x8d3 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
- .debug_info    0x0000c3aa      0x8ef D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
- .debug_info    0x0000cc99      0x9c8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
- .debug_info    0x0000d661      0x961 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_info    0x0000dfc2      0x436 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
- .debug_info    0x0000e3f8      0x520 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
- .debug_info    0x0000e918      0x95b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
- .debug_info    0x0000f273      0x18e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
- .debug_info    0x0000f401      0x158 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
- .debug_info    0x0000f559      0x20e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
- .debug_info    0x0000f767      0x151 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
+ .debug_info    0x0000c3aa      0x949 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_info    0x0000ccf3      0x9c8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+ .debug_info    0x0000d6bb      0x961 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_info    0x0000e01c      0x436 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
+ .debug_info    0x0000e452      0x520 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
+ .debug_info    0x0000e972      0x95b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
+ .debug_info    0x0000f2cd      0x18e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+ .debug_info    0x0000f45b       0xa2 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
+ .debug_info    0x0000f4fd      0x158 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+ .debug_info    0x0000f655      0x20b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+ .debug_info    0x0000f860      0x151 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
 
-.debug_abbrev   0x00000000     0x2dff
+.debug_abbrev   0x00000000     0x2e74
  .debug_abbrev  0x00000000      0x26e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
  .debug_abbrev  0x0000026e      0x12f D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o
  .debug_abbrev  0x0000039d      0x152 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\exceptions.o
@@ -10241,18 +10241,19 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_abbrev  0x000020c1      0x1ba D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timer0.o
  .debug_abbrev  0x0000227b      0x113 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
  .debug_abbrev  0x0000238e      0x19b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
- .debug_abbrev  0x00002529      0x216 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
- .debug_abbrev  0x0000273f      0x1a0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
- .debug_abbrev  0x000028df       0xaa D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_abbrev  0x00002989       0x8b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
- .debug_abbrev  0x00002a14      0x120 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
- .debug_abbrev  0x00002b34       0x85 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
- .debug_abbrev  0x00002bb9       0xd2 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
- .debug_abbrev  0x00002c8b       0x95 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
- .debug_abbrev  0x00002d20       0xcb D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
- .debug_abbrev  0x00002deb       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
+ .debug_abbrev  0x00002529      0x234 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_abbrev  0x0000275d      0x1a0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+ .debug_abbrev  0x000028fd       0xaa D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_abbrev  0x000029a7       0x8b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
+ .debug_abbrev  0x00002a32      0x120 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
+ .debug_abbrev  0x00002b52       0x85 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
+ .debug_abbrev  0x00002bd7       0xd2 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+ .debug_abbrev  0x00002ca9       0x4a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
+ .debug_abbrev  0x00002cf3       0x95 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+ .debug_abbrev  0x00002d88       0xd8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+ .debug_abbrev  0x00002e60       0x14 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
 
-.debug_aranges  0x00000000      0x448
+.debug_aranges  0x00000000      0x460
  .debug_aranges
                 0x00000000       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
  .debug_aranges
@@ -10318,13 +10319,15 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_aranges
                 0x000003c8       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
  .debug_aranges
-                0x000003e8       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+                0x000003e8       0x18 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .debug_aranges
-                0x00000408       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+                0x00000400       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
  .debug_aranges
-                0x00000428       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
+                0x00000420       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+ .debug_aranges
+                0x00000440       0x20 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
 
-.debug_macro    0x00000000    0x21b29
+.debug_macro    0x00000000    0x21ccb
  .debug_macro   0x00000000      0x737 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
  .debug_macro   0x00000737      0x86e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
  .debug_macro   0x00000fa5       0x22 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
@@ -10506,22 +10509,23 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_macro   0x0001f614       0x16 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timer0.o
  .debug_macro   0x0001f62a      0x701 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
  .debug_macro   0x0001fd2b      0x735 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
- .debug_macro   0x00020460      0x78a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
- .debug_macro   0x00020bea      0x448 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
- .debug_macro   0x00021032      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_macro   0x0002118c       0x12 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_macro   0x0002119e       0x42 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_macro   0x000211e0       0x10 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_macro   0x000211f0       0xd6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_macro   0x000212c6       0x7c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_macro   0x00021342      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
- .debug_macro   0x00021489      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
- .debug_macro   0x000215e3      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
- .debug_macro   0x0002173d      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
- .debug_macro   0x00021884      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
- .debug_macro   0x000219cb      0x15e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+ .debug_macro   0x00020460      0x7e5 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_macro   0x00020c45       0x12 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_macro   0x00020c57       0xd6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_macro   0x00020d2d       0x7c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_macro   0x00020da9      0x448 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+ .debug_macro   0x000211f1      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_macro   0x0002134b       0x42 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_macro   0x0002138d       0x10 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_macro   0x0002139d      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
+ .debug_macro   0x000214e4      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
+ .debug_macro   0x0002163e      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
+ .debug_macro   0x00021798      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+ .debug_macro   0x000218df      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
+ .debug_macro   0x00021a26      0x147 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+ .debug_macro   0x00021b6d      0x15e D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
 
-.debug_line     0x00000000    0x1ec0a
+.debug_line     0x00000000    0x1f001
  .debug_line    0x00000000     0x1404 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
  .debug_line    0x00001404     0x12c2 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o
  .debug_line    0x000026c6     0x1101 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\exceptions.o
@@ -10547,18 +10551,19 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .debug_line    0x00016df1     0x1381 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\timer0.o
  .debug_line    0x00018172     0x1225 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\led.o
  .debug_line    0x00019397     0x12d6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
- .debug_line    0x0001a66d     0x1548 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
- .debug_line    0x0001bbb5      0xbc6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
- .debug_line    0x0001c77b      0x415 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
- .debug_line    0x0001cb90      0x77a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
- .debug_line    0x0001d30a      0x76c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
- .debug_line    0x0001da76      0x3fe D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
- .debug_line    0x0001de74      0x434 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
- .debug_line    0x0001e2a8      0x425 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
- .debug_line    0x0001e6cd      0x430 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
- .debug_line    0x0001eafd      0x10d D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
+ .debug_line    0x0001a66d     0x1576 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+ .debug_line    0x0001bbe3      0xbc6 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+ .debug_line    0x0001c7a9      0x415 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_line    0x0001cbbe      0x77a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
+ .debug_line    0x0001d338      0x76c D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
+ .debug_line    0x0001daa4      0x3fe D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
+ .debug_line    0x0001dea2      0x434 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+ .debug_line    0x0001e2d6      0x3d9 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
+ .debug_line    0x0001e6af      0x425 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+ .debug_line    0x0001ead4      0x420 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+ .debug_line    0x0001eef4      0x10d D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
 
-.debug_str      0x00000000    0x7cdb3
+.debug_str      0x00000000    0x7ce67
  .debug_str     0x00000000    0x76ec2 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o
                               0x774a4 (size before relaxing)
  .debug_str     0x00076ec2      0x209 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\board_lowlevel.o
@@ -10609,23 +10614,25 @@ OUTPUT(BaseProject.elf elf32-littlearm)
                               0x76cca (size before relaxing)
  .debug_str     0x0007ad29       0xec D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\Afec_Ctrl.o
                               0x775a4 (size before relaxing)
- .debug_str     0x0007ae15      0x186 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
-                              0x777e1 (size before relaxing)
- .debug_str     0x0007af9b      0x609 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
+ .debug_str     0x0007ae15      0xba0 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\main.o
+                              0x78222 (size before relaxing)
+ .debug_str     0x0007b9b5      0x609 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\startup_sam.o
                               0x6e5f6 (size before relaxing)
- .debug_str     0x0007b5a4     0x1129 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
+ .debug_str     0x0007bfbe      0x756 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_const_structs.o
                                0x6bed (size before relaxing)
- .debug_str     0x0007c6cd       0xd1 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
+ .debug_str     0x0007c714       0xd1 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_radix8_f32.o
                                0x6119 (size before relaxing)
- .debug_str     0x0007c79e      0x163 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
+ .debug_str     0x0007c7e5      0x15a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
                                0x662e (size before relaxing)
- .debug_str     0x0007c901      0x19a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
+ .debug_str     0x0007c93f      0x19a D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
                                0x69ff (size before relaxing)
- .debug_str     0x0007ca9b      0x183 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+ .debug_str     0x0007cad9      0x183 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
                                0x61b0 (size before relaxing)
- .debug_str     0x0007cc1e       0xd8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+ .debug_str     0x0007cc5c       0x8b D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
+                               0x60a9 (size before relaxing)
+ .debug_str     0x0007cce7       0xd8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
                                0x6112 (size before relaxing)
- .debug_str     0x0007ccf6       0xbd D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+ .debug_str     0x0007cdbf       0xa8 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
                                0x662b (size before relaxing)
 
 .comment        0x00000000       0x70
@@ -10662,6 +10669,7 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cfft_f32.o
  .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_common_tables.o
  .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
+ .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
  .comment       0x00000000       0x71 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
 
@@ -10732,123 +10740,125 @@ OUTPUT(BaseProject.elf elf32-littlearm)
  .ARM.attributes
                 0x000006a9       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_cmplx_mag_f32.o
  .ARM.attributes
-                0x000006e0       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
+                0x000006e0       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_fft_bin_data.o
  .ARM.attributes
-                0x00000717       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
+                0x00000717       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_max_f32.o
  .ARM.attributes
-                0x0000074e       0x23 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
+                0x0000074e       0x37 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\fft_float.o
  .ARM.attributes
-                0x00000771       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-assert.o)
+                0x00000785       0x23 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\arm_bitreversal2.o
  .ARM.attributes
-                0x000007a4       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fiprintf.o)
+                0x000007a8       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-assert.o)
  .ARM.attributes
-                0x000007d7       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
+                0x000007db       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fiprintf.o)
  .ARM.attributes
-                0x0000080a       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-malloc.o)
+                0x0000080e       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x0000083d       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
+                0x00000841       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-malloc.o)
  .ARM.attributes
-                0x00000870       0x21 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memcpy.o)
+                0x00000874       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x00000891       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mlock.o)
+                0x000008a7       0x21 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x000008c4       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-printf.o)
+                0x000008c8       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mlock.o)
  .ARM.attributes
-                0x000008f7       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putchar.o)
+                0x000008fb       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-printf.o)
  .ARM.attributes
-                0x0000092a       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-sbrkr.o)
+                0x0000092e       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putchar.o)
  .ARM.attributes
-                0x0000095d       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-setvbuf.o)
+                0x00000961       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x00000990       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
+                0x00000994       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-setvbuf.o)
  .ARM.attributes
-                0x000009c3       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
+                0x000009c7       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfiprintf.o)
  .ARM.attributes
-                0x000009f6       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wsetup.o)
+                0x000009fa       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-vfprintf.o)
  .ARM.attributes
-                0x00000a29       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-abort.o)
+                0x00000a2d       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x00000a5c       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
+                0x00000a60       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-abort.o)
  .ARM.attributes
-                0x00000a8f       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fflush.o)
+                0x00000a93       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-dtoa.o)
  .ARM.attributes
-                0x00000ac2       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
+                0x00000ac6       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fflush.o)
  .ARM.attributes
-                0x00000af5       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fputwc.o)
+                0x00000af9       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-findfp.o)
  .ARM.attributes
-                0x00000b28       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-freer.o)
+                0x00000b2c       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fputwc.o)
  .ARM.attributes
-                0x00000b5b       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fvwrite.o)
+                0x00000b5f       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-freer.o)
  .ARM.attributes
-                0x00000b8e       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fwalk.o)
+                0x00000b92       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fvwrite.o)
  .ARM.attributes
-                0x00000bc1       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
+                0x00000bc5       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x00000bf4       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-makebuf.o)
+                0x00000bf8       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-locale.o)
  .ARM.attributes
-                0x00000c27       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memchr.o)
+                0x00000c2b       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x00000c5a       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memmove.o)
+                0x00000c5e       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memchr.o)
  .ARM.attributes
-                0x00000c8d       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memset.o)
+                0x00000c91       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000cc0       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
+                0x00000cc4       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-memset.o)
  .ARM.attributes
-                0x00000cf3       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putc.o)
+                0x00000cf7       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-mprec.o)
  .ARM.attributes
-                0x00000d26       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reallocr.o)
+                0x00000d2a       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-putc.o)
  .ARM.attributes
-                0x00000d59       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reent.o)
+                0x00000d5d       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x00000d8c       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-s_fpclassify.o)
+                0x00000d90       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-reent.o)
  .ARM.attributes
-                0x00000dbf       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signal.o)
+                0x00000dc3       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-s_fpclassify.o)
  .ARM.attributes
-                0x00000df2       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signalr.o)
+                0x00000df6       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signal.o)
  .ARM.attributes
-                0x00000e25       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
+                0x00000e29       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-signalr.o)
  .ARM.attributes
-                0x00000e58       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-strlen.o)
+                0x00000e5c       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-stdio.o)
  .ARM.attributes
-                0x00000e8b       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wbuf.o)
+                0x00000e8f       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-strlen.o)
  .ARM.attributes
-                0x00000ebe       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wcrtomb.o)
+                0x00000ec2       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wbuf.o)
  .ARM.attributes
-                0x00000ef1       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wctomb_r.o)
+                0x00000ef5       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wcrtomb.o)
  .ARM.attributes
-                0x00000f24       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-writer.o)
+                0x00000f28       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-wctomb_r.o)
  .ARM.attributes
-                0x00000f57       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-callocr.o)
+                0x00000f5b       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-writer.o)
  .ARM.attributes
-                0x00000f8a       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-closer.o)
+                0x00000f8e       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-callocr.o)
  .ARM.attributes
-                0x00000fbd       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fclose.o)
+                0x00000fc1       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-closer.o)
  .ARM.attributes
-                0x00000ff0       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fstatr.o)
+                0x00000ff4       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fclose.o)
  .ARM.attributes
-                0x00001023       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-isattyr.o)
+                0x00001027       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-fstatr.o)
  .ARM.attributes
-                0x00001056       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-lseekr.o)
+                0x0000105a       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-isattyr.o)
  .ARM.attributes
-                0x00001089       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-readr.o)
+                0x0000108d       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x000010bc       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_addsubdf3.o)
+                0x000010c0       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/cortex-m7\libc.a(lib_a-readr.o)
  .ARM.attributes
-                0x000010df       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_muldivdf3.o)
+                0x000010f3       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00001102       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_cmpdf2.o)
+                0x00001116       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00001125       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_fixdfsi.o)
+                0x00001139       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00001148       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_aeabi_uldivmod.o)
+                0x0000115c       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_arm_fixdfsi.o)
  .ARM.attributes
-                0x0000116b       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(bpabi.o)
+                0x0000117f       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x0000119e       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_dvmd_tls.o)
+                0x000011a2       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(bpabi.o)
  .ARM.attributes
-                0x000011c1       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_divdi3.o)
+                0x000011d5       0x23 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x000011f4       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_udivdi3.o)
+                0x000011f8       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_divdi3.o)
+ .ARM.attributes
+                0x0000122b       0x33 d:/program files/isystem/winideaopen9/gcc/arm/bin/../lib/gcc/arm-none-eabi/4.9.3/cortex-m7\libgcc.a(_udivdi3.o)
 
 .debug_frame    0x00000000     0x36a8
  .debug_frame   0x00000000      0x1a4 D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\dbg_console.o

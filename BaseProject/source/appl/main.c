@@ -13,6 +13,9 @@
 #include "fft.h"
 #include "ecg_data.h"
 
+#include "arm_math.h"
+#include "arm_const_structs.h"
+
 /*----------------------------------------------------------------------------
  *        Local definitions
  *----------------------------------------------------------------------------*/
@@ -42,6 +45,8 @@ TaskType Tasks[]={
 };
 
 extern float ecg_resampled[2048];
+extern float testInput_f32_10khz[TEST_LENGTH_SAMPLES];
+static float testOutput[TEST_LENGTH_SAMPLES/2];
 
 Mem_ReturnType ptr_a,ptr_b,ptr_c,ptr_d;
 
@@ -77,6 +82,13 @@ extern int main( void )
 {
 	/** Auxiliary array index */
     uint16_t    u16index;
+
+    float maxValue;
+    uint32_t ifftFlag = 0;
+    uint32_t doBitReverse = 1;
+    uint32_t fftSize = 1024;
+    uint32_t testIndex = 0;
+
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
 
@@ -145,22 +157,21 @@ extern int main( void )
             fft_inputData[(2*u16index) + 1] = 0;
         }
         /** Perform FFT on the input signal */
-        fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
+        //fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
 
+        fft(testInput_f32_10khz, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
 
-        for(indx = 30; indx < 255; indx++)
-        {
-            temp_res1 = fft_signalPower[indx];
-            temp_res2 = fft_signalPower[indx-1];
-            temp_res3 = fft_signalPower[indx-2];
-            temp_res4 = fft_signalPower[indx-3];
-            temp_res2*=coef[indx];
-            temp_res3*=coef[indx+1];
-            temp_res4*=coef[indx+2];
-
-        }
-
-
+//        for(indx = 30; indx < 255; indx++)
+//        {
+//            temp_res1 = fft_signalPower[indx];
+//            temp_res2 = fft_signalPower[indx-1];
+//            temp_res3 = fft_signalPower[indx-2];
+//            temp_res4 = fft_signalPower[indx-3];
+//            temp_res2*=coef[indx];
+//            temp_res3*=coef[indx+1];
+//            temp_res4*=coef[indx+2];
+//
+//        }
 
         /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
 		printf("%5d  %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
