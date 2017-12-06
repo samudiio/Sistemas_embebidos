@@ -162,9 +162,7 @@ extern int main( void )
         fft_inputData[(2*u16index) + 1] = 0;
     }
     /** Perform FFT on the input signal */
-    //fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
-
-    fft(testInput_f32_10khz, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
+    fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
 
     inputF32 = &fft_signalPower[0];
 
