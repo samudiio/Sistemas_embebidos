@@ -573,6 +573,20 @@
          <AssemblerOptions>-x assembler-with-cpp -mcpu=cortex-m7 -mthumb -mfloat-abi=softfp -mfpu=fpv5-d16    -g3  $(INCLUDES) $(DEFINES) -D__ASSEMBLY__ -o $(OUTPUTDIR)$(NOEXT).o -c $(EDNAME)</AssemblerOptions>
         </FileOptios>
        </File.10>
+       <File.11>
+        <FileName>$(IRFDIR)..\source\infrastructure\derivative\libchip_samv7\include\cmsis\CMSIS\DSP_Lib\Source\FilteringFunctions\arm_fir_f32.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.11>
+       <File.12>
+        <FileName>$(IRFDIR)..\source\infrastructure\derivative\libchip_samv7\include\cmsis\CMSIS\DSP_Lib\Source\FilteringFunctions\arm_fir_init_f32.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.12>
        <File.2>
         <FileName>$(IRFDIR)..\source\infrastructure\derivative\libchip_samv7\include\cmsis\CMSIS\DSP_Lib\Source\TransformFunctions\arm_bitreversal.c</FileName>
         <FileOptios>

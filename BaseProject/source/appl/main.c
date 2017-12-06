@@ -22,6 +22,9 @@
 /*~~~~~~  Local definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 #define TEST_LENGTH_SAMPLES 2048
 
+#define BLOCK_SIZE            32
+#define NUM_TAPS              9
+
 /*~~~~~~  Global variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /** Auxiliary input buffer to accomodate data as FFT function expects it */
@@ -49,6 +52,30 @@ extern float testInput_f32_10khz[TEST_LENGTH_SAMPLES];
 static float testOutput[TEST_LENGTH_SAMPLES/2];
 
 Mem_ReturnType ptr_a,ptr_b,ptr_c,ptr_d;
+
+/* -------------------------------------------------------------------
+ * Declare State buffer of size (numTaps + blockSize - 1)
+ * ------------------------------------------------------------------- */
+
+static float firStateF32[BLOCK_SIZE + NUM_TAPS - 1];
+
+/* ----------------------------------------------------------------------
+** FIR Coefficients buffer generated using fir1() MATLAB function.
+** fir1(28, 6/24)
+** ------------------------------------------------------------------- */
+
+const float32_t firCoeffs32[NUM_TAPS] = {
+  -0.0018225230f, -0.0015879294f, +0.0000000000f,
+  +0.0036977508f, +0.0080754303f, +0.0085302217f,
+  -0.0000000000f, -0.0173976984f, -0.0341458607f
+};
+
+/* ------------------------------------------------------------------
+ * Global variables for FIR LPF Example
+ * ------------------------------------------------------------------- */
+
+uint32_t blockSize = BLOCK_SIZE;
+uint32_t numBlocks = TEST_LENGTH_SAMPLES/BLOCK_SIZE;
 
 /*----------------------------------------------------------------------------
  *        Local functions
@@ -89,19 +116,21 @@ extern int main( void )
     uint32_t fftSize = 1024;
     uint32_t testIndex = 0;
 
+    uint32_t idx;
+    arm_fir_instance_f32 S;
+    float *inputF32, *outputF32;
+
+    /* Initialize input and output buffer pointers */
+
+
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
 
-	/* Output example information */
-	/*printf( "\n\r-- Getting Started Example Workspace Updated!!! %s --\n\r", SOFTPACK_VERSION ) ;
-	printf( "-- %s\n\r", BOARD_NAME ) ;
-	printf( "-- Compiled: %s %s With %s--\n\r", __DATE__, __TIME__ , COMPILER_NAME);
-  */
 	/* Enable I and D cache */
 	SCB_EnableICache();
-  SCB_EnableDCache();
+	SCB_EnableDCache();
   
-  Mem_Init();
+    Mem_Init();
 
 	//printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
@@ -112,15 +141,11 @@ extern int main( void )
 	vfnScheduler_Start();
    /* Enable Floating Point Unit */
     vfnFpu_enable();
-  //printf( "size of uint8_t = %d.\n\r", sizeof(uint8_t));
-  
-  //ptr_a = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint8_t));  
-  //ptr_b = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint16_t));  
-  //ptr_c = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
-  //ptr_d = (Mem_ReturnType)Mem_Alloc(1*sizeof(uint32_t));
   
  	AFEC_Init();
   
+  /* Call FIR init function to initialize the instance structure. */
+  arm_fir_init_f32(&S, NUM_TAPS, (float32_t *)&firCoeffs32[0], &firStateF32[0], blockSize);
   
   BUFF_ADDR = (uint32_t *)Mem_Alloc(size*sizeof(uint32_t));
   
@@ -147,35 +172,31 @@ extern int main( void )
       ecg_resampled2[indx] = temp*factor;
   }
 
+  /*Prepare data for FFT operation */
+    for (u16index = 0; u16index < (TEST_LENGTH_SAMPLES/2); u16index++)
+    {
+        fft_inputData[(2*u16index)] = ecg_resampled[u16index];
+        fft_inputData[(2*u16index) + 1] = 0;
+    }
+    /** Perform FFT on the input signal */
+    //fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
+
+    fft(testInput_f32_10khz, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
+
+    inputF32 = &fft_signalPower[0];
+
+    for(idx =0; idx < numBlocks; idx++)
+    {
+        arm_fir_f32(&S, inputF32 + (idx * blockSize), outputF32 + (idx * blockSize), blockSize);
+    }
+
+    /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
+    printf("fft_maxPowerIndex , %5d  fft_maxPower %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
+
+
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
 	{
-		/*Prepare data for FFT operation */
-        for (u16index = 0; u16index < (TEST_LENGTH_SAMPLES/2); u16index++)
-        {
-            fft_inputData[(2*u16index)] = ecg_resampled[u16index];
-            fft_inputData[(2*u16index) + 1] = 0;
-        }
-        /** Perform FFT on the input signal */
-        //fft(fft_inputData, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
-
-        fft(testInput_f32_10khz, fft_signalPower, TEST_LENGTH_SAMPLES/2, &u32fft_maxPowerIndex, &fft_maxPower);
-
-//        for(indx = 30; indx < 255; indx++)
-//        {
-//            temp_res1 = fft_signalPower[indx];
-//            temp_res2 = fft_signalPower[indx-1];
-//            temp_res3 = fft_signalPower[indx-2];
-//            temp_res4 = fft_signalPower[indx-3];
-//            temp_res2*=coef[indx];
-//            temp_res3*=coef[indx+1];
-//            temp_res4*=coef[indx+2];
-//
-//        }
-
-        /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
-		printf("%5d  %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
-		
 		/* Perform all scheduled tasks */    
 		vfnTask_Scheduler();
 	}

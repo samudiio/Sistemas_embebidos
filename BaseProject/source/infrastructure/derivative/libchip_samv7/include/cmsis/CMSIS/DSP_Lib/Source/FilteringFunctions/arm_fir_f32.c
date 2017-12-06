@@ -131,7 +131,7 @@
 *  
 */
 
-#if defined(ARM_MATH_CM7)
+//#if defined(ARM_MATH_CM7)
 
 void arm_fir_f32(
 const arm_fir_instance_f32 * S,
@@ -160,7 +160,7 @@ uint32_t blockSize)
     *    acc2 =  b[numTaps-1] * x[n-numTaps+1] + b[numTaps-2] * x[n-numTaps] +   b[numTaps-3] * x[n-numTaps-1] +...+ b[0] * x[2]  
     *    acc3 =  b[numTaps-1] * x[n-numTaps+2] + b[numTaps-2] * x[n-numTaps+1] + b[numTaps-3] * x[n-numTaps]   +...+ b[0] * x[3]  
     */
-   blkCnt = blockSize >> 3;
+   //blkCnt = blockSize >> 3;
 
    /* First part of the processing with loop unrolling.  Compute 8 outputs at a time.  
    ** a second loop below computes the remaining 1 to 7 samples. */
@@ -476,7 +476,7 @@ uint32_t blockSize)
       tapCnt--;
    }
 }
-
+#if 0
 #elif defined(ARM_MATH_CM0_FAMILY)
 
 void arm_fir_f32(
@@ -558,7 +558,7 @@ uint32_t blockSize)
 
 }
 
-#else
+//#else
 
 /* Run the below code for Cortex-M4 and Cortex-M3 */
 

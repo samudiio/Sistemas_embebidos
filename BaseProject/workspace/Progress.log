@@ -1,1 +1,10 @@
+CONVERTING	D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\BaseProject.elf
+LOADING	D:\Git\Sistemas_embebidos\BaseProject\workspace\Debug\BaseProject.elf
+ANALYZING
+ANALYZING
+EMULATION	POD: Cortex (JTAG,SWD)   CPU: Cortex-M7
 DEBUG	PROTOCOL: SWD; RESET: SoC
+PROGRAMMING 	300188 bytes
+UMI INFO	Loading UMI monitor...
+PROGRAMMING	Atmel ATSAMV7 (2048 kB) (5 sectors)
+UMI INFO	Unloading UMI monitor...

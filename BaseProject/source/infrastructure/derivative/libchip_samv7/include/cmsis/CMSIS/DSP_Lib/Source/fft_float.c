@@ -35,10 +35,10 @@ void fft(float * fft_inputData, float * fft_signalPower, uint32_t fftSize, uint3
     arm_cfft_f32(cfft_instance, fft_inputData, ifftFlag, doBitReverse);
 
   /*Scale down magnitude */
-//    for (u32index = 0; u32index <fftSize*2; u32index++)
-//    {
-//        fft_inputData[u32index] /= scale_factor;
-//    }
+    for (u32index = 0; u32index <fftSize*2; u32index++)
+    {
+        fft_inputData[u32index] /= scale_factor;
+    }
       
   /* Process the data through the Complex Magnitude Module for calculating the magnitude at each bin */
     arm_cmplx_mag_f32(fft_inputData, fft_signalPower, fftSize);
