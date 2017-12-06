@@ -107,18 +107,14 @@ float ecg_resampled2[512];
 
 extern int main( void )
 {
-	/** Auxiliary array index */
-    uint16_t    u16index;
+    /** Auxiliary array index */
+    uint16_t u16index;
 
-    float maxValue;
-    uint32_t ifftFlag = 0;
-    uint32_t doBitReverse = 1;
-    uint32_t fftSize = 1024;
-    uint32_t testIndex = 0;
-
-    uint32_t idx;
-    arm_fir_instance_f32 S;
+    uint32_t *BuffAdd;
+    float factor;
+    float temp;
     float *inputF32, *outputF32;
+    arm_fir_instance_f32 S;
 
     /* Initialize output buffer pointers */
     outputF32 = &testOutput[0];
@@ -129,10 +125,9 @@ extern int main( void )
 	/* Enable I and D cache */
 	SCB_EnableICache();
 	SCB_EnableDCache();
-  
+
     Mem_Init();
 
-	//printf( "Configure LED PIOs.\n\r" ) ;
 	_ConfigureLeds() ;
   
   	/* Initialize Task Scheduler */
@@ -141,41 +136,29 @@ extern int main( void )
 	vfnScheduler_Start();
    /* Enable Floating Point Unit */
     vfnFpu_enable();
+    /* Initialize AFEC */
+    AFEC_Init();
   
- 	AFEC_Init();
+    /* Call FIR init function to initialize the instance structure. */
+    arm_fir_init_f32(&S, NUM_TAPS, (float32_t *)&firCoeffs32[0], &firStateF32[0], blockSize);
   
-  /* Call FIR init function to initialize the instance structure. */
-  arm_fir_init_f32(&S, NUM_TAPS, (float32_t *)&firCoeffs32[0], &firStateF32[0], blockSize);
+    BUFF_ADDR = (uint32_t *)Mem_Alloc(size*sizeof(uint32_t));
   
-  BUFF_ADDR = (uint32_t *)Mem_Alloc(size*sizeof(uint32_t));
-  
-  SET_AFEC_SAMPLING(size,SAMP_PER,BUFF_ADDR);      
+    SET_AFEC_SAMPLING(size,SAMP_PER,BUFF_ADDR);
 
-  uint16_t indx;
-  uint32_t *BuffAdd;
-  float factor;
-  float temp;
-  uint32_t *fft_SP_result = (uint32_t*) fft_signalPower;
-  float temp_res1;
-  float temp_res2;
-  float temp_res3;
-  float temp_res4;
+    BuffAdd = BUFF_ADDR;
 
-  uint8_t coef[4] = {5, 7, 4, 6};
+    for(u16index = 0; u16index < size; u16index++)
+    {
+        factor = 3.3/1024;
+        temp = *(BuffAdd + u16index*4);
+        ecg_resampled2[u16index] = temp*factor;
+    }
 
-  BuffAdd = BUFF_ADDR;
-
-  for(indx = 0; indx < 512; indx++)
-  {
-      factor = 3.3/1024;
-      temp = *(BuffAdd + indx*4);
-      ecg_resampled2[indx] = temp*factor;
-  }
-
-  /*Prepare data for FFT operation */
+    /*Prepare data for FFT operation */
     for (u16index = 0; u16index < (TEST_LENGTH_SAMPLES/2); u16index++)
     {
-        fft_inputData[(2*u16index)] = ecg_resampled[u16index];
+        fft_inputData[(2*u16index)] = ecg_resampled2[u16index];
         fft_inputData[(2*u16index) + 1] = 0;
     }
     /** Perform FFT on the input signal */
@@ -185,14 +168,14 @@ extern int main( void )
 
     inputF32 = &fft_signalPower[0];
 
-    for(idx =0; idx < numBlocks; idx++)
+    for(u16index =0; u16index < numBlocks; u16index++)
     {
-        arm_fir_f32(&S, inputF32 + (idx * blockSize), outputF32 + (idx * blockSize), blockSize);
+        arm_fir_f32(&S, inputF32 + (u16index * blockSize), outputF32 + (u16index * blockSize), blockSize);
     }
 
     /* Publish through emulated Serial the byte that was previously sent through the regular Serial channel */
     printf("fft_maxPowerIndex , %5d  fft_maxPower %5.4f \r\n", u32fft_maxPowerIndex, fft_maxPower);
-
+    printf("testOutput %5.4f \r\n", testOutput[0]);
 
 	/*-- Loop through all the periodic tasks from Task Scheduler --*/
 	for(;;)
