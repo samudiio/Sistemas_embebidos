@@ -160,7 +160,7 @@ uint32_t blockSize)
     *    acc2 =  b[numTaps-1] * x[n-numTaps+1] + b[numTaps-2] * x[n-numTaps] +   b[numTaps-3] * x[n-numTaps-1] +...+ b[0] * x[2]  
     *    acc3 =  b[numTaps-1] * x[n-numTaps+2] + b[numTaps-2] * x[n-numTaps+1] + b[numTaps-3] * x[n-numTaps]   +...+ b[0] * x[3]  
     */
-   //blkCnt = blockSize >> 3;
+   blkCnt = blockSize >> 3;
 
    /* First part of the processing with loop unrolling.  Compute 8 outputs at a time.  
    ** a second loop below computes the remaining 1 to 7 samples. */

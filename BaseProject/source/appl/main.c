@@ -120,8 +120,8 @@ extern int main( void )
     arm_fir_instance_f32 S;
     float *inputF32, *outputF32;
 
-    /* Initialize input and output buffer pointers */
-
+    /* Initialize output buffer pointers */
+    outputF32 = &testOutput[0];
 
 	/* Disable watchdog */
 	WDT_Disable( WDT ) ;
